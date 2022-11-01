@@ -9,12 +9,20 @@ begin model
 		IPI3K(PI3KRec)
 		PI3K(inhibitor, active~0~p)
 		IPKC(PKCRec)
-		PKC(inhibitor, s657~0~p)	
+		PKC(inhibitor, s~0~p)	
+		S_DPD_LB
+		S_DPD_NC
 	end molecule types
-	
+		
 	begin parameters
 		k_egf_f = 1
 		k_egf_b = 1
+
+		#dimerization kinetc parameters
+		k_dim1 = 1
+		k_dim2 = 1
+
+		# inhibitor kinetic rates
 		k_iegfr_f = 1
 		k_iegfr_b = 1
 		k_imek_f = 1
@@ -23,13 +31,19 @@ begin model
 		k_ipi3k_b = 1
 		k_ipck_f = 1
 		k_ipck_b = 1
-		
-		#dimerization parameters
-		k_dim1 = 1
-		k_dim2 = 1
+	
+		# phosphorylation/dephosphorylation kinetic rate constants
+		k_egfr_phos = 1
+		k_egfr_dephos = 1
 
-		k_phos1 1
-		k_phos2 1
+		k_mek_phos = 1
+		k_mek_dephos = 1
+
+		k_pkc_phos = 1
+		k_pkc_dephos = 1
+
+		k_pi3k_phos = 1
+		k_pi3k_dephos = 1
 
 		EGFR_to_MEK = 1
 		K_EGFR_MEK = 1
@@ -48,8 +62,49 @@ begin model
 		PI3K_to_MEK = 1
 		PI3K_to_PKC = 1
 
+		vnEGFR = 1
+		vpEGFR = 1
+
+		vnMEK = 1
+		vpMEK = 1
+
+		vnPKC = 1
+		vpPKC = 1
+		
+		vnPI3K = 1
+		vpPI3K = 1
+
+		# initial concentrations 
+		EGF_conc = 1
+		# inhibitors
+		iEGFR_conc = 1
+		iMEK_conc = 1
+		iPKC_conc = 1
+		iPI3K_conc = 1
+
+
+		# core module concentrations
+		EGFR_conc = 1
+		MEK_conc = 1
+		PKC_conc = 1
+		PI3K_conc = 1
+
 	end parameters
 
+
+	begin seed species
+	  EGF(EGFRRec) EGF_conc
+	  EGFR(egf, inhibitor, tyr~0) EGFR_conc
+	  IEGFR(EGFRRec) iEGFR_conc
+	  MEK(inhibitor, st~0) MEK_conc
+	  IMEK(MEKRec) iMEK_conc
+	  PKC(inhibitor, s~0) PKC_conc
+	  IPKC(PKCRec) iPKC_conc
+	  PI3K(inhibitor, active~0) PI3K_conc
+	  IPI3K(PI3KRec) iPI3K_conc
+
+	end seed species
+	
 
 
 	begin observables
@@ -61,8 +116,8 @@ begin model
 		Molecules pEGFR_dimer EGFR(dimer!0, tyr~p).EGFR(dimer!0, tyr~p)
 		Molecules inhEGFR EGFR(inhibitor!0).EGF(EGFRRec!0)
 
-		Molecules nPKC PKC(s657~0)
-		Molecules pPKC PKC(s657~p)
+		Molecules nPKC PKC(s~0)
+		Molecules pPKC PKC(s~p)
 		Molecules nMEK MEK(st~0)
 		Molecules pMEK MEK(st~p)
 		Molecules nPI3K PI3K(active~0)
@@ -74,9 +129,9 @@ begin model
 		Species  i_PI3K IPI3K(IPI3KRec)
 		Species  i_PKC IPKC(IPKCRec)
 
-		Species DPD_LB -2
-		Species DPD_NC 2
-
+		# DPD values
+		Species DPD_LB S_DPD_LB
+		Species DPD_NC S_DPD_NC
 
 	end observables
 
@@ -108,16 +163,30 @@ begin model
 		a_PKC_to_PI3K() = ((1.0 + PKC_to_PI3K * (pEGFR/K_PKC_PI3K)) / (1.0 + pPKC/K_PKC_PI3K)) 
 
 		# inhibitor factors
-
 		inh_EGFR() = (1.0 / (1.0 + i_EGFR))
 		inh_PI3K() = (1.0 / (1.0 + i_PI3K))
 		inh_MEK() = (1.0 / (1.0 + i_MEK))
 		inh_PKC() = (1.0 / (1.0 + i_PKC))
 
 
+		# inactive and active initial kinetic rates (prior to hyperbolic multipliers)
+		kr_nEGFR() = ((vnEGFR/k_egfr_dephos) / (1.0 + (pEGFR / k_egfr_dephos))) 
+		kr_pEGFR() = ((vpEGFR/k_egfr_phos) / (1.0 + (nEGFR / k_egfr_phos)))
+		
+		kr_nMEK() = ((vnMEK / k_mek_dephos) / (1.0 + (pMEK / k_mek_dephos)))
+		kr_pMEK() = ((vpMEK / k_mek_phos) / (1.0 + (nMEK / k_mek_phos)))
+		
+		kr_nPKC() = ((vnPKC / k_pkc_dephos) / (1.0 + (pPKC / k_pkc_dephos)))
+		kr_pPKC() = ((vpPKC / k_pkc_phos) / (1.0 + (nPKC / k_pkc_phos))) 
+
+		kr_nPI3K() = ((vnPI3K / k_pi3k_dephos) / (1.0 + (pPI3K / k_pi3k_dephos)))
+		kr_pPI3K() = ((vpPI3K / k_pi3k_phos) / (1.0 + (nPI3K / k_pi3k_phos)))
+
+		# DPD trajectories -- for now set to one and write code later
+		DPD_LB_trajectory() = (1)
+		DPD_NC_trajectory() = (1)
+
 	end functions
-
-
 
 	begin reaction rules
 		# EGFR modelling
@@ -131,25 +200,28 @@ begin model
 		# dimer dissociation
 		EGFR(dimer!0).EGFR(dimer!0) -> EGFR(dimer) + EGFR(dimer) k_r_dim
 		# activation through phosphorylation
-		EGFR(dimer!+, tyr~0) -> EGFR(dimer!+, tyr~p) ((a_MEK_to_EGFR() * a_PKC_to_EGFR() * a_PI3K_to_EGFR() * inh_EGFR()) / k_phos)
-		EGFR(dimer, tyr~p) -> EGFR(dimer, tyr~0) k_dphos
+		EGFR(dimer!+, tyr~0) -> EGFR(dimer!+, tyr~p) (a_MEK_to_EGFR() * a_PKC_to_EGFR() * a_PI3K_to_EGFR() * inh_EGFR() * kr_pEGFR() )
+		EGFR(dimer, tyr~p) -> EGFR(dimer, tyr~0) ( kr_nEGFR() )
 		#inhibition
 		EGFR(inhibitor) + IEGFR(EGFRRec) <-> EGFR(inhibitor!0).IEGFR(EGFRRec!0) k_iegfr_f, k_iegfr_b		
 
-
-		MEK(st~0) -> MEK(st~p) ((a_EGFR_to_MEK() * a_PI3K_to_MEK() * a_PKC_to_MEK() * inh_MEK()) / k_mek_phos)
-		MEK(st~p) -> MEK(st~0) k_mek_dphos
+		# MEK
+		MEK(st~0) -> MEK(st~p) (a_EGFR_to_MEK() * a_PI3K_to_MEK() * a_PKC_to_MEK() * inh_MEK() * kr_pMEK() )
+		MEK(st~p) -> MEK(st~0) ( kr_nMEK() )
 		MEK(inhibitor) + IMEK(MEKRec) <-> MEK(inhibitor!0).IMEK(MEKRec!0) k_imek_f, k_imek_b
 
-		PKC(s657~0) -> PKC(s657~p) -> ((a_EGFR_to_PKC() * a_MEK_to_PKC() * a_PI3K_to_PKC() * inh_PKC()) / k_pkc_phos)
-		PKC(s657~p) -> PKC(s657~0) -> k_pkc_dphos
+		# PKC
+		PKC(s~0) -> PKC(s~p) -> (a_EGFR_to_PKC() * a_MEK_to_PKC() * a_PI3K_to_PKC() * inh_PKC() * kr_pPKC() )
+		PKC(s~p) -> PKC(s~0) -> ( kr_nPKC() )
 		PKC(inhibitor) + IPKC(PKCRec) <-> PKC(inhibitor!0).IPKC(PKCRec!0) k_ipkc_f, k_ipkc_b
 
-
-		PI3K(active~0) -> PI3K(active~p) ((a_EGFR_to_PI3K() * a_MEK_to_PI3K() * a_PKC_to_PI3K() * inh_PI3K()) / k_pi3k_phos)
-		PI3K(active~p) -> PI3K(active~0) -> k_pi3k_dphos
+		# PI3K
+		PI3K(active~0) -> PI3K(active~p) ((a_EGFR_to_PI3K() * a_MEK_to_PI3K() * a_PKC_to_PI3K() * inh_PI3K()) * kr_pPI3K() )
+		PI3K(active~p) -> PI3K(active~0) -> ( kr_nPI3K() )
 		PI3K(inhibitor) + IPI3K(PI3KRec) <-> PI3K(inhibitor!0).IPI3K(PI3KRRec!0) k_ipi3k_f, k_ipi3k_b
 
+		Null -> DPD_LB DPD_LB_trajectory()
+		Null -> DPD_NC DPD_NC_trajectory()
 
 	end reaction rules
 
