@@ -216,8 +216,10 @@ begin model
 		PKC(inhibitor) + IPKC(PKCRec) <-> PKC(inhibitor!0).IPKC(PKCRec!0) k_ipkc_f, k_ipkc_b
 
 		# PI3K
+		# phosphorylation
 		PI3K(active~0) -> PI3K(active~p) ((a_EGFR_to_PI3K() * a_MEK_to_PI3K() * a_PKC_to_PI3K() * inh_PI3K()) * kr_pPI3K() )
 		PI3K(active~p) -> PI3K(active~0) -> ( kr_nPI3K() )
+		# inhibition
 		PI3K(inhibitor) + IPI3K(PI3KRec) <-> PI3K(inhibitor!0).IPI3K(PI3KRRec!0) k_ipi3k_f, k_ipi3k_b
 
 		Null -> DPD_LB DPD_LB_trajectory()
