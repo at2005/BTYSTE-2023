@@ -22,7 +22,6 @@ begin model
 		k_dim1 = 1
 		k_dim2 = 1
 
-		# inhibitor kinetic rates
 		k_iegfr_f = 1
 		k_iegfr_b = 1
 		k_imek_f = 1
@@ -167,7 +166,7 @@ begin model
 		inh_PI3K() = (1.0 / (1.0 + i_PI3K))
 		inh_MEK() = (1.0 / (1.0 + i_MEK))
 		inh_PKC() = (1.0 / (1.0 + i_PKC))
-
+		
 
 		# inactive and active initial kinetic rates (prior to hyperbolic multipliers)
 		kr_nEGFR() = ((vnEGFR/k_egfr_dephos) / (1.0 + (pEGFR / k_egfr_dephos))) 
@@ -182,9 +181,18 @@ begin model
 		kr_nPI3K() = ((vnPI3K / k_pi3k_dephos) / (1.0 + (pPI3K / k_pi3k_dephos)))
 		kr_pPI3K() = ((vpPI3K / k_pi3k_phos) / (1.0 + (nPI3K / k_pi3k_phos)))
 
+		
 		# DPD trajectories -- for now set to one and write code later
-		DPD_LB_trajectory() = (1)
-		DPD_NC_trajectory() = (1)
+
+		driving_force_lb() = ()
+		restoring_force_lb() = ()			
+
+		driving_force_canc() = ()
+		restoring_force_canc() = ()
+		
+
+		# DPD_LB_trajectory() = (1)
+		# DPD_NC_trajectory() = (1)
 
 	end functions
 
