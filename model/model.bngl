@@ -16,119 +16,132 @@ begin model
 		
 
 	begin parameters
-		k_egf_f = 1
-		k_egf_b = 1
-
+		k_egf_f k_egf_f__FREE
+		k_egf_b k_egf_b__FREE
 		#dimerization kinetc parameters
-		k_dim1_f = 1
-		k_dim1_b = 1
-		k_dim2_f = 1
-		k_dim2_b = 1
+		k_dim1_f k_dim1_f__FREE
+		k_dim1_b k_dim1_b__FREE
+		k_dim2_f k_dim2_f__FREE
+		k_dim2_b k_dim2_b__FREE
 
-		k_iegfr_f = 1
-		k_iegfr_b = 1
-		k_imek_f = 1
-		k_imek_b = 1
-		k_ipi3k_f = 1
-		k_ipi3k_b = 1
-		k_ipck_f = 1
-		k_ipck_b = 1
-	
-		# phosphorylation/dephosphorylation kinetic rate constants
-		k_egfr_phos = 1
-		k_egfr_dephos = 1
-
-		k_mek_phos = 1
-		k_mek_dephos = 1
-
-		k_pkc_phos = 1
-		k_pkc_dephos = 1
-
-		k_pi3k_phos = 1
-		k_pi3k_dephos = 1
-
-		vnEGFR = 1
-		vpEGFR = 1
-
-		vnMEK = 1
-		vpMEK = 1
-
-		vnPKC = 1
-		vpPKC = 1
+		k_r_dim k_r_dim__FREE
 		
-		vnPI3K = 1
-		vpPI3K = 1
+		k_iegfr_f k_iegfr_f__FREE 
+		k_iegfr_b k_iegfr_b__FREE
+		k_imek_f  k_imek_f__FREE
+		k_imek_b  k_imek_b__FREE
+		k_ipi3k_f k_ipi3k_f__FREE
+		k_ipi3k_b k_ipi3k_b__FREE
+		k_ipkc_f k_ipkc_f__FREE
+		k_ipkc_b k_ipkc_b__FREE
 
+		# phosphorylation/dephosphorylation Michaelis constants
+		KM_egfr_phos KM_egfr_phos__FREE
+		KM_egfr_dephos KM_egfr_dephos__FREE
+
+		KM_mek_phos KM_mek_phos__FREE
+		KM_mek_dephos KM_mek_dephos__FREE
+
+		KM_pkc_phos KM_pkc_phos__FREE 
+		KM_pkc_dephos KM_pkc_dephos__FREE
+
+		KM_pi3k_phos KM_pi3k_phos__FREE  
+		KM_pi3k_dephos KM_pi3k_dephos__FREE  
+
+		vnEGFR vnEGFR__FREE  
+		vpEGFR vpEGFR__FREE 
+
+		vnMEK vnMEK__FREE  
+		vpMEK vpMEK__FREE 
+
+		vnPKC vnPKC__FREE 
+		vpPKC vpPKC__FREE 
+		
+		vnPI3K vnPI3K__FREE
+		vpPI3K vpPI3K__FREE
 
 		# connection coefficients
-		EGFR_to_MEK__FREE
-		K_EGFR_MEK__FREE
-		EGFR_to_PKC__FREE
-		EGFR_to_PI3K__FREE
+		EGFR_to_MEK EGFR_to_MEK__FREE  
+		K_EGFR_MEK K_EGFR_MEK__FREE  
+		EGFR_to_PKC EGFR_to_PKC__FREE  
+		EGFR_to_PI3K EGFR_to_PI3K__FREE  
 	
-		MEK_to_EGFR__FREE
-		MEK_to_PKC__FREE
-		MEK_to_PI3K__FREE
+		MEK_to_EGFR MEK_to_EGFR__FREE 
+		MEK_to_PKC MEK_to_PKC__FREE 
+		MEK_to_PI3K MEK_to_PI3K__FREE  
 		
-		PKC_to_EGFR__FREE
-		PKC_to_MEK__FREE
-		PKC_to_PI3K__FREE
+		PKC_to_EGFR PKC_to_EGFR__FREE  
+		PKC_to_MEK PKC_to_MEK__FREE  
+		PKC_to_PI3K PKC_to_PI3K__FREE  
 
-		PI3K_to_EGFR__FREE
-		PI3K_to_MEK__FREE
-		PI3K_to_PKC__FREE
+		PI3K_to_EGFR PI3K_to_EGFR__FREE  
+		PI3K_to_MEK PI3K_to_MEK__FREE  
+		PI3K_to_PKC PI3K_to_PKC__FREE  
 
+		K_MEK_EGFR K_MEK_EGFR__FREE  
+		K_PKC_EGFR K_PKC_EGFR__FREE  
+		K_PI3K_EGFR K_PI3K_EGFR__FREE  
+
+		K_EGFR_MEK K_EGFR_MEK__FREE  
+		K_PKC_MEK K_PKC_MEK__FREE  
+		K_PI3K_MEK K_PI3K_MEK__FREE  
+
+		K_MEK_PKC K_MEK_PKC__FREE  
+		K_EGFR_PKC K_EGFR_PKC__FREE  
+		K_PI3K_PKC K_PI3K_PKC__FREE  
+
+		K_EGFR_PI3K K_EGFR_PI3K__FREE  
+		K_MEK_PI3K K_MEK_PI3K__FREE 
+		K_PKC_PI3K K_PKC_PI3K__FREE  
 
 		# initial concentrations 
-		EGF_conc = 1
+		EGF_conc EGF_conc__FREE
 		# inhibitors
-		iEGFR_conc = 1
-		iMEK_conc = 1
-		iPKC_conc = 1
-		iPI3K_conc = 1
+		iEGFR_conc iEGFR_conc__FREE
+		iMEK_conc iMEK_conc__FREE
+		iPKC_conc iPKC_conc__FREE
+		iPI3K_conc iPI3K_conc__FREE
 
 
 		# core module concentrations
-		EGFR_conc = 1
-		MEK_conc = 1
-		PKC_conc = 1
-		PI3K_conc = 1
+		EGFR_conc EGFR_conc__FREE
+		MEK_conc MEK_conc__FREE
+		PKC_conc PKC_conc__FREE
+		PI3K_conc PI3K_conc__FREE
 
 
 		# DPD trajectory variables
 		# slopes for restoring force => f(S)
-		m1_lb__FREE
-		m2_lb__FREE
-		m3_lb__FREE
+		m1_lb m1_lb__FREE
+		m2_lb m2_lb__FREE
+		m3_lb m3_lb__FREE
 
-		m1_nc__FREE
-		m2_nc__FREE
-		m3_nc__FREE
+		m1_nc m1_nc__FREE
+		m2_nc m2_nc__FREE
+		m3_nc m3_nc__FREE
 
 		# constants for f(S)
-		lb_const__FREE
-		nc_const__FREE
+		lb_const lb_const__FREE
+		nc_const nc_const__FREE
 
 		# coefficient * ratio, rij*(x/s), for driving force
-		b_lb_egfr__FREE
-		b_lb_mek__FREE
-		b_lb_pkc__FREE
-		b_lb_pi3k__FREE
+		b_lb_egfr b_lb_egfr__FREE
+		b_lb_mek b_lb_mek__FREE
+		b_lb_pkc b_lb_pkc__FREE
+		b_lb_pi3k b_lb_pi3k__FREE
 
-		b_nc_egfr__FREE
-		b_nc_mek__FREE
-		b_nc_pkc__FREE
-		b_nc_pi3k__FREE
+		b_nc_egfr b_nc_egfr__FREE
+		b_nc_mek b_nc_mek__FREE
+		b_nc_pkc b_nc_pkc__FREE
+		b_nc_pi3k b_nc_pi3k__FREE
 
 		# Stable steady states (luminal/basal)
-		S_L__FREE
-		S_B__FREE
+		S_L S_L__FREE
+		S_B S_B__FREE
 
 		# Normal/Cancerous
-		S_N__FREE
-		S_C__FREE
-
-
+		S_N S_N__FREE
+		S_C S_C__FREE
 	end parameters
 
 
@@ -169,8 +182,8 @@ begin model
 		# inhibitor species
 		Species i_EGFR IEGFR(EGFRRec)
 		Species i_MEK IMEK(MEKRec)
-		Species  i_PI3K IPI3K(IPI3KRec)
-		Species  i_PKC IPKC(IPKCRec)
+		Species  i_PI3K IPI3K(PI3KRec)
+		Species  i_PKC IPKC(PKCRec)
 
 		# DPD values
 		Species S_LB S_DPD_LB()
@@ -214,17 +227,17 @@ begin model
 		
 
 		# inactive and active initial kinetic rates (prior to hyperbolic multipliers)
-		kr_nEGFR() = ((vnEGFR/k_egfr_dephos) / (1.0 + (pEGFR / k_egfr_dephos))) 
-		kr_pEGFR() = ((vpEGFR/k_egfr_phos) / (1.0 + (nEGFR / k_egfr_phos)))
+		kr_nEGFR() = (vnEGFR/(pEGFR + KM_egfr_dephos))
+		kr_pEGFR() = (vpEGFR/(nEGFR + KM_egfr_phos))
 		
-		kr_nMEK() = ((vnMEK / k_mek_dephos) / (1.0 + (pMEK / k_mek_dephos)))
-		kr_pMEK() = ((vpMEK / k_mek_phos) / (1.0 + (nMEK / k_mek_phos)))
+		kr_nMEK() = (vnMEK / (pMEK + KM_mek_dephos))
+		kr_pMEK() = (vpMEK / (nMEK + KM_mek_phos))
 		
-		kr_nPKC() = ((vnPKC / k_pkc_dephos) / (1.0 + (pPKC / k_pkc_dephos)))
-		kr_pPKC() = ((vpPKC / k_pkc_phos) / (1.0 + (nPKC / k_pkc_phos))) 
+		kr_nPKC() = (vnPKC / (pPKC + KM_pkc_dephos))
+		kr_pPKC() = (vpPKC / (nPKC + KM_pkc_phos))
 
-		kr_nPI3K() = ((vnPI3K / k_pi3k_dephos) / (1.0 + (pPI3K / k_pi3k_dephos)))
-		kr_pPI3K() = ((vpPI3K / k_pi3k_phos) / (1.0 + (nPI3K / k_pi3k_phos)))
+		kr_nPI3K() = (vnPI3K / (pPI3K + KM_pi3k_dephos))
+		kr_pPI3K() = (vpPI3K / (nPI3K + KM_pi3k_phos))
 
 		
 		# Driving force for LB DPD
@@ -272,11 +285,18 @@ begin model
 		PI3K(active~0) -> PI3K(active~p) ((a_EGFR_to_PI3K() * a_MEK_to_PI3K() * a_PKC_to_PI3K() * inh_PI3K()) * kr_pPI3K() )
 		PI3K(active~p) -> PI3K(active~0) ( kr_nPI3K() )
 		# inhibition
-		PI3K(inhibitor) + IPI3K(PI3KRec) <-> PI3K(inhibitor!0).IPI3K(PI3KRRec!0) k_ipi3k_f, k_ipi3k_b
+		PI3K(inhibitor) + IPI3K(PI3KRec) <-> PI3K(inhibitor!0).IPI3K(PI3KRec!0) k_ipi3k_f, k_ipi3k_b
 
 		Null -> S_DPD_LB() (driving_force_lb()+restoring_force_lb()) 
 		Null -> S_DPD_NC() (driving_force_canc()+restoring_force_canc())
 
 	end reaction rules
+
+
+	begin actions 
+		generate_network({overwrite=>1});
+		simulate({method=>"ode",t_end=>10000,n_steps=>1000});
+	end actions
+
 
 end model
