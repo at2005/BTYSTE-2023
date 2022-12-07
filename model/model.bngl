@@ -227,8 +227,8 @@ begin model
 		
 
 		# inactive and active initial kinetic rates (prior to hyperbolic multipliers)
-		kr_nEGFR() = (vnEGFR/(pEGFR + KM_egfr_dephos))
-		kr_pEGFR() = (vpEGFR/(nEGFR + KM_egfr_phos))
+		kr_nEGFR() = (vnEGFR / (pEGFR + KM_egfr_dephos))
+		kr_pEGFR() = (vpEGFR / (nEGFR + KM_egfr_phos))
 		
 		kr_nMEK() = (vnMEK / (pMEK + KM_mek_dephos))
 		kr_pMEK() = (vpMEK / (nMEK + KM_mek_phos))
@@ -251,6 +251,23 @@ begin model
 		restoring_force_lb() = (if(S_LB < ((3*S_L + S_B)/4.0, m1_lb * (S_LB - S_L)), if(S_LB > ((3*S_B + S_L)/4.0, m3_lb * (S_LB - S_B)),(m2_lb * S_LB))) + lb_const)
 		restoring_force_canc() = (if(S_NC < ((3*S_N + S_C)/4.0, m1_nc*(S_NC - S_N)), if(S_NC > ((3*S_C + S_N)/4.0, m3_nc*(S_NC - S_C))),(m2_nc * S_NC)) + nc_const)		
 		
+		# BMRA connection strengths for prop file
+		EGFR_MEK_fn() = (EGFR_to_MEK )
+		EGFR_PKC_fn() = (EGFR_to_PKC)
+		EGFR_PI3K_fn() = (EGFR_to_PI3K)
+	
+		MEK_EGFR_fn() = (MEK_to_EGFR) 
+		MEK_PKC_fn() = (MEK_to_PKC)_
+		MEK_PI3K_fn() = (MEK_to_PI3K)
+
+		PKC_EGFR_fn() = (PKC_to_EGFR)
+		PKC_MEK_fn() = (PKC_to_MEK) 
+		PKC_PI3K_fn() = (PKC_to_PI3K)
+
+		PI3K_EGFR_fn() = (PI3K_to_EGFR) 
+		PI3K_MEK_fn() = (PI3K_to_MEK)
+		PI3K_PKC_fn() = (PI3K_to_PKC) 
+
 	end functions
 
 	begin reaction rules
@@ -262,22 +279,34 @@ begin model
 		EGFR(egf!+, dimer) + EGFR(egf, dimer) <-> EGFR(egf!+, dimer!0).EGFR(egf, dimer!0) k_dim1_f, k_dim1_b
 		# dimerization case 2 -> both ligands bind and cause dimerization
 		EGFR(egf!+, dimer) + EGFR(egf!+, dimer) <-> EGFR(egf!+, dimer!0).EGFR(egf!+, dimer!0) k_dim2_f, k_dim2_b
+		# dimerization case 3 -> receptors dimerize without ligand binding
+		EGFR(egf, dimer) + EGFR(egf, dimer) <-> EGFR(egf, dimer!0).EGFR(egf, dimer!0) k_dim3_f, k_dim3_b
+		# EGF can bind to EGFR in dimer 
+		EGFR(egf, dimer!+) + EGF(EGFRRec) <-> EGFR(egf!0, dimer!+).EGF(EGFRRec!0) k_egf2_f, k_egf2_b
+
+
 		# dimer dissociation
 		EGFR(dimer!0).EGFR(dimer!0) -> EGFR(dimer) + EGFR(dimer) k_r_dim
+
+
 		# activation through phosphorylation
 		EGFR(dimer!+, tyr~0) -> EGFR(dimer!+, tyr~p) (a_MEK_to_EGFR() * a_PKC_to_EGFR() * a_PI3K_to_EGFR() * inh_EGFR() * kr_pEGFR() )
 		EGFR(dimer, tyr~p) -> EGFR(dimer, tyr~0) ( kr_nEGFR() )
+
+
 		#inhibition
 		EGFR(inhibitor) + IEGFR(EGFRRec) <-> EGFR(inhibitor!0).IEGFR(EGFRRec!0) k_iegfr_f, k_iegfr_b		
 
-		# MEK
+		# MEK phos/dephos
 		MEK(st~0) -> MEK(st~p) (a_EGFR_to_MEK() * a_PI3K_to_MEK() * a_PKC_to_MEK() * inh_MEK() * kr_pMEK() )
 		MEK(st~p) -> MEK(st~0) ( kr_nMEK() )
+		# inhibition
 		MEK(inhibitor) + IMEK(MEKRec) <-> MEK(inhibitor!0).IMEK(MEKRec!0) k_imek_f, k_imek_b
 
-		# PKC
+		# PKC phos/dephos
 		PKC(s~0) -> PKC(s~p)  (a_EGFR_to_PKC() * a_MEK_to_PKC() * a_PI3K_to_PKC() * inh_PKC() * kr_pPKC() )
 		PKC(s~p) -> PKC(s~0)  ( kr_nPKC() )
+		# inhibition
 		PKC(inhibitor) + IPKC(PKCRec) <-> PKC(inhibitor!0).IPKC(PKCRec!0) k_ipkc_f, k_ipkc_b
 
 		# PI3K
@@ -287,6 +316,7 @@ begin model
 		# inhibition
 		PI3K(inhibitor) + IPI3K(PI3KRec) <-> PI3K(inhibitor!0).IPI3K(PI3KRec!0) k_ipi3k_f, k_ipi3k_b
 
+		# DPD species accumulates at a rate specified by driving_force+restoring_force.
 		Null -> S_DPD_LB() (driving_force_lb()+restoring_force_lb()) 
 		Null -> S_DPD_NC() (driving_force_canc()+restoring_force_canc())
 
@@ -294,8 +324,31 @@ begin model
 
 
 	begin actions 
+		# equilibriate model first according to Sekar et al
 		generate_network({overwrite=>1});
-		simulate({method=>"ode",t_end=>10000,n_steps=>1000});
+		setConcentration("EGF(EGFRRec)", 0);
+		setConcentration("IEGFR(EGFRRec)", 0);
+		setConcentration("IMEK(MEKRec)", 0);
+		setConcentration("IPI3K(PI3KRec)", 0);
+		setConcentration("IPKC(PKCRec)", 0);
+		setConcentration("S_DPD_LB()", "S_B");
+		setConcentration("S_DPD_NC()", "S_C");
+		simulate({method=>"ode",t_end=>1000,n_steps=>1000});
+		resetConcentrations()
+
+
+		# test PI3K inhibition -- cell line BT549
+		setConcentration("EGF(EGFRRec)", 0);
+		setConcentration("IEGFR(EGFRRec)", 0);
+		setConcentration("IMEK(MEKRec)", 0);
+		setConcentration("IPI3K(PI3KRec)", 10);
+		setConcentration("IPKC(PKCRec)", 0);
+		setConcentration("S_DPD_LB()", "S_B");
+		setConcentration("S_DPD_NC()", "S_C");
+		simulate({method=>"ode", t_end=3600, n_steps=3600});
+
+
+
 	end actions
 
 
