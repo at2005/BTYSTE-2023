@@ -1,0 +1,689 @@
+# Created by BioNetGen 2.8.3
+begin parameters
+    1 EGFR_conc__FREE       0.0001  # Constant
+    2 EGFR_to_MEK__FREE     100.0  # Constant
+    3 EGFR_to_PI3K__FREE    100.0  # Constant
+    4 EGFR_to_PKC__FREE     100.0  # Constant
+    5 EGF_conc__FREE        0.0001  # Constant
+    6 KM_egfr_dephos__FREE  0.0001  # Constant
+    7 KM_egfr_phos__FREE    0.0001  # Constant
+    8 KM_mek_dephos__FREE   0.0001  # Constant
+    9 KM_mek_phos__FREE     0.0001  # Constant
+   10 KM_pi3k_dephos__FREE  0.0001  # Constant
+   11 KM_pi3k_phos__FREE    0.0001  # Constant
+   12 KM_pkc_dephos__FREE   0.0001  # Constant
+   13 KM_pkc_phos__FREE     0.0001  # Constant
+   14 K_EGFR_MEK__FREE      0.0001  # Constant
+   15 K_EGFR_PI3K__FREE     0.0001  # Constant
+   16 K_EGFR_PKC__FREE      0.0001  # Constant
+   17 K_MEK_EGFR__FREE      0.0001  # Constant
+   18 K_MEK_PI3K__FREE      0.0001  # Constant
+   19 K_MEK_PKC__FREE       0.0001  # Constant
+   20 K_PI3K_EGFR__FREE     0.0001  # Constant
+   21 K_PI3K_MEK__FREE      0.0001  # Constant
+   22 K_PI3K_PKC__FREE      0.0001  # Constant
+   23 K_PKC_EGFR__FREE      0.0001  # Constant
+   24 K_PKC_MEK__FREE       0.0001  # Constant
+   25 K_PKC_PI3K__FREE      0.0001  # Constant
+   26 MEK_conc__FREE        0.0001  # Constant
+   27 MEK_to_EGFR__FREE     100.0  # Constant
+   28 MEK_to_PI3K__FREE     100.0  # Constant
+   29 MEK_to_PKC__FREE      100.0  # Constant
+   30 PI3K_conc__FREE       0.0001  # Constant
+   31 PI3K_to_EGFR__FREE    100.0  # Constant
+   32 PI3K_to_MEK__FREE     100.0  # Constant
+   33 PI3K_to_PKC__FREE     100.0  # Constant
+   34 PKC_conc__FREE        0.0001  # Constant
+   35 PKC_to_EGFR__FREE     100.0  # Constant
+   36 PKC_to_MEK__FREE      100.0  # Constant
+   37 PKC_to_PI3K__FREE     100.0  # Constant
+   38 S_B__FREE             5.0  # Constant
+   39 S_C__FREE             5.0  # Constant
+   40 S_L__FREE             5.0  # Constant
+   41 S_N__FREE             5.0  # Constant
+   42 b_lb_egfr__FREE       100.0  # Constant
+   43 b_lb_mek__FREE        100.0  # Constant
+   44 b_lb_pi3k__FREE       100.0  # Constant
+   45 b_lb_pkc__FREE        100.0  # Constant
+   46 b_nc_egfr__FREE       100.0  # Constant
+   47 b_nc_mek__FREE        100.0  # Constant
+   48 b_nc_pi3k__FREE       100.0  # Constant
+   49 b_nc_pkc__FREE        100.0  # Constant
+   50 iEGFR_conc__FREE      0.0001  # Constant
+   51 iMEK_conc__FREE       0.0001  # Constant
+   52 iPI3K_conc__FREE      0.0001  # Constant
+   53 iPKC_conc__FREE       0.0001  # Constant
+   54 k_dim1_b__FREE        0.0001  # Constant
+   55 k_dim1_f__FREE        0.0001  # Constant
+   56 k_dim2_b__FREE        0.0001  # Constant
+   57 k_dim2_f__FREE        0.0001  # Constant
+   58 k_dim3_b__FREE        0.001  # Constant
+   59 k_dim3_f__FREE        0.001  # Constant
+   60 k_egf2_b__FREE        0.001  # Constant
+   61 k_egf2_f__FREE        0.001  # Constant
+   62 k_egf_b__FREE         0.0001  # Constant
+   63 k_egf_f__FREE         0.0001  # Constant
+   64 k_iegfr_b__FREE       0.0001  # Constant
+   65 k_iegfr_f__FREE       0.0001  # Constant
+   66 k_imek_b__FREE        0.0001  # Constant
+   67 k_imek_f__FREE        0.0001  # Constant
+   68 k_ipi3k_b__FREE       0.0001  # Constant
+   69 k_ipi3k_f__FREE       0.0001  # Constant
+   70 k_ipkc_b__FREE        0.0001  # Constant
+   71 k_ipkc_f__FREE        0.0001  # Constant
+   72 k_r_dim__FREE         0.0001  # Constant
+   73 lb_const__FREE        100.0  # Constant
+   74 m1_lb__FREE           100.0  # Constant
+   75 m1_nc__FREE           100.0  # Constant
+   76 m2_lb__FREE           100.0  # Constant
+   77 m2_nc__FREE           100.0  # Constant
+   78 m3_lb__FREE           100.0  # Constant
+   79 m3_nc__FREE           100.0  # Constant
+   80 nc_const__FREE        100.0  # Constant
+   81 vnEGFR__FREE          0.0001  # Constant
+   82 vnMEK__FREE           0.0001  # Constant
+   83 vnPI3K__FREE          0.0001  # Constant
+   84 vnPKC__FREE           0.0001  # Constant
+   85 vpEGFR__FREE          0.0001  # Constant
+   86 vpMEK__FREE           0.0001  # Constant
+   87 vpPI3K__FREE          0.0001  # Constant
+   88 vpPKC__FREE           0.0001  # Constant
+   89 k_egf_f               k_egf_f__FREE  # ConstantExpression
+   90 k_egf_b               k_egf_b__FREE  # ConstantExpression
+   91 k_egf2_f              k_egf2_f__FREE  # ConstantExpression
+   92 k_egf2_b              k_egf2_b__FREE  # ConstantExpression
+   93 k_dim1_f              k_dim1_f__FREE  # ConstantExpression
+   94 k_dim1_b              k_dim1_b__FREE  # ConstantExpression
+   95 k_dim2_f              k_dim2_f__FREE  # ConstantExpression
+   96 k_dim2_b              k_dim2_b__FREE  # ConstantExpression
+   97 k_dim3_f              k_dim3_f__FREE  # ConstantExpression
+   98 k_dim3_b              k_dim3_b__FREE  # ConstantExpression
+   99 k_r_dim               k_r_dim__FREE  # ConstantExpression
+  100 k_iegfr_f             k_iegfr_f__FREE  # ConstantExpression
+  101 k_iegfr_b             k_iegfr_b__FREE  # ConstantExpression
+  102 k_imek_f              k_imek_f__FREE  # ConstantExpression
+  103 k_imek_b              k_imek_b__FREE  # ConstantExpression
+  104 k_ipi3k_f             k_ipi3k_f__FREE  # ConstantExpression
+  105 k_ipi3k_b             k_ipi3k_b__FREE  # ConstantExpression
+  106 k_ipkc_f              k_ipkc_f__FREE  # ConstantExpression
+  107 k_ipkc_b              k_ipkc_b__FREE  # ConstantExpression
+  108 KM_egfr_phos          KM_egfr_phos__FREE  # ConstantExpression
+  109 KM_egfr_dephos        KM_egfr_dephos__FREE  # ConstantExpression
+  110 KM_mek_phos           KM_mek_phos__FREE  # ConstantExpression
+  111 KM_mek_dephos         KM_mek_dephos__FREE  # ConstantExpression
+  112 KM_pkc_phos           KM_pkc_phos__FREE  # ConstantExpression
+  113 KM_pkc_dephos         KM_pkc_dephos__FREE  # ConstantExpression
+  114 KM_pi3k_phos          KM_pi3k_phos__FREE  # ConstantExpression
+  115 KM_pi3k_dephos        KM_pi3k_dephos__FREE  # ConstantExpression
+  116 vnEGFR                vnEGFR__FREE  # ConstantExpression
+  117 vpEGFR                vpEGFR__FREE  # ConstantExpression
+  118 vnMEK                 vnMEK__FREE  # ConstantExpression
+  119 vpMEK                 vpMEK__FREE  # ConstantExpression
+  120 vnPKC                 vnPKC__FREE  # ConstantExpression
+  121 vpPKC                 vpPKC__FREE  # ConstantExpression
+  122 vnPI3K                vnPI3K__FREE  # ConstantExpression
+  123 vpPI3K                vpPI3K__FREE  # ConstantExpression
+  124 EGFR_to_MEK           EGFR_to_MEK__FREE  # ConstantExpression
+  125 EGFR_to_PKC           EGFR_to_PKC__FREE  # ConstantExpression
+  126 EGFR_to_PI3K          EGFR_to_PI3K__FREE  # ConstantExpression
+  127 MEK_to_EGFR           MEK_to_EGFR__FREE  # ConstantExpression
+  128 MEK_to_PKC            MEK_to_PKC__FREE  # ConstantExpression
+  129 MEK_to_PI3K           MEK_to_PI3K__FREE  # ConstantExpression
+  130 PKC_to_EGFR           PKC_to_EGFR__FREE  # ConstantExpression
+  131 PKC_to_MEK            PKC_to_MEK__FREE  # ConstantExpression
+  132 PKC_to_PI3K           PKC_to_PI3K__FREE  # ConstantExpression
+  133 PI3K_to_EGFR          PI3K_to_EGFR__FREE  # ConstantExpression
+  134 PI3K_to_MEK           PI3K_to_MEK__FREE  # ConstantExpression
+  135 PI3K_to_PKC           PI3K_to_PKC__FREE  # ConstantExpression
+  136 K_MEK_EGFR            K_MEK_EGFR__FREE  # ConstantExpression
+  137 K_PKC_EGFR            K_PKC_EGFR__FREE  # ConstantExpression
+  138 K_PI3K_EGFR           K_PI3K_EGFR__FREE  # ConstantExpression
+  139 K_EGFR_MEK            K_EGFR_MEK__FREE  # ConstantExpression
+  140 K_PKC_MEK             K_PKC_MEK__FREE  # ConstantExpression
+  141 K_PI3K_MEK            K_PI3K_MEK__FREE  # ConstantExpression
+  142 K_MEK_PKC             K_MEK_PKC__FREE  # ConstantExpression
+  143 K_EGFR_PKC            K_EGFR_PKC__FREE  # ConstantExpression
+  144 K_PI3K_PKC            K_PI3K_PKC__FREE  # ConstantExpression
+  145 K_EGFR_PI3K           K_EGFR_PI3K__FREE  # ConstantExpression
+  146 K_MEK_PI3K            K_MEK_PI3K__FREE  # ConstantExpression
+  147 K_PKC_PI3K            K_PKC_PI3K__FREE  # ConstantExpression
+  148 EGF_conc              EGF_conc__FREE  # ConstantExpression
+  149 iEGFR_conc            iEGFR_conc__FREE  # ConstantExpression
+  150 iMEK_conc             iMEK_conc__FREE  # ConstantExpression
+  151 iPKC_conc             iPKC_conc__FREE  # ConstantExpression
+  152 iPI3K_conc            iPI3K_conc__FREE  # ConstantExpression
+  153 EGFR_conc             EGFR_conc__FREE  # ConstantExpression
+  154 MEK_conc              MEK_conc__FREE  # ConstantExpression
+  155 PKC_conc              PKC_conc__FREE  # ConstantExpression
+  156 PI3K_conc             PI3K_conc__FREE  # ConstantExpression
+  157 m1_lb                 m1_lb__FREE  # ConstantExpression
+  158 m2_lb                 m2_lb__FREE  # ConstantExpression
+  159 m3_lb                 m3_lb__FREE  # ConstantExpression
+  160 m1_nc                 m1_nc__FREE  # ConstantExpression
+  161 m2_nc                 m2_nc__FREE  # ConstantExpression
+  162 m3_nc                 m3_nc__FREE  # ConstantExpression
+  163 lb_const              lb_const__FREE  # ConstantExpression
+  164 nc_const              nc_const__FREE  # ConstantExpression
+  165 b_lb_egfr             b_lb_egfr__FREE  # ConstantExpression
+  166 b_lb_mek              b_lb_mek__FREE  # ConstantExpression
+  167 b_lb_pkc              b_lb_pkc__FREE  # ConstantExpression
+  168 b_lb_pi3k             b_lb_pi3k__FREE  # ConstantExpression
+  169 b_nc_egfr             b_nc_egfr__FREE  # ConstantExpression
+  170 b_nc_mek              b_nc_mek__FREE  # ConstantExpression
+  171 b_nc_pkc              b_nc_pkc__FREE  # ConstantExpression
+  172 b_nc_pi3k             b_nc_pi3k__FREE  # ConstantExpression
+  173 S_L                   S_L__FREE  # ConstantExpression
+  174 S_B                   S_B__FREE  # ConstantExpression
+  175 S_N                   S_N__FREE  # ConstantExpression
+  176 S_C                   S_C__FREE  # ConstantExpression
+end parameters
+begin functions
+    1 a_MEK_to_EGFR() (1.0+(MEK_to_EGFR*(pMEK/K_MEK_EGFR)))/(1.0+(pMEK/K_MEK_EGFR))
+    2 a_PKC_to_EGFR() (1.0+(PKC_to_EGFR*(pMEK/K_PKC_EGFR)))/(1.0+(pPKC/K_PKC_EGFR))
+    3 a_PI3K_to_EGFR() (1.0+(PI3K_to_EGFR*(pPI3K/K_PI3K_EGFR)))/(1.0+(pPI3K/K_PI3K_EGFR))
+    4 a_EGFR_to_MEK() (1.0+(EGFR_to_MEK*(pEGFR/K_EGFR_MEK)))/(1.0+(pEGFR/K_EGFR_MEK))
+    5 a_PKC_to_MEK() (1.0+(PKC_to_MEK*(pPKC/K_PKC_MEK)))/(1.0+(pPKC/K_PKC_MEK))
+    6 a_PI3K_to_MEK() (1.0+(PI3K_to_MEK*(pPI3K/K_PI3K_MEK)))/(1.0+(pPI3K/K_PI3K_MEK))
+    7 a_EGFR_to_PKC() (1.0+(EGFR_to_PKC*(pEGFR/K_EGFR_PKC)))/(1.0+(pEGFR/K_EGFR_PKC))
+    8 a_MEK_to_PKC() (1.0+(MEK_to_PKC*(pMEK/K_MEK_PKC)))/(1.0+(pMEK/K_MEK_PKC))
+    9 a_PI3K_to_PKC() (1.0+(PI3K_to_PKC*(pPI3K/K_PI3K_PKC)))/(1.0+(pPI3K/K_PI3K_PKC))
+   10 a_EGFR_to_PI3K() (1.0+(EGFR_to_PI3K*(pEGFR/K_EGFR_PI3K)))/(1.0+(pEGFR/K_EGFR_PI3K))
+   11 a_MEK_to_PI3K() (1.0+(MEK_to_PI3K*(pEGFR/K_MEK_PI3K)))/(1.0+(pMEK/K_MEK_PI3K))
+   12 a_PKC_to_PI3K() (1.0+(PKC_to_PI3K*(pEGFR/K_PKC_PI3K)))/(1.0+(pPKC/K_PKC_PI3K))
+   13 inh_EGFR() 1.0/(1.0+i_EGFR)
+   14 inh_PI3K() 1.0/(1.0+i_PI3K)
+   15 inh_MEK() 1.0/(1.0+i_MEK)
+   16 inh_PKC() 1.0/(1.0+i_PKC)
+   17 kr_nEGFR() vnEGFR/(pEGFR+KM_egfr_dephos)
+   18 kr_pEGFR() vpEGFR/(nEGFR+KM_egfr_phos)
+   19 kr_nMEK() vnMEK/(pMEK+KM_mek_dephos)
+   20 kr_pMEK() vpMEK/(nMEK+KM_mek_phos)
+   21 kr_nPKC() vnPKC/(pPKC+KM_pkc_dephos)
+   22 kr_pPKC() vpPKC/(nPKC+KM_pkc_phos)
+   23 kr_nPI3K() vnPI3K/(pPI3K+KM_pi3k_dephos)
+   24 kr_pPI3K() vpPI3K/(nPI3K+KM_pi3k_phos)
+   25 driving_force_lb() (((b_lb_egfr*pEGFR)+(b_lb_mek*pMEK))+(b_lb_pkc*pPKC))+(b_lb_pi3k*pPI3K)
+   26 driving_force_canc() (((b_nc_egfr*pEGFR)+(b_nc_mek*pMEK))+(b_nc_pkc*pPKC))+(b_nc_pi3k*pPI3K)
+   27 restoring_force_lb() if((S_LB<(((3*S_L)+S_B)/4.0)),(m1_lb*(S_LB-S_L)),if((S_LB>(((3*S_B)+S_L)/4.0)),(m3_lb*(S_LB-S_B)),(m2_lb*S_LB)))+lb_const
+   28 restoring_force_canc() if((S_NC<(((3*S_N)+S_C)/4.0)),(m1_nc*(S_NC-S_N)),if((S_NC>(((3*S_C)+S_N)/4.0)),(m3_nc*(S_NC-S_C)),(m2_nc*S_NC)))+nc_const
+   29 EGFR_MEK_fn() EGFR_to_MEK
+   30 EGFR_PKC_fn() EGFR_to_PKC
+   31 EGFR_PI3K_fn() EGFR_to_PI3K
+   32 MEK_EGFR_fn() MEK_to_EGFR
+   33 MEK_PKC_fn() MEK_to_PKC
+   34 MEK_PI3K_fn() MEK_to_PI3K
+   35 PKC_EGFR_fn() PKC_to_EGFR
+   36 PKC_MEK_fn() PKC_to_MEK
+   37 PKC_PI3K_fn() PKC_to_PI3K
+   38 PI3K_EGFR_fn() PI3K_to_EGFR
+   39 PI3K_MEK_fn() PI3K_to_MEK
+   40 PI3K_PKC_fn() PI3K_to_PKC
+   41 _rateLaw1() (((a_MEK_to_EGFR()*a_PKC_to_EGFR())*a_PI3K_to_EGFR())*inh_EGFR())*kr_pEGFR()
+   42 _rateLaw2() (((a_EGFR_to_MEK()*a_PI3K_to_MEK())*a_PKC_to_MEK())*inh_MEK())*kr_pMEK()
+   43 _rateLaw3() (((a_EGFR_to_PKC()*a_MEK_to_PKC())*a_PI3K_to_PKC())*inh_PKC())*kr_pPKC()
+   44 _rateLaw4() (((a_EGFR_to_PI3K()*a_MEK_to_PI3K())*a_PKC_to_PI3K())*inh_PI3K())*kr_pPI3K()
+   45 _rateLaw5() driving_force_lb()+restoring_force_lb()
+   46 _rateLaw6() driving_force_canc()+restoring_force_canc()
+end functions
+begin species
+    1 EGF(EGFRRec) EGF_conc
+    2 EGFR(dimer,egf,inhibitor,tyr~0) EGFR_conc
+    3 IEGFR(EGFRRec) iEGFR_conc
+    4 MEK(inhibitor,st~0) MEK_conc
+    5 IMEK(MEKRec) iMEK_conc
+    6 PKC(inhibitor,s~0) PKC_conc
+    7 IPKC(PKCRec) iPKC_conc
+    8 PI3K(active~0,inhibitor) PI3K_conc
+    9 IPI3K(PI3KRec) iPI3K_conc
+   10 S_DPD_LB() 0
+   11 S_DPD_NC() 0
+   12 EGF(EGFRRec!1).EGFR(dimer,egf!1,inhibitor,tyr~0) 0
+   13 EGFR(dimer!1,egf,inhibitor,tyr~0).EGFR(dimer!1,egf,inhibitor,tyr~0) 0
+   14 EGFR(dimer,egf,inhibitor!1,tyr~0).IEGFR(EGFRRec!1) 0
+   15 MEK(inhibitor,st~p) 0
+   16 IMEK(MEKRec!1).MEK(inhibitor!1,st~0) 0
+   17 PKC(inhibitor,s~p) 0
+   18 IPKC(PKCRec!1).PKC(inhibitor!1,s~0) 0
+   19 PI3K(active~p,inhibitor) 0
+   20 IPI3K(PI3KRec!1).PI3K(active~0,inhibitor!1) 0
+   21 EGF(EGFRRec!1).EGFR(dimer!2,egf!1,inhibitor,tyr~0).EGFR(dimer!2,egf,inhibitor,tyr~0) 0
+   22 EGF(EGFRRec!1).EGFR(dimer,egf!1,inhibitor!2,tyr~0).IEGFR(EGFRRec!2) 0
+   23 EGF(EGFRRec!1).EGFR(dimer!2,egf!1,inhibitor,tyr~0).EGFR(dimer!2,egf,inhibitor!3,tyr~0).IEGFR(EGFRRec!3) 0
+   24 EGF(EGFRRec!1).EGF(EGFRRec!2).EGFR(dimer!3,egf!1,inhibitor,tyr~0).EGFR(dimer!3,egf!2,inhibitor,tyr~0) 0
+   25 EGFR(dimer!1,egf,inhibitor!2,tyr~0).EGFR(dimer!1,egf,inhibitor,tyr~0).IEGFR(EGFRRec!2) 0
+   26 EGFR(dimer!1,egf,inhibitor!2,tyr~0).EGFR(dimer!1,egf,inhibitor!3,tyr~0).IEGFR(EGFRRec!2).IEGFR(EGFRRec!3) 0
+   27 EGFR(dimer!1,egf,inhibitor,tyr~0).EGFR(dimer!1,egf,inhibitor,tyr~p) 0
+   28 IMEK(MEKRec!1).MEK(inhibitor!1,st~p) 0
+   29 IPKC(PKCRec!1).PKC(inhibitor!1,s~p) 0
+   30 IPI3K(PI3KRec!1).PI3K(active~p,inhibitor!1) 0
+   31 EGF(EGFRRec!1).EGF(EGFRRec!2).EGFR(dimer!3,egf!2,inhibitor!4,tyr~0).EGFR(dimer!3,egf!1,inhibitor,tyr~0).IEGFR(EGFRRec!4) 0
+   32 EGF(EGFRRec!1).EGFR(dimer!2,egf!1,inhibitor!3,tyr~0).EGFR(dimer!2,egf,inhibitor,tyr~0).IEGFR(EGFRRec!3) 0
+   33 EGF(EGFRRec!1).EGFR(dimer!2,egf!1,inhibitor!3,tyr~0).EGFR(dimer!2,egf,inhibitor!4,tyr~0).IEGFR(EGFRRec!3).IEGFR(EGFRRec!4) 0
+   34 EGF(EGFRRec!1).EGFR(dimer!2,egf!1,inhibitor,tyr~0).EGFR(dimer!2,egf,inhibitor,tyr~p) 0
+   35 EGF(EGFRRec!1).EGFR(dimer!2,egf!1,inhibitor,tyr~p).EGFR(dimer!2,egf,inhibitor,tyr~0) 0
+   36 EGF(EGFRRec!1).EGF(EGFRRec!2).EGFR(dimer!3,egf!1,inhibitor!4,tyr~0).EGFR(dimer!3,egf!2,inhibitor!5,tyr~0).IEGFR(EGFRRec!4).IEGFR(EGFRRec!5) 0
+   37 EGFR(dimer,egf,inhibitor,tyr~p) 0
+   38 EGF(EGFRRec!1).EGFR(dimer!2,egf!1,inhibitor,tyr~p).EGFR(dimer!2,egf,inhibitor!3,tyr~0).IEGFR(EGFRRec!3) 0
+   39 EGF(EGFRRec!1).EGFR(dimer!2,egf!1,inhibitor,tyr~0).EGFR(dimer!2,egf,inhibitor!3,tyr~p).IEGFR(EGFRRec!3) 0
+   40 EGF(EGFRRec!1).EGF(EGFRRec!2).EGFR(dimer!3,egf!2,inhibitor,tyr~0).EGFR(dimer!3,egf!1,inhibitor,tyr~p) 0
+   41 EGFR(dimer!1,egf,inhibitor!2,tyr~p).EGFR(dimer!1,egf,inhibitor,tyr~0).IEGFR(EGFRRec!2) 0
+   42 EGFR(dimer!1,egf,inhibitor!2,tyr~0).EGFR(dimer!1,egf,inhibitor,tyr~p).IEGFR(EGFRRec!2) 0
+   43 EGFR(dimer!1,egf,inhibitor!2,tyr~0).EGFR(dimer!1,egf,inhibitor!3,tyr~p).IEGFR(EGFRRec!3).IEGFR(EGFRRec!2) 0
+   44 EGFR(dimer!1,egf,inhibitor,tyr~p).EGFR(dimer!1,egf,inhibitor,tyr~p) 0
+   45 EGF(EGFRRec!1).EGFR(dimer,egf!1,inhibitor,tyr~p) 0
+   46 EGF(EGFRRec!1).EGF(EGFRRec!2).EGFR(dimer!3,egf!2,inhibitor!4,tyr~0).EGFR(dimer!3,egf!1,inhibitor,tyr~p).IEGFR(EGFRRec!4) 0
+   47 EGF(EGFRRec!1).EGF(EGFRRec!2).EGFR(dimer!3,egf!2,inhibitor!4,tyr~p).EGFR(dimer!3,egf!1,inhibitor,tyr~0).IEGFR(EGFRRec!4) 0
+   48 EGF(EGFRRec!1).EGFR(dimer!2,egf!1,inhibitor!3,tyr~p).EGFR(dimer!2,egf,inhibitor,tyr~0).IEGFR(EGFRRec!3) 0
+   49 EGF(EGFRRec!1).EGFR(dimer!2,egf!1,inhibitor!3,tyr~0).EGFR(dimer!2,egf,inhibitor,tyr~p).IEGFR(EGFRRec!3) 0
+   50 EGF(EGFRRec!1).EGFR(dimer!2,egf!1,inhibitor!3,tyr~0).EGFR(dimer!2,egf,inhibitor!4,tyr~p).IEGFR(EGFRRec!4).IEGFR(EGFRRec!3) 0
+   51 EGF(EGFRRec!1).EGFR(dimer!2,egf!1,inhibitor!3,tyr~p).EGFR(dimer!2,egf,inhibitor!4,tyr~0).IEGFR(EGFRRec!3).IEGFR(EGFRRec!4) 0
+   52 EGF(EGFRRec!1).EGFR(dimer!2,egf!1,inhibitor,tyr~p).EGFR(dimer!2,egf,inhibitor,tyr~p) 0
+   53 EGFR(dimer,egf,inhibitor!1,tyr~p).IEGFR(EGFRRec!1) 0
+   54 EGF(EGFRRec!1).EGF(EGFRRec!2).EGFR(dimer!3,egf!2,inhibitor!4,tyr~0).EGFR(dimer!3,egf!1,inhibitor!5,tyr~p).IEGFR(EGFRRec!5).IEGFR(EGFRRec!4) 0
+   55 EGF(EGFRRec!1).EGFR(dimer!2,egf!1,inhibitor,tyr~p).EGFR(dimer!2,egf,inhibitor!3,tyr~p).IEGFR(EGFRRec!3) 0
+   56 EGF(EGFRRec!1).EGF(EGFRRec!2).EGFR(dimer!3,egf!2,inhibitor,tyr~p).EGFR(dimer!3,egf!1,inhibitor,tyr~p) 0
+   57 EGFR(dimer!1,egf,inhibitor!2,tyr~p).EGFR(dimer!1,egf,inhibitor,tyr~p).IEGFR(EGFRRec!2) 0
+   58 EGFR(dimer!1,egf,inhibitor!2,tyr~p).EGFR(dimer!1,egf,inhibitor!3,tyr~p).IEGFR(EGFRRec!3).IEGFR(EGFRRec!2) 0
+   59 EGF(EGFRRec!1).EGFR(dimer,egf!1,inhibitor!2,tyr~p).IEGFR(EGFRRec!2) 0
+   60 EGF(EGFRRec!1).EGF(EGFRRec!2).EGFR(dimer!3,egf!2,inhibitor!4,tyr~p).EGFR(dimer!3,egf!1,inhibitor,tyr~p).IEGFR(EGFRRec!4) 0
+   61 EGF(EGFRRec!1).EGFR(dimer!2,egf!1,inhibitor!3,tyr~p).EGFR(dimer!2,egf,inhibitor,tyr~p).IEGFR(EGFRRec!3) 0
+   62 EGF(EGFRRec!1).EGFR(dimer!2,egf!1,inhibitor!3,tyr~p).EGFR(dimer!2,egf,inhibitor!4,tyr~p).IEGFR(EGFRRec!4).IEGFR(EGFRRec!3) 0
+   63 EGF(EGFRRec!1).EGF(EGFRRec!2).EGFR(dimer!3,egf!2,inhibitor!4,tyr~p).EGFR(dimer!3,egf!1,inhibitor!5,tyr~p).IEGFR(EGFRRec!5).IEGFR(EGFRRec!4) 0
+end species
+begin reactions
+    1 1,2 12 k_egf_f #_R1
+    2 2,2 13 0.5*k_dim3_f #_R4
+    3 2,3 14 k_iegfr_f #_R9
+    4 4 15 _rateLaw2 #_R10
+    5 4,5 16 k_imek_f #_R12
+    6 6 17 _rateLaw3 #_R13
+    7 6,7 18 k_ipkc_f #_R15
+    8 8 19 _rateLaw4 #_R16
+    9 8,9 20 k_ipi3k_f #_R18
+   10 0 10 _rateLaw5 #_R19
+   11 0 11 _rateLaw6 #_R20
+   12 1,13 21 2*k_egf_f #_R1
+   13 1,14 22 k_egf_f #_R1
+   14 12 1,2 k_egf_b #_reverse__R1
+   15 2,12 21 k_dim1_f #_R2
+   16 12,14 23 k_dim1_f #_R2
+   17 12,12 24 0.5*k_dim2_f #_R3
+   18 2,14 25 k_dim3_f #_R4
+   19 14,14 26 0.5*k_dim3_f #_R4
+   20 13 2,2 k_dim3_b #_reverse__R4
+   21 1,13 21 2*k_egf2_f #_R5
+   22 13 2,2 k_r_dim #_R6
+   23 13 27 2*_rateLaw1 #_R7
+   24 3,12 22 k_iegfr_f #_R9
+   25 3,13 25 2*k_iegfr_f #_R9
+   26 14 2,3 k_iegfr_b #_reverse__R9
+   27 16 28 _rateLaw2 #_R10
+   28 15 4 kr_nMEK #_R11
+   29 5,15 28 k_imek_f #_R12
+   30 16 4,5 k_imek_b #_reverse__R12
+   31 18 29 _rateLaw3 #_R13
+   32 17 6 kr_nPKC #_R14
+   33 7,17 29 k_ipkc_f #_R15
+   34 18 6,7 k_ipkc_b #_reverse__R15
+   35 20 30 _rateLaw4 #_R16
+   36 19 8 kr_nPI3K #_R17
+   37 9,19 30 k_ipi3k_f #_R18
+   38 20 8,9 k_ipi3k_b #_reverse__R18
+   39 1,21 24 k_egf_f #_R1
+   40 1,23 31 k_egf_f #_R1
+   41 1,25 32 k_egf_f #_R1
+   42 1,25 23 k_egf_f #_R1
+   43 1,26 33 2*k_egf_f #_R1
+   44 1,27 34 k_egf_f #_R1
+   45 1,27 35 k_egf_f #_R1
+   46 21 1,13 k_egf_b #_reverse__R1
+   47 22 1,14 k_egf_b #_reverse__R1
+   48 23 1,25 k_egf_b #_reverse__R1
+   49 24 1,21 2*k_egf_b #_reverse__R1
+   50 2,22 32 k_dim1_f #_R2
+   51 14,22 33 k_dim1_f #_R2
+   52 21 2,12 k_dim1_b #_reverse__R2
+   53 23 12,14 k_dim1_b #_reverse__R2
+   54 12,22 31 k_dim2_f #_R3
+   55 22,22 36 0.5*k_dim2_f #_R3
+   56 24 12,12 k_dim2_b #_reverse__R3
+   57 25 2,14 k_dim3_b #_reverse__R4
+   58 26 14,14 k_dim3_b #_reverse__R4
+   59 27 2,37 k_dim3_b #_reverse__R4
+   60 1,21 24 k_egf2_f #_R5
+   61 1,23 31 k_egf2_f #_R5
+   62 1,25 32 k_egf2_f #_R5
+   63 1,25 23 k_egf2_f #_R5
+   64 1,26 33 2*k_egf2_f #_R5
+   65 1,27 34 k_egf2_f #_R5
+   66 1,27 35 k_egf2_f #_R5
+   67 21 1,13 k_egf2_b #_reverse__R5
+   68 23 1,25 k_egf2_b #_reverse__R5
+   69 24 1,21 2*k_egf2_b #_reverse__R5
+   70 21 2,12 k_r_dim #_R6
+   71 23 12,14 k_r_dim #_R6
+   72 24 12,12 k_r_dim #_R6
+   73 25 2,14 k_r_dim #_R6
+   74 26 14,14 k_r_dim #_R6
+   75 27 2,37 k_r_dim #_R6
+   76 21 35 _rateLaw1 #_R7
+   77 21 34 _rateLaw1 #_R7
+   78 23 38 _rateLaw1 #_R7
+   79 23 39 _rateLaw1 #_R7
+   80 24 40 2*_rateLaw1 #_R7
+   81 25 41 _rateLaw1 #_R7
+   82 25 42 _rateLaw1 #_R7
+   83 26 43 2*_rateLaw1 #_R7
+   84 27 44 _rateLaw1 #_R7
+   85 3,21 32 k_iegfr_f #_R9
+   86 3,21 23 k_iegfr_f #_R9
+   87 3,23 33 k_iegfr_f #_R9
+   88 3,24 31 2*k_iegfr_f #_R9
+   89 3,25 26 k_iegfr_f #_R9
+   90 3,27 42 k_iegfr_f #_R9
+   91 3,27 41 k_iegfr_f #_R9
+   92 22 3,12 k_iegfr_b #_reverse__R9
+   93 23 3,21 k_iegfr_b #_reverse__R9
+   94 25 3,13 k_iegfr_b #_reverse__R9
+   95 26 3,25 2*k_iegfr_b #_reverse__R9
+   96 28 16 kr_nMEK #_R11
+   97 28 5,15 k_imek_b #_reverse__R12
+   98 29 18 kr_nPKC #_R14
+   99 29 7,17 k_ipkc_b #_reverse__R15
+  100 30 20 kr_nPI3K #_R17
+  101 30 9,19 k_ipi3k_b #_reverse__R18
+  102 1,32 31 k_egf_f #_R1
+  103 1,33 36 k_egf_f #_R1
+  104 1,34 40 k_egf_f #_R1
+  105 1,35 40 k_egf_f #_R1
+  106 1,37 45 k_egf_f #_R1
+  107 1,38 46 k_egf_f #_R1
+  108 1,39 47 k_egf_f #_R1
+  109 1,41 48 k_egf_f #_R1
+  110 1,41 39 k_egf_f #_R1
+  111 1,42 49 k_egf_f #_R1
+  112 1,42 38 k_egf_f #_R1
+  113 1,43 50 k_egf_f #_R1
+  114 1,43 51 k_egf_f #_R1
+  115 1,44 52 2*k_egf_f #_R1
+  116 31 1,23 k_egf_b #_reverse__R1
+  117 31 1,32 k_egf_b #_reverse__R1
+  118 32 1,25 k_egf_b #_reverse__R1
+  119 33 1,26 k_egf_b #_reverse__R1
+  120 34 1,27 k_egf_b #_reverse__R1
+  121 35 1,27 k_egf_b #_reverse__R1
+  122 36 1,33 2*k_egf_b #_reverse__R1
+  123 38 1,42 k_egf_b #_reverse__R1
+  124 39 1,41 k_egf_b #_reverse__R1
+  125 40 1,35 k_egf_b #_reverse__R1
+  126 40 1,34 k_egf_b #_reverse__R1
+  127 12,37 34 k_dim1_f #_R2
+  128 22,37 49 k_dim1_f #_R2
+  129 32 2,22 k_dim1_b #_reverse__R2
+  130 33 14,22 k_dim1_b #_reverse__R2
+  131 34 12,37 k_dim1_b #_reverse__R2
+  132 35 2,45 k_dim1_b #_reverse__R2
+  133 38 14,45 k_dim1_b #_reverse__R2
+  134 39 12,53 k_dim1_b #_reverse__R2
+  135 31 12,22 k_dim2_b #_reverse__R3
+  136 36 22,22 k_dim2_b #_reverse__R3
+  137 40 12,45 k_dim2_b #_reverse__R3
+  138 2,37 27 k_dim3_f #_R4
+  139 14,37 42 k_dim3_f #_R4
+  140 37,37 44 0.5*k_dim3_f #_R4
+  141 41 2,53 k_dim3_b #_reverse__R4
+  142 42 14,37 k_dim3_b #_reverse__R4
+  143 43 14,53 k_dim3_b #_reverse__R4
+  144 44 37,37 k_dim3_b #_reverse__R4
+  145 1,32 31 k_egf2_f #_R5
+  146 1,33 36 k_egf2_f #_R5
+  147 1,34 40 k_egf2_f #_R5
+  148 1,35 40 k_egf2_f #_R5
+  149 1,38 46 k_egf2_f #_R5
+  150 1,39 47 k_egf2_f #_R5
+  151 1,41 48 k_egf2_f #_R5
+  152 1,41 39 k_egf2_f #_R5
+  153 1,42 49 k_egf2_f #_R5
+  154 1,42 38 k_egf2_f #_R5
+  155 1,43 50 k_egf2_f #_R5
+  156 1,43 51 k_egf2_f #_R5
+  157 1,44 52 2*k_egf2_f #_R5
+  158 31 1,23 k_egf2_b #_reverse__R5
+  159 31 1,32 k_egf2_b #_reverse__R5
+  160 32 1,25 k_egf2_b #_reverse__R5
+  161 33 1,26 k_egf2_b #_reverse__R5
+  162 34 1,27 k_egf2_b #_reverse__R5
+  163 35 1,27 k_egf2_b #_reverse__R5
+  164 36 1,33 2*k_egf2_b #_reverse__R5
+  165 38 1,42 k_egf2_b #_reverse__R5
+  166 39 1,41 k_egf2_b #_reverse__R5
+  167 40 1,35 k_egf2_b #_reverse__R5
+  168 40 1,34 k_egf2_b #_reverse__R5
+  169 31 12,22 k_r_dim #_R6
+  170 32 2,22 k_r_dim #_R6
+  171 33 14,22 k_r_dim #_R6
+  172 34 12,37 k_r_dim #_R6
+  173 35 2,45 k_r_dim #_R6
+  174 36 22,22 k_r_dim #_R6
+  175 38 14,45 k_r_dim #_R6
+  176 39 12,53 k_r_dim #_R6
+  177 40 12,45 k_r_dim #_R6
+  178 41 2,53 k_r_dim #_R6
+  179 42 14,37 k_r_dim #_R6
+  180 43 14,53 k_r_dim #_R6
+  181 44 37,37 k_r_dim #_R6
+  182 31 47 _rateLaw1 #_R7
+  183 31 46 _rateLaw1 #_R7
+  184 32 48 _rateLaw1 #_R7
+  185 32 49 _rateLaw1 #_R7
+  186 33 51 _rateLaw1 #_R7
+  187 33 50 _rateLaw1 #_R7
+  188 34 52 _rateLaw1 #_R7
+  189 35 52 _rateLaw1 #_R7
+  190 36 54 2*_rateLaw1 #_R7
+  191 38 55 _rateLaw1 #_R7
+  192 39 55 _rateLaw1 #_R7
+  193 40 56 _rateLaw1 #_R7
+  194 41 57 _rateLaw1 #_R7
+  195 42 57 _rateLaw1 #_R7
+  196 43 58 _rateLaw1 #_R7
+  197 37 2 kr_nEGFR #_R8
+  198 3,31 36 k_iegfr_f #_R9
+  199 3,32 33 k_iegfr_f #_R9
+  200 3,34 49 k_iegfr_f #_R9
+  201 3,34 39 k_iegfr_f #_R9
+  202 3,35 48 k_iegfr_f #_R9
+  203 3,35 38 k_iegfr_f #_R9
+  204 3,37 53 k_iegfr_f #_R9
+  205 3,38 51 k_iegfr_f #_R9
+  206 3,39 50 k_iegfr_f #_R9
+  207 3,40 46 k_iegfr_f #_R9
+  208 3,40 47 k_iegfr_f #_R9
+  209 3,41 43 k_iegfr_f #_R9
+  210 3,42 43 k_iegfr_f #_R9
+  211 3,44 57 2*k_iegfr_f #_R9
+  212 31 3,24 k_iegfr_b #_reverse__R9
+  213 32 3,21 k_iegfr_b #_reverse__R9
+  214 33 3,23 k_iegfr_b #_reverse__R9
+  215 33 3,32 k_iegfr_b #_reverse__R9
+  216 36 3,31 2*k_iegfr_b #_reverse__R9
+  217 38 3,35 k_iegfr_b #_reverse__R9
+  218 39 3,34 k_iegfr_b #_reverse__R9
+  219 41 3,27 k_iegfr_b #_reverse__R9
+  220 42 3,27 k_iegfr_b #_reverse__R9
+  221 43 3,41 k_iegfr_b #_reverse__R9
+  222 43 3,42 k_iegfr_b #_reverse__R9
+  223 1,48 47 k_egf_f #_R1
+  224 1,49 46 k_egf_f #_R1
+  225 1,50 54 k_egf_f #_R1
+  226 1,51 54 k_egf_f #_R1
+  227 1,52 56 k_egf_f #_R1
+  228 1,53 59 k_egf_f #_R1
+  229 1,55 60 k_egf_f #_R1
+  230 1,57 61 k_egf_f #_R1
+  231 1,57 55 k_egf_f #_R1
+  232 1,58 62 2*k_egf_f #_R1
+  233 45 1,37 k_egf_b #_reverse__R1
+  234 46 1,38 k_egf_b #_reverse__R1
+  235 46 1,49 k_egf_b #_reverse__R1
+  236 47 1,39 k_egf_b #_reverse__R1
+  237 47 1,48 k_egf_b #_reverse__R1
+  238 48 1,41 k_egf_b #_reverse__R1
+  239 49 1,42 k_egf_b #_reverse__R1
+  240 50 1,43 k_egf_b #_reverse__R1
+  241 51 1,43 k_egf_b #_reverse__R1
+  242 52 1,44 k_egf_b #_reverse__R1
+  243 54 1,51 k_egf_b #_reverse__R1
+  244 54 1,50 k_egf_b #_reverse__R1
+  245 55 1,57 k_egf_b #_reverse__R1
+  246 56 1,52 2*k_egf_b #_reverse__R1
+  247 12,53 39 k_dim1_f #_R2
+  248 22,53 50 k_dim1_f #_R2
+  249 2,45 35 k_dim1_f #_R2
+  250 14,45 38 k_dim1_f #_R2
+  251 37,45 52 k_dim1_f #_R2
+  252 45,53 55 k_dim1_f #_R2
+  253 48 2,59 k_dim1_b #_reverse__R2
+  254 49 22,37 k_dim1_b #_reverse__R2
+  255 50 22,53 k_dim1_b #_reverse__R2
+  256 51 14,59 k_dim1_b #_reverse__R2
+  257 52 37,45 k_dim1_b #_reverse__R2
+  258 55 45,53 k_dim1_b #_reverse__R2
+  259 12,45 40 k_dim2_f #_R3
+  260 22,45 46 k_dim2_f #_R3
+  261 45,45 56 0.5*k_dim2_f #_R3
+  262 46 22,45 k_dim2_b #_reverse__R3
+  263 47 12,59 k_dim2_b #_reverse__R3
+  264 54 22,59 k_dim2_b #_reverse__R3
+  265 56 45,45 k_dim2_b #_reverse__R3
+  266 2,53 41 k_dim3_f #_R4
+  267 14,53 43 k_dim3_f #_R4
+  268 37,53 57 k_dim3_f #_R4
+  269 53,53 58 0.5*k_dim3_f #_R4
+  270 57 37,53 k_dim3_b #_reverse__R4
+  271 58 53,53 k_dim3_b #_reverse__R4
+  272 1,48 47 k_egf2_f #_R5
+  273 1,49 46 k_egf2_f #_R5
+  274 1,50 54 k_egf2_f #_R5
+  275 1,51 54 k_egf2_f #_R5
+  276 1,52 56 k_egf2_f #_R5
+  277 1,55 60 k_egf2_f #_R5
+  278 1,57 61 k_egf2_f #_R5
+  279 1,57 55 k_egf2_f #_R5
+  280 1,58 62 2*k_egf2_f #_R5
+  281 46 1,38 k_egf2_b #_reverse__R5
+  282 46 1,49 k_egf2_b #_reverse__R5
+  283 47 1,39 k_egf2_b #_reverse__R5
+  284 47 1,48 k_egf2_b #_reverse__R5
+  285 48 1,41 k_egf2_b #_reverse__R5
+  286 49 1,42 k_egf2_b #_reverse__R5
+  287 50 1,43 k_egf2_b #_reverse__R5
+  288 51 1,43 k_egf2_b #_reverse__R5
+  289 52 1,44 k_egf2_b #_reverse__R5
+  290 54 1,51 k_egf2_b #_reverse__R5
+  291 54 1,50 k_egf2_b #_reverse__R5
+  292 55 1,57 k_egf2_b #_reverse__R5
+  293 56 1,52 2*k_egf2_b #_reverse__R5
+  294 46 22,45 k_r_dim #_R6
+  295 47 12,59 k_r_dim #_R6
+  296 48 2,59 k_r_dim #_R6
+  297 49 22,37 k_r_dim #_R6
+  298 50 22,53 k_r_dim #_R6
+  299 51 14,59 k_r_dim #_R6
+  300 52 37,45 k_r_dim #_R6
+  301 54 22,59 k_r_dim #_R6
+  302 55 45,53 k_r_dim #_R6
+  303 56 45,45 k_r_dim #_R6
+  304 57 37,53 k_r_dim #_R6
+  305 58 53,53 k_r_dim #_R6
+  306 46 60 _rateLaw1 #_R7
+  307 47 60 _rateLaw1 #_R7
+  308 48 61 _rateLaw1 #_R7
+  309 49 61 _rateLaw1 #_R7
+  310 50 62 _rateLaw1 #_R7
+  311 51 62 _rateLaw1 #_R7
+  312 54 63 _rateLaw1 #_R7
+  313 45 12 kr_nEGFR #_R8
+  314 53 14 kr_nEGFR #_R8
+  315 3,45 59 k_iegfr_f #_R9
+  316 3,46 54 k_iegfr_f #_R9
+  317 3,47 54 k_iegfr_f #_R9
+  318 3,48 51 k_iegfr_f #_R9
+  319 3,49 50 k_iegfr_f #_R9
+  320 3,52 61 k_iegfr_f #_R9
+  321 3,52 55 k_iegfr_f #_R9
+  322 3,55 62 k_iegfr_f #_R9
+  323 3,56 60 2*k_iegfr_f #_R9
+  324 3,57 58 k_iegfr_f #_R9
+  325 46 3,40 k_iegfr_b #_reverse__R9
+  326 47 3,40 k_iegfr_b #_reverse__R9
+  327 48 3,35 k_iegfr_b #_reverse__R9
+  328 49 3,34 k_iegfr_b #_reverse__R9
+  329 50 3,39 k_iegfr_b #_reverse__R9
+  330 50 3,49 k_iegfr_b #_reverse__R9
+  331 51 3,38 k_iegfr_b #_reverse__R9
+  332 51 3,48 k_iegfr_b #_reverse__R9
+  333 53 3,37 k_iegfr_b #_reverse__R9
+  334 54 3,47 k_iegfr_b #_reverse__R9
+  335 54 3,46 k_iegfr_b #_reverse__R9
+  336 55 3,52 k_iegfr_b #_reverse__R9
+  337 57 3,44 k_iegfr_b #_reverse__R9
+  338 58 3,57 2*k_iegfr_b #_reverse__R9
+  339 1,61 60 k_egf_f #_R1
+  340 1,62 63 k_egf_f #_R1
+  341 59 1,53 k_egf_b #_reverse__R1
+  342 60 1,55 k_egf_b #_reverse__R1
+  343 60 1,61 k_egf_b #_reverse__R1
+  344 61 1,57 k_egf_b #_reverse__R1
+  345 62 1,58 k_egf_b #_reverse__R1
+  346 63 1,62 2*k_egf_b #_reverse__R1
+  347 2,59 48 k_dim1_f #_R2
+  348 14,59 51 k_dim1_f #_R2
+  349 37,59 61 k_dim1_f #_R2
+  350 53,59 62 k_dim1_f #_R2
+  351 61 37,59 k_dim1_b #_reverse__R2
+  352 62 53,59 k_dim1_b #_reverse__R2
+  353 12,59 47 k_dim2_f #_R3
+  354 22,59 54 k_dim2_f #_R3
+  355 45,59 60 k_dim2_f #_R3
+  356 59,59 63 0.5*k_dim2_f #_R3
+  357 60 45,59 k_dim2_b #_reverse__R3
+  358 63 59,59 k_dim2_b #_reverse__R3
+  359 1,61 60 k_egf2_f #_R5
+  360 1,62 63 k_egf2_f #_R5
+  361 60 1,55 k_egf2_b #_reverse__R5
+  362 60 1,61 k_egf2_b #_reverse__R5
+  363 61 1,57 k_egf2_b #_reverse__R5
+  364 62 1,58 k_egf2_b #_reverse__R5
+  365 63 1,62 2*k_egf2_b #_reverse__R5
+  366 60 45,59 k_r_dim #_R6
+  367 61 37,59 k_r_dim #_R6
+  368 62 53,59 k_r_dim #_R6
+  369 63 59,59 k_r_dim #_R6
+  370 59 22 kr_nEGFR #_R8
+  371 3,60 63 k_iegfr_f #_R9
+  372 3,61 62 k_iegfr_f #_R9
+  373 59 3,45 k_iegfr_b #_reverse__R9
+  374 60 3,56 k_iegfr_b #_reverse__R9
+  375 61 3,52 k_iegfr_b #_reverse__R9
+  376 62 3,55 k_iegfr_b #_reverse__R9
+  377 62 3,61 k_iegfr_b #_reverse__R9
+  378 63 3,60 2*k_iegfr_b #_reverse__R9
+end reactions
+begin groups
+    1 nEGFR                2,12,2*13,14,2*21,22,2*23,2*24,2*25,2*26,27,2*31,2*32,2*33,34,35,2*36,38,39,40,41,42,43,46,47,48,49,50,51,54
+    2 pEGFR                27,34,35,37,38,39,40,41,42,43,2*44,45,46,47,48,49,50,51,2*52,53,54,2*55,2*56,2*57,2*58,59,2*60,2*61,2*62,2*63
+    3 nPKC                 6,18
+    4 pPKC                 17,29
+    5 nMEK                 4,16
+    6 pMEK                 15,28
+    7 nPI3K                8,20
+    8 pPI3K                19,30
+    9 EGF_lig              1
+   10 i_EGFR               3
+   11 i_MEK                5
+   12 i_PI3K               9
+   13 i_PKC                7
+   14 S_LB                 10
+   15 S_NC                 11
+end groups

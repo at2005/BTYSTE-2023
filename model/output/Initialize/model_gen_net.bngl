@@ -1,0 +1,438 @@
+begin model
+
+begin molecule types
+EGF(EGFRRec)
+IEGFR(EGFRRec)
+EGFR(egf,inhibitor,dimer,tyr~0~p)
+IMEK(MEKRec)
+MEK(inhibitor,st~0~p)
+IPI3K(PI3KRec)
+PI3K(inhibitor,active~0~p)
+IPKC(PKCRec)
+PKC(inhibitor,s~0~p)
+S_DPD_LB()
+S_DPD_NC()
+end molecule types
+
+
+
+begin parameters
+EGFR_conc__FREE 0.0001
+EGFR_to_MEK__FREE 100.0
+EGFR_to_PI3K__FREE 100.0
+EGFR_to_PKC__FREE 100.0
+EGF_conc__FREE 0.0001
+KM_egfr_dephos__FREE 0.0001
+KM_egfr_phos__FREE 0.0001
+KM_mek_dephos__FREE 0.0001
+KM_mek_phos__FREE 0.0001
+KM_pi3k_dephos__FREE 0.0001
+KM_pi3k_phos__FREE 0.0001
+KM_pkc_dephos__FREE 0.0001
+KM_pkc_phos__FREE 0.0001
+K_EGFR_MEK__FREE 0.0001
+K_EGFR_PI3K__FREE 0.0001
+K_EGFR_PKC__FREE 0.0001
+K_MEK_EGFR__FREE 0.0001
+K_MEK_PI3K__FREE 0.0001
+K_MEK_PKC__FREE 0.0001
+K_PI3K_EGFR__FREE 0.0001
+K_PI3K_MEK__FREE 0.0001
+K_PI3K_PKC__FREE 0.0001
+K_PKC_EGFR__FREE 0.0001
+K_PKC_MEK__FREE 0.0001
+K_PKC_PI3K__FREE 0.0001
+MEK_conc__FREE 0.0001
+MEK_to_EGFR__FREE 100.0
+MEK_to_PI3K__FREE 100.0
+MEK_to_PKC__FREE 100.0
+PI3K_conc__FREE 0.0001
+PI3K_to_EGFR__FREE 100.0
+PI3K_to_MEK__FREE 100.0
+PI3K_to_PKC__FREE 100.0
+PKC_conc__FREE 0.0001
+PKC_to_EGFR__FREE 100.0
+PKC_to_MEK__FREE 100.0
+PKC_to_PI3K__FREE 100.0
+S_B__FREE 5.0
+S_C__FREE 5.0
+S_L__FREE 5.0
+S_N__FREE 5.0
+b_lb_egfr__FREE 100.0
+b_lb_mek__FREE 100.0
+b_lb_pi3k__FREE 100.0
+b_lb_pkc__FREE 100.0
+b_nc_egfr__FREE 100.0
+b_nc_mek__FREE 100.0
+b_nc_pi3k__FREE 100.0
+b_nc_pkc__FREE 100.0
+iEGFR_conc__FREE 0.0001
+iMEK_conc__FREE 0.0001
+iPI3K_conc__FREE 0.0001
+iPKC_conc__FREE 0.0001
+k_dim1_b__FREE 0.0001
+k_dim1_f__FREE 0.0001
+k_dim2_b__FREE 0.0001
+k_dim2_f__FREE 0.0001
+k_dim3_b__FREE 0.001
+k_dim3_f__FREE 0.001
+k_egf2_b__FREE 0.001
+k_egf2_f__FREE 0.001
+k_egf_b__FREE 0.0001
+k_egf_f__FREE 0.0001
+k_iegfr_b__FREE 0.0001
+k_iegfr_f__FREE 0.0001
+k_imek_b__FREE 0.0001
+k_imek_f__FREE 0.0001
+k_ipi3k_b__FREE 0.0001
+k_ipi3k_f__FREE 0.0001
+k_ipkc_b__FREE 0.0001
+k_ipkc_f__FREE 0.0001
+k_r_dim__FREE 0.0001
+lb_const__FREE 100.0
+m1_lb__FREE 100.0
+m1_nc__FREE 100.0
+m2_lb__FREE 100.0
+m2_nc__FREE 100.0
+m3_lb__FREE 100.0
+m3_nc__FREE 100.0
+nc_const__FREE 100.0
+vnEGFR__FREE 0.0001
+vnMEK__FREE 0.0001
+vnPI3K__FREE 0.0001
+vnPKC__FREE 0.0001
+vpEGFR__FREE 0.0001
+vpMEK__FREE 0.0001
+vpPI3K__FREE 0.0001
+vpPKC__FREE 0.0001
+k_egf_f k_egf_f__FREE
+k_egf_b k_egf_b__FREE
+k_egf2_f k_egf2_f__FREE
+k_egf2_b k_egf2_b__FREE
+
+#dimerization kinetc parameters
+k_dim1_f k_dim1_f__FREE
+k_dim1_b k_dim1_b__FREE
+k_dim2_f k_dim2_f__FREE
+k_dim2_b k_dim2_b__FREE
+k_dim3_f k_dim3_f__FREE
+k_dim3_b k_dim3_b__FREE
+
+k_r_dim k_r_dim__FREE
+
+k_iegfr_f k_iegfr_f__FREE
+k_iegfr_b k_iegfr_b__FREE
+k_imek_f  k_imek_f__FREE
+k_imek_b  k_imek_b__FREE
+k_ipi3k_f k_ipi3k_f__FREE
+k_ipi3k_b k_ipi3k_b__FREE
+k_ipkc_f k_ipkc_f__FREE
+k_ipkc_b k_ipkc_b__FREE
+
+# phosphorylation/dephosphorylation Michaelis constants
+KM_egfr_phos KM_egfr_phos__FREE
+KM_egfr_dephos KM_egfr_dephos__FREE
+
+KM_mek_phos KM_mek_phos__FREE
+KM_mek_dephos KM_mek_dephos__FREE
+
+KM_pkc_phos KM_pkc_phos__FREE
+KM_pkc_dephos KM_pkc_dephos__FREE
+
+KM_pi3k_phos KM_pi3k_phos__FREE
+KM_pi3k_dephos KM_pi3k_dephos__FREE
+
+vnEGFR vnEGFR__FREE
+vpEGFR vpEGFR__FREE
+
+vnMEK vnMEK__FREE
+vpMEK vpMEK__FREE
+
+vnPKC vnPKC__FREE
+vpPKC vpPKC__FREE
+
+vnPI3K vnPI3K__FREE
+vpPI3K vpPI3K__FREE
+
+# connection coefficients
+EGFR_to_MEK EGFR_to_MEK__FREE
+EGFR_to_PKC EGFR_to_PKC__FREE
+EGFR_to_PI3K EGFR_to_PI3K__FREE
+
+MEK_to_EGFR MEK_to_EGFR__FREE
+MEK_to_PKC MEK_to_PKC__FREE
+MEK_to_PI3K MEK_to_PI3K__FREE
+
+PKC_to_EGFR PKC_to_EGFR__FREE
+PKC_to_MEK PKC_to_MEK__FREE
+PKC_to_PI3K PKC_to_PI3K__FREE
+
+PI3K_to_EGFR PI3K_to_EGFR__FREE
+PI3K_to_MEK PI3K_to_MEK__FREE
+PI3K_to_PKC PI3K_to_PKC__FREE
+
+K_MEK_EGFR K_MEK_EGFR__FREE
+K_PKC_EGFR K_PKC_EGFR__FREE
+K_PI3K_EGFR K_PI3K_EGFR__FREE
+
+K_EGFR_MEK K_EGFR_MEK__FREE
+K_PKC_MEK K_PKC_MEK__FREE
+K_PI3K_MEK K_PI3K_MEK__FREE
+
+K_MEK_PKC K_MEK_PKC__FREE
+K_EGFR_PKC K_EGFR_PKC__FREE
+K_PI3K_PKC K_PI3K_PKC__FREE
+
+K_EGFR_PI3K K_EGFR_PI3K__FREE
+K_MEK_PI3K K_MEK_PI3K__FREE
+K_PKC_PI3K K_PKC_PI3K__FREE
+
+# initial concentrations
+EGF_conc EGF_conc__FREE
+# inhibitors
+iEGFR_conc iEGFR_conc__FREE
+iMEK_conc iMEK_conc__FREE
+iPKC_conc iPKC_conc__FREE
+iPI3K_conc iPI3K_conc__FREE
+
+
+# core module concentrations
+EGFR_conc EGFR_conc__FREE
+MEK_conc MEK_conc__FREE
+PKC_conc PKC_conc__FREE
+PI3K_conc PI3K_conc__FREE
+
+
+# DPD trajectory variables
+# gradients for restoring force => f(S)
+m1_lb m1_lb__FREE
+m2_lb m2_lb__FREE
+m3_lb m3_lb__FREE
+
+m1_nc m1_nc__FREE
+m2_nc m2_nc__FREE
+m3_nc m3_nc__FREE
+
+# constants for f(S)
+lb_const lb_const__FREE
+nc_const nc_const__FREE
+
+# coefficient * ratio, rij*(x/s), for driving force
+b_lb_egfr b_lb_egfr__FREE
+b_lb_mek b_lb_mek__FREE
+b_lb_pkc b_lb_pkc__FREE
+b_lb_pi3k b_lb_pi3k__FREE
+
+b_nc_egfr b_nc_egfr__FREE
+b_nc_mek b_nc_mek__FREE
+b_nc_pkc b_nc_pkc__FREE
+b_nc_pi3k b_nc_pi3k__FREE
+
+# Stable steady states (luminal/basal)
+S_L S_L__FREE
+S_B S_B__FREE
+
+# Normal/Cancerous
+S_N S_N__FREE
+S_C S_C__FREE
+end parameters
+
+
+begin seed species
+EGF(EGFRRec) EGF_conc
+EGFR(egf,inhibitor,dimer,tyr~0) EGFR_conc
+IEGFR(EGFRRec) iEGFR_conc
+MEK(inhibitor,st~0) MEK_conc
+IMEK(MEKRec) iMEK_conc
+PKC(inhibitor,s~0) PKC_conc
+IPKC(PKCRec) iPKC_conc
+PI3K(inhibitor,active~0) PI3K_conc
+IPI3K(PI3KRec) iPI3K_conc
+S_DPD_LB() 0
+S_DPD_NC() 0
+
+
+end seed species
+
+
+
+begin observables
+
+# Epidermal Growth Factor Receptor
+Molecules nEGFR EGFR(tyr~0)
+Molecules pEGFR EGFR(tyr~p)
+# Molecules nEGFR_dimer EGFR(dimer!0, tyr~0).EGFR(dimer!0, tyr~0)
+# Molecules pEGFR_dimer EGFR(dimer!0, tyr~p).EGFR(dimer!0, tyr~p)
+# Molecules inhEGFR EGFR(inhibitor!0).EGF(EGFRRec!0)
+
+Molecules nPKC PKC(s~0)
+Molecules pPKC PKC(s~p)
+Molecules nMEK MEK(st~0)
+Molecules pMEK MEK(st~p)
+Molecules nPI3K PI3K(active~0)
+Molecules pPI3K PI3K(active~p)
+
+# inhibitor species
+Species EGF_lig EGF(EGFRRec)
+Species i_EGFR IEGFR(EGFRRec)
+Species i_MEK IMEK(MEKRec)
+Species  i_PI3K IPI3K(PI3KRec)
+Species  i_PKC IPKC(PKCRec)
+
+# DPD values
+Species S_LB S_DPD_LB()
+Species S_NC S_DPD_NC()
+
+end observables
+
+
+begin functions
+# hyperbolic multipliers indicate strength of connections between modules
+# 1 + Y_x_y * (Y_a / K_x_y)
+# --------
+# 1 + Y_a / K_x_y
+
+# active proteins influencing EGFR
+a_MEK_to_EGFR() = ((1.0 + MEK_to_EGFR * (pMEK/K_MEK_EGFR)) / (1.0 + pMEK/K_MEK_EGFR))
+a_PKC_to_EGFR() = ((1.0 + PKC_to_EGFR * (pMEK/K_PKC_EGFR)) / (1.0 + pPKC/K_PKC_EGFR))
+a_PI3K_to_EGFR() = ((1.0 + PI3K_to_EGFR * (pPI3K/K_PI3K_EGFR)) / (1.0 + pPI3K/K_PI3K_EGFR))
+
+# active proteins influencing MEK
+a_EGFR_to_MEK() = ((1.0 + EGFR_to_MEK * (pEGFR/K_EGFR_MEK)) / (1.0 + pEGFR/K_EGFR_MEK))
+a_PKC_to_MEK() = ((1.0 + PKC_to_MEK * (pPKC/K_PKC_MEK)) / (1.0 + pPKC/K_PKC_MEK))
+a_PI3K_to_MEK() = ((1.0 + PI3K_to_MEK * (pPI3K/K_PI3K_MEK)) / (1.0 + pPI3K/K_PI3K_MEK))
+
+# active proteins influencing PKC
+a_EGFR_to_PKC() = ((1.0 + EGFR_to_PKC * (pEGFR/K_EGFR_PKC)) / (1.0 + pEGFR/K_EGFR_PKC))
+a_MEK_to_PKC() = ((1.0 + MEK_to_PKC * (pMEK/K_MEK_PKC)) / (1.0 + pMEK/K_MEK_PKC))
+a_PI3K_to_PKC() = ((1.0 + PI3K_to_PKC * (pPI3K/K_PI3K_PKC)) / (1.0 + pPI3K/K_PI3K_PKC))
+
+# active proteins influencing PI3K
+a_EGFR_to_PI3K() = ((1.0 + EGFR_to_PI3K * (pEGFR/K_EGFR_PI3K)) / (1.0 + pEGFR/K_EGFR_PI3K))
+a_MEK_to_PI3K() = ((1.0 + MEK_to_PI3K * (pEGFR/K_MEK_PI3K)) / (1.0 + pMEK/K_MEK_PI3K))
+a_PKC_to_PI3K() = ((1.0 + PKC_to_PI3K * (pEGFR/K_PKC_PI3K)) / (1.0 + pPKC/K_PKC_PI3K))
+
+
+# inhibitor factors
+inh_EGFR() = (1.0 / (1.0 + i_EGFR))
+inh_PI3K() = (1.0 / (1.0 + i_PI3K))
+inh_MEK() = (1.0 / (1.0 + i_MEK))
+inh_PKC() = (1.0 / (1.0 + i_PKC))
+
+
+# inactive and active initial kinetic rates (prior to hyperbolic multipliers)
+kr_nEGFR() = (vnEGFR / (pEGFR + KM_egfr_dephos))
+kr_pEGFR() = (vpEGFR / (nEGFR + KM_egfr_phos))
+
+kr_nMEK() = (vnMEK / (pMEK + KM_mek_dephos))
+kr_pMEK() = (vpMEK / (nMEK + KM_mek_phos))
+
+kr_nPKC() = (vnPKC / (pPKC + KM_pkc_dephos))
+kr_pPKC() = (vpPKC / (nPKC + KM_pkc_phos))
+
+kr_nPI3K() = (vnPI3K / (pPI3K + KM_pi3k_dephos))
+kr_pPI3K() = (vpPI3K / (nPI3K + KM_pi3k_phos))
+
+
+# Driving force for LB DPD
+driving_force_lb() = ((b_lb_egfr * pEGFR) + (b_lb_mek * pMEK) + (b_lb_pkc * pPKC) + (b_lb_pi3k * pPI3K))
+driving_force_canc() = ((b_nc_egfr * pEGFR) + (b_nc_mek * pMEK) + (b_nc_pkc * pPKC) + (b_nc_pi3k * pPI3K))
+# Restoring force -- modelled using linear approx. of derivative of quartic potential (two stable states).
+# I approx. by taking the distance between extrema and roots of cubic to be equal across the function.
+# Hence we end up with three slopes, which can then be plugged into line formula to give linear approximations for the force.
+# The constant value I have added for mathematical formalism. We may not even need it for the approximation to work.
+# However, I am reluctant to remove it until I have finished the optimization.
+restoring_force_lb() = (\
+if(S_LB < ((3*S_L+S_B)/4.0),m1_lb * (S_LB-S_L), \
+if(S_LB > ((3*S_B+S_L)/4.0),m3_lb * (S_LB-S_B), \
+(m2_lb * S_LB))) \
++lb_const)
+
+
+restoring_force_canc() = (\
+if(S_NC < ((3*S_N + S_C)/4.0), m1_nc*(S_NC - S_N), \
+if(S_NC > ((3*S_C + S_N)/4.0), m3_nc*(S_NC - S_C), \
+(m2_nc * S_NC))) \
++ nc_const)
+
+
+# BMRA connection strengths for prop file
+EGFR_MEK_fn() = (EGFR_to_MEK )
+EGFR_PKC_fn() = (EGFR_to_PKC)
+EGFR_PI3K_fn() = (EGFR_to_PI3K)
+
+MEK_EGFR_fn() = (MEK_to_EGFR)
+MEK_PKC_fn() = (MEK_to_PKC)
+MEK_PI3K_fn() = (MEK_to_PI3K)
+
+PKC_EGFR_fn() = (PKC_to_EGFR)
+PKC_MEK_fn() = (PKC_to_MEK)
+PKC_PI3K_fn() = (PKC_to_PI3K)
+
+PI3K_EGFR_fn() = (PI3K_to_EGFR)
+PI3K_MEK_fn() = (PI3K_to_MEK)
+PI3K_PKC_fn() = (PI3K_to_PKC)
+
+end functions
+
+begin reaction rules
+# EGFR modelling
+# EGFR binds to inhibitor
+# coarse-grained EGFR model --> ligand binding initiates dimerization
+EGFR(egf) + EGF(EGFRRec) <-> EGFR(egf!0).EGF(EGFRRec!0) k_egf_f, k_egf_b
+# dimerization case 1 -> ligand 1 binds and causes dimerization
+EGFR(egf!+,dimer) + EGFR(egf,dimer) <-> EGFR(egf!+,dimer!0).EGFR(egf,dimer!0) k_dim1_f, k_dim1_b
+# dimerization case 2 -> both ligands bind and cause dimerization
+EGFR(egf!+,dimer) + EGFR(egf!+,dimer) <-> EGFR(egf!+,dimer!0).EGFR(egf!+,dimer!0) k_dim2_f, k_dim2_b
+# dimerization case 3 -> receptors dimerize without ligand binding
+EGFR(egf,dimer) + EGFR(egf,dimer) <-> EGFR(egf,dimer!0).EGFR(egf,dimer!0) k_dim3_f, k_dim3_b
+# EGF can bind to EGFR in dimer
+EGFR(egf,dimer!+) + EGF(EGFRRec) <-> EGFR(egf!0,dimer!+).EGF(EGFRRec!0) k_egf2_f, k_egf2_b
+
+
+# dimer dissociation
+EGFR(dimer!0).EGFR(dimer!0) -> EGFR(dimer) + EGFR(dimer) k_r_dim
+
+
+# activation through phosphorylation
+EGFR(dimer!+,tyr~0) -> EGFR(dimer!+,tyr~p) (a_MEK_to_EGFR() * a_PKC_to_EGFR() * a_PI3K_to_EGFR() * inh_EGFR() * kr_pEGFR() )
+EGFR(dimer,tyr~p) -> EGFR(dimer,tyr~0) ( kr_nEGFR() )
+
+
+#inhibition
+EGFR(inhibitor) + IEGFR(EGFRRec) <-> EGFR(inhibitor!0).IEGFR(EGFRRec!0) k_iegfr_f, k_iegfr_b
+
+# MEK phos/dephos
+MEK(st~0) -> MEK(st~p) (a_EGFR_to_MEK() * a_PI3K_to_MEK() * a_PKC_to_MEK() * inh_MEK() * kr_pMEK() )
+MEK(st~p) -> MEK(st~0) ( kr_nMEK() )
+# inhibition
+MEK(inhibitor) + IMEK(MEKRec) <-> MEK(inhibitor!0).IMEK(MEKRec!0) k_imek_f, k_imek_b
+
+# PKC phos/dephos
+PKC(s~0) -> PKC(s~p)  (a_EGFR_to_PKC() * a_MEK_to_PKC() * a_PI3K_to_PKC() * inh_PKC() * kr_pPKC() )
+PKC(s~p) -> PKC(s~0)  ( kr_nPKC() )
+# inhibition
+PKC(inhibitor) + IPKC(PKCRec) <-> PKC(inhibitor!0).IPKC(PKCRec!0) k_ipkc_f, k_ipkc_b
+
+# PI3K
+# phosphorylation
+PI3K(active~0) -> PI3K(active~p) ((a_EGFR_to_PI3K() * a_MEK_to_PI3K() * a_PKC_to_PI3K() * inh_PI3K()) * kr_pPI3K() )
+PI3K(active~p) -> PI3K(active~0) ( kr_nPI3K() )
+# inhibition
+PI3K(inhibitor) + IPI3K(PI3KRec) <-> PI3K(inhibitor!0).IPI3K(PI3KRec!0) k_ipi3k_f, k_ipi3k_b
+
+# DPD species accumulates at a rate specified by driving_force+restoring_force.
+0 -> S_DPD_LB() (driving_force_lb()+restoring_force_lb())
+0 -> S_DPD_NC() (driving_force_canc()+restoring_force_canc())
+
+end reaction rules
+
+
+
+
+end model
+begin actions
+
+generate_network({overwrite=>1});
+
+end actions
