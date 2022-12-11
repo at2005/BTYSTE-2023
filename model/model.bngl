@@ -185,11 +185,12 @@ begin model
 		Molecules pPI3K PI3K(active~p)
 		
 		# inhibitor species
-		Species EGF_lig EGF(EGFRRec)
-		Species i_EGFR IEGFR(EGFRRec)
-		Species i_MEK IMEK(MEKRec)
-		Species  i_PI3K IPI3K(PI3KRec)
-		Species  i_PKC IPKC(PKCRec)
+		Species EGF_lig EGF(EGFRRec!0).EGFR(egf!0)
+		Species i_EGFR IEGFR(EGFRRec!0).EGFR(inhibitor!0)
+		Species i_MEK IMEK(MEKRec!0).MEK(inhibitor!0)
+		Species  i_PI3K IPI3K(PI3KRec!0).PI3K(inhibitor!0)
+		Species  i_PKC IPKC(PKCRec!0).PKC(inhibitor!0)
+	
 
 		# DPD values
 		Species S_LB S_DPD_LB()
