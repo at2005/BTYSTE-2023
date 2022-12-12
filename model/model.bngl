@@ -102,10 +102,10 @@ begin model
 		# initial concentrations 
 		EGF_conc EGF_conc__FREE
 		# inhibitors
-		iEGFR_conc iEGFR_conc__FREE
-		iMEK_conc iMEK_conc__FREE
-		iPKC_conc iPKC_conc__FREE
-		iPI3K_conc iPI3K_conc__FREE
+		iEGFR_conc 1.08e-6
+		iMEK_conc 1.7e-6
+		iPKC_conc 3.9e-6
+		iPI3K_conc 0.5e-6
 
 
 		# core module concentrations
