@@ -503,20 +503,13 @@ begin model
 		EGFR(egf,dimer) + EGFR(egf,dimer) <-> EGFR(egf,dimer!0).EGFR(egf,dimer!0) k_dim3_f, k_dim3_b
 		# EGF can bind to EGFR in dimer 
 		EGFR(egf,dimer!+) + EGF(EGFRRec) <-> EGFR(egf!0,dimer!+).EGF(EGFRRec!0) k_egf2_f, k_egf2_b
-
-
 		# dimer dissociation
 		EGFR(dimer!0).EGFR(dimer!0) -> EGFR(dimer) + EGFR(dimer) k_r_dim
-
-
 		# activation through phosphorylation
 		EGFR(dimer!+,tyr~0) -> EGFR(dimer!+,tyr~p) (a_MEK_to_EGFR() * a_PKC_to_EGFR() * a_PI3K_to_EGFR() * a_mTOR_to_EGFR() * a_SMAD_to_EGFR() * a_STAT3_to_EGFR() * inh_EGFR() * kr_pEGFR() )
 		EGFR(dimer,tyr~p) -> EGFR(dimer,tyr~0) ( kr_nEGFR() )
-
-
 		#inhibition
 		EGFR(inhibitor) + IEGFR(EGFRRec) <-> EGFR(inhibitor!0).IEGFR(EGFRRec!0) k_iegfr_f, k_iegfr_b		
-
 		# MEK phos/dephos
 		MEK(st~0) -> MEK(st~p) (a_EGFR_to_MEK() * a_PI3K_to_MEK() * a_PKC_to_MEK() * a_mTOR_to_MEK() * a_SMAD_to_MEK() * a_STAT3_to_MEK() * inh_MEK() * kr_pMEK() )
 		MEK(st~p) -> MEK(st~0) ( kr_nMEK() )
@@ -528,8 +521,6 @@ begin model
 		PKC(s~p) -> PKC(s~0)  ( kr_nPKC() )
 		# inhibition
 		PKC(inhibitor) + IPKC(PKCRec) <-> PKC(inhibitor!0).IPKC(PKCRec!0) k_ipkc_f, k_ipkc_b
-
-
 		# PI3K
 		# phosphorylation
 		PI3K(active~0) -> PI3K(active~p) (a_EGFR_to_PI3K() * a_MEK_to_PI3K() * a_PKC_to_PI3K() * a_mTOR_to_PI3K() * a_SMAD_to_PI3K() * a_STAT3_to_PI3K() * inh_PI3K() * kr_pPI3K() )
@@ -564,43 +555,144 @@ begin model
 
 
 	begin actions 
-		# equilibriate model first according to Sekar et al
+		# equilibrate model first according to Sekar et al -- time course data
 		generate_network({overwrite=>1});
 		setConcentration("EGF(EGFRRec)", 0);
 		setConcentration("IEGFR(EGFRRec)", 0);
 		setConcentration("IMEK(MEKRec)", 0);
 		setConcentration("IPI3K(PI3KRec)", 0);
 		setConcentration("IPKC(PKCRec)", 0);
+		setConcentration("IMTOR(mTORRec)", 0);
 		simulate({suffix=>"equilibriate", method=>"ode",t_end=>1000,n_steps=>1000, print_functions=>1});
 		saveConcentrations()
 
 
-		# test PI3K inhibition -- cell line BT549
+		# PI3K inhibition -- cell line BT549
 		setConcentration("EGF(EGFRRec)", "EGF_conc");
 		setConcentration("IEGFR(EGFRRec)", 0);
 		setConcentration("IMEK(MEKRec)", 0);
 		setConcentration("IPI3K(PI3KRec)", "IPI3K_conc");
 		setConcentration("IPKC(PKCRec)", 0);
+		setConcentration("IMTOR(mTORRec)", 0);
 		setConcentration("S_DPD_LB()", "S_B");
 		setConcentration("S_DPD_NC()", "S_C");
 		simulate({suffix=>"BT549_iPI3K", method=>"ode", t_end=>3600, n_steps=>3600, print_functions=>1});
-		saveConcentrations()
+	
 
+		# EGFR inhibition -- cell line BT549
+		resetConcentrations()
+		setConcentration("EGF(EGFRRec)", "EGF_conc");
+		setConcentration("IEGFR(EGFRRec)", "IEGFR_conc");
+		setConcentration("IMEK(MEKRec)", 0);
+		setConcentration("IPI3K(PI3KRec)", 0);
+		setConcentration("IPKC(PKCRec)", 0);
+		setConcentration("IMTOR(mTORRec)", 0);
+		setConcentration("S_DPD_LB()", "S_B");
+		setConcentration("S_DPD_NC()", "S_C");
+		simulate({suffix=>"BT549_iEGFR", method=>"ode", t_end=>3600, n_steps=>3600, print_functions=>1});
 
+		# MEK inhibition -- cell line BT549
+		resetConcentrations()
+		setConcentration("EGF(EGFRRec)", "EGF_conc");
+		setConcentration("IEGFR(EGFRRec)", 0);
+		setConcentration("IMEK(MEKRec)", "IMEK_conc");
+		setConcentration("IPI3K(PI3KRec)", 0);
+		setConcentration("IPKC(PKCRec)", 0);
+		setConcentration("IMTOR(mTORRec)", 0);
+		setConcentration("S_DPD_LB()", "S_B");
+		setConcentration("S_DPD_NC()", "S_C");
+		simulate({suffix=>"BT549_iMEK", method=>"ode", t_end=>3600, n_steps=>3600, print_functions=>1});
+
+		# PKC inhibition -- cell line BT549
 		resetConcentrations()
 		setConcentration("EGF(EGFRRec)", "EGF_conc");
 		setConcentration("IEGFR(EGFRRec)", 0);
 		setConcentration("IMEK(MEKRec)", 0);
+		setConcentration("IPI3K(PI3KRec)", 0);
+		setConcentration("IPKC(PKCRec)", "IPKC_conc");
+		setConcentration("IMTOR(mTORRec)", 0);
+		setConcentration("S_DPD_LB()", "S_B");
+		setConcentration("S_DPD_NC()", "S_C");
+		simulate({suffix=>"BT549_iPKC", method=>"ode", t_end=>3600, n_steps=>3600, print_functions=>1});
+
+		# mTOR inhibtion -- cell line BT549
+		resetConcentrations()
+		setConcentration("EGF(EGFRRec)", "EGF_conc");
+		setConcentration("IEGFR(EGFRRec)", 0);
+		setConcentration("IMEK(MEKRec)", 0);
+		setConcentration("IPI3K(PI3KRec)", 0);
+		setConcentration("IPKC(PKCRec)", 0);
+		setConcentration("IMTOR(mTORRec)", "IMTOR_conc");
+		setConcentration("S_DPD_LB()", "S_B");
+		setConcentration("S_DPD_NC()", "S_C");
+		simulate({suffix=>"BT549_iMTOR", method=>"ode", t_end=>3600, n_steps=>3600, print_functions=>1});
+
+
+
+		# fit to DPD time trajectory
+		
+		# PI3K inhibition -- cell line BT549
+		setConcentration("EGF(EGFRRec)", "EGF_conc");
+		setConcentration("IEGFR(EGFRRec)", 0);
+		setConcentration("IMEK(MEKRec)", 0);
 		setConcentration("IPI3K(PI3KRec)", "IPI3K_conc");
 		setConcentration("IPKC(PKCRec)", 0);
+		setConcentration("IMTOR(mTORRec)", 0);
 		setConcentration("S_DPD_LB()", "S_B");
 		setConcentration("S_DPD_NC()", "S_C");
 		simulate({suffix=>"DPD_trajectory_BT549_iPI3K", method=>"ode", t_end=>3600, n_steps=>3600, print_functions=>1});
+	
+
+		# EGFR inhibition -- cell line BT549
+		resetConcentrations()
+		setConcentration("EGF(EGFRRec)", "EGF_conc");
+		setConcentration("IEGFR(EGFRRec)", "IEGFR_conc");
+		setConcentration("IMEK(MEKRec)", 0);
+		setConcentration("IPI3K(PI3KRec)", 0);
+		setConcentration("IPKC(PKCRec)", 0);
+		setConcentration("IMTOR(mTORRec)", 0);
+		setConcentration("S_DPD_LB()", "S_B");
+		setConcentration("S_DPD_NC()", "S_C");
+		simulate({suffix=>"DPD_trajectory_BT549_iEGFR", method=>"ode", t_end=>3600, n_steps=>3600, print_functions=>1});
+
+		# MEK inhibition -- cell line BT549
+		resetConcentrations()
+		setConcentration("EGF(EGFRRec)", "EGF_conc");
+		setConcentration("IEGFR(EGFRRec)", 0);
+		setConcentration("IMEK(MEKRec)", "IMEK_conc");
+		setConcentration("IPI3K(PI3KRec)", 0);
+		setConcentration("IPKC(PKCRec)", 0);
+		setConcentration("IMTOR(mTORRec)", 0);
+		setConcentration("S_DPD_LB()", "S_B");
+		setConcentration("S_DPD_NC()", "S_C");
+		simulate({suffix=>"DPD_trajectory_BT549_iMEK", method=>"ode", t_end=>3600, n_steps=>3600, print_functions=>1});
+
+		# PKC inhibition -- cell line BT549
+		resetConcentrations()
+		setConcentration("EGF(EGFRRec)", "EGF_conc");
+		setConcentration("IEGFR(EGFRRec)", 0);
+		setConcentration("IMEK(MEKRec)", 0);
+		setConcentration("IPI3K(PI3KRec)", 0);
+		setConcentration("IPKC(PKCRec)", "IPKC_conc");
+		setConcentration("IMTOR(mTORRec)", 0);
+		setConcentration("S_DPD_LB()", "S_B");
+		setConcentration("S_DPD_NC()", "S_C");
+		simulate({suffix=>"DPD_trajectory_BT549_iPKC", method=>"ode", t_end=>3600, n_steps=>3600, print_functions=>1});
+
+		# mTOR inhibtion -- cell line BT549
+		resetConcentrations()
+		setConcentration("EGF(EGFRRec)", "EGF_conc");
+		setConcentration("IEGFR(EGFRRec)", 0);
+		setConcentration("IMEK(MEKRec)", 0);
+		setConcentration("IPI3K(PI3KRec)", 0);
+		setConcentration("IPKC(PKCRec)", 0);
+		setConcentration("IMTOR(mTORRec)", "IMTOR_conc");
+		setConcentration("S_DPD_LB()", "S_B");
+		setConcentration("S_DPD_NC()", "S_C");
+		simulate({suffix=>"DPD_trajectory_BT549_imTOR", method=>"ode", t_end=>3600, n_steps=>3600, print_functions=>1});
 
 
 
 	end actions
 
-
 end model
-
