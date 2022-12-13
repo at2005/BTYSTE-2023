@@ -435,7 +435,7 @@ begin functions
    92 _rateLaw3() ((((((a_EGFR_to_PKC()*a_MEK_to_PKC())*a_PI3K_to_PKC())*a_mTOR_to_PKC())*a_SMAD_to_PKC())*a_STAT3_to_PKC())*inh_PKC())*kr_pPKC()
    93 _rateLaw4() ((((((a_EGFR_to_PI3K()*a_MEK_to_PI3K())*a_PKC_to_PI3K())*a_mTOR_to_PI3K())*a_SMAD_to_PI3K())*a_STAT3_to_PI3K())*inh_PI3K())*kr_pPI3K()
    94 _rateLaw5() ((((((a_EGFR_to_mTOR()*a_MEK_to_mTOR())*a_PKC_to_mTOR())*a_PI3K_to_mTOR())*a_SMAD_to_mTOR())*a_STAT3_to_mTOR())*inh_mTOR())*kr_pmTOR()
-   95 _rateLaw6() a_EGFR_to_STAT3()*kr_pSTAT3()
+   95 _rateLaw6() (((((a_EGFR_to_STAT3()*a_MEK_to_STAT3())*a_PKC_to_STAT3())*a_PI3K_to_STAT3())*a_mTOR_to_STAT3())*a_SMAD_to_STAT3())*kr_pSTAT3()
    96 _rateLaw7() (((((a_EGFR_to_SMAD()*a_MEK_to_SMAD())*a_PKC_to_SMAD())*a_PI3K_to_SMAD())*a_STAT3_to_SMAD())*a_mTOR_to_SMAD())*kr_pSMAD()
    97 _rateLaw8() driving_force_lb()+restoring_force_lb()
    98 _rateLaw9() driving_force_canc()+restoring_force_canc()

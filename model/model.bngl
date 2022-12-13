@@ -546,7 +546,7 @@ begin model
 
 		# STAT3
 		# phosphorylation
-		STAT3(active~0) -> STAT3(active~p) ((a_EGFR_to_STAT3() * kr_pSTAT3() ))
+		STAT3(active~0) -> STAT3(active~p) ( a_EGFR_to_STAT3() * a_MEK_to_STAT3() * a_PKC_to_STAT3() * a_PI3K_to_STAT3() * a_mTOR_to_STAT3() * a_SMAD_to_STAT3() * kr_pSTAT3() )
 		STAT3(active~p) -> STAT3(active~0) ( kr_nSTAT3() )
 
 		# SMAD
