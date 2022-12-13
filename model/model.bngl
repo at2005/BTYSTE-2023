@@ -21,7 +21,7 @@ begin model
 		IMEK(MEKRec)
 		IPI3K(PI3KRec)
 		IPKC(PKCRec)
-		IMTOR(MTORRec)
+		IMTOR(mTORRec)
 
 		# DPD values
 		S_DPD_LB()
@@ -55,6 +55,10 @@ begin model
 		k_ipi3k_b = k_ipi3k_b__FREE
 		k_ipkc_f = k_ipkc_f__FREE
 		k_ipkc_b = k_ipkc_b__FREE
+		k_imtor_f = k_imtor_f__FREE
+		k_imtor_b = k_imtor_b__FREE
+
+
 
 		# phosphorylation/dephosphorylation Michaelis constants
 		KM_egfr_phos = KM_egfr_phos__FREE
@@ -114,19 +118,44 @@ begin model
 		MEK_to_PI3K = MEK_to_PI3K__FREE  
 		MEK_to_SMAD = MEK_to_SMAD__FREE
 		MEK_to_STAT3 = MEK_to_STAT3__FREE
-		
+		MEK_to_mTOR = MEK_to_mTOR__FREE
 
 		PKC_to_EGFR = PKC_to_EGFR__FREE  
 		PKC_to_MEK = PKC_to_MEK__FREE  
 		PKC_to_PI3K = PKC_to_PI3K__FREE  
 		PKC_to_SMAD = PKC_to_SMAD__FREE
 		PKC_to_STAT3 = PKC_to_STAT3__FREE
+		PKC_to_mTOR = PKC_to_mTOR__FREE
 
 		PI3K_to_EGFR =  PI3K_to_EGFR__FREE  
 		PI3K_to_MEK = PI3K_to_MEK__FREE  
 		PI3K_to_PKC = PI3K_to_PKC__FREE  
 		PI3K_to_SMAD = PI3K_to_SMAD__FREE
 		PI3K_to_STAT3 = PI3K_to_STAT3__FREE
+		PI3K_to_mTOR = PI3K_to_mTOR__FREE
+
+		mTOR_to_EGFR = mTOR_to_EGFR__FREE
+		mTOR_to_MEK = mTOR_to_MEK__FREE
+		mTOR_to_PKC = mTOR_to_PKC__FREE
+		mTOR_to_PI3K = mTOR_to_PI3K__FREE
+		mTOR_to_SMAD = mTOR_to_SMAD__FREE
+		mTOR_to_STAT3 = mTOR_to_STAT3__FREE
+
+		SMAD_to_EGFR = SMAD_to_EGFR__FREE
+		SMAD_to_MEK = SMAD_to_MEK__FREE
+		SMAD_to_PKC = SMAD_to_PKC__FREE
+		SMAD_to_PI3K = SMAD_to_PI3K__FREE
+		SMAD_to_mTOR = SMAD_to_mTOR__FREE
+		SMAD_to_STAT3 = SMAD_to_STAT3__FREE
+
+		STAT3_to_EGFR = STAT3_to_EGFR__FREE
+		STAT3_to_MEK = STAT3_to_MEK__FREE
+		STAT3_to_PKC = STAT3_to_PKC__FREE
+		STAT3_to_PI3K = STAT3_to_PI3K__FREE
+		STAT3_to_mTOR = STAT3_to_mTOR__FREE
+		STAT3_to_SMAD = STAT3_to_SMAD__FREE
+
+
 
 
 		K_MEK_EGFR =  K_MEK_EGFR__FREE  
@@ -256,8 +285,8 @@ begin model
 	  IPI3K(PI3KRec) iPI3K_conc
 	  mTOR(inhibitor,active~0) mTOR_conc
 	  IMTOR(mTORRec) imTOR_conc
-	  SMAD(inhibitor,active~0) SMAD_conc
-	  STAT3(inhibitor,active~0) STAT3_conc
+	  SMAD(active~0) SMAD_conc
+	  STAT3(active~0) STAT3_conc
 
 	  S_DPD_LB() 0
 	  S_DPD_NC() 0
@@ -283,7 +312,7 @@ begin model
 		Molecules pMEK MEK(st~p)
 		Molecules nPI3K PI3K(active~0)
 		Molecules pPI3K PI3K(active~p)
-		Molecules nMTOR mTOR(active~0)
+		Molecules nmTOR mTOR(active~0)
 		Molecules pmTOR mTOR(active~p)
 		Molecules nSMAD SMAD(active~0)
 		Molecules pSMAD SMAD(active~p)
@@ -319,7 +348,7 @@ begin model
 		a_PI3K_to_EGFR() = ((1.0 + PI3K_to_EGFR * (pPI3K/K_PI3K_EGFR)) / (1.0 + pPI3K/K_PI3K_EGFR))
 		a_mTOR_to_EGFR() = ((1.0 + mTOR_to_EGFR * (pmTOR/K_mTOR_EGFR)) / (1.0 + pmTOR/K_mTOR_EGFR))
 		a_SMAD_to_EGFR() = ((1.0 + SMAD_to_EGFR * (pSMAD/K_SMAD_EGFR)) / (1.0 + pSMAD/K_SMAD_EGFR))
-
+		a_STAT3_to_EGFR() = ((1.0 + STAT3_to_EGFR * (pSTAT3/K_STAT3_EGFR)) / (1.0 + pSTAT3/K_STAT3_EGFR))
 
 		# active proteins influencing MEK
 		a_EGFR_to_MEK() = ((1.0 + EGFR_to_MEK * (pEGFR/K_EGFR_MEK)) / (1.0 + pEGFR/K_EGFR_MEK))  	
@@ -327,6 +356,7 @@ begin model
 		a_PI3K_to_MEK() = ((1.0 + PI3K_to_MEK * (pPI3K/K_PI3K_MEK)) / (1.0 + pPI3K/K_PI3K_MEK))  	
 		a_mTOR_to_MEK() = ((1.0 + mTOR_to_MEK * (pmTOR/K_mTOR_MEK)) / (1.0 + pmTOR/K_mTOR_MEK))
 		a_SMAD_to_MEK() = ((1.0 + SMAD_to_MEK * (pSMAD/K_SMAD_MEK)) / (1.0 + pSMAD/K_SMAD_MEK))
+		a_STAT3_to_MEK() = ((1.0 + STAT3_to_MEK * (pSTAT3/K_STAT3_MEK)) / (1.0 + pSTAT3/K_STAT3_MEK))
 
 
 		# active proteins influencing PKC
@@ -335,6 +365,7 @@ begin model
 		a_PI3K_to_PKC() = ((1.0 + PI3K_to_PKC * (pPI3K/K_PI3K_PKC)) / (1.0 + pPI3K/K_PI3K_PKC))
 		a_mTOR_to_PKC() = ((1.0 + mTOR_to_PKC * (pmTOR/K_mTOR_PKC)) / (1.0 + pmTOR/K_mTOR_PKC))
 		a_SMAD_to_PKC() = ((1.0 + SMAD_to_PKC * (pSMAD/K_SMAD_PKC)) / (1.0 + pSMAD/K_SMAD_PKC))
+		a_STAT3_to_PKC() = ((1.0 + STAT3_to_PKC * (pSTAT3/K_STAT3_PKC)) / (1.0 + pSTAT3/K_STAT3_PKC))
 
 
 		# active proteins influencing PI3K
@@ -343,7 +374,7 @@ begin model
 		a_PKC_to_PI3K() = ((1.0 + PKC_to_PI3K * (pEGFR/K_PKC_PI3K)) / (1.0 + pPKC/K_PKC_PI3K)) 
 		a_mTOR_to_PI3K() = ((1.0 + mTOR_to_PI3K * (pmTOR/K_mTOR_PI3K)) / (1.0 + pmTOR/K_mTOR_PI3K))
 		a_SMAD_to_PI3K() = ((1.0 + SMAD_to_PI3K * (pSMAD/K_SMAD_PI3K)) / (1.0 + pSMAD/K_SMAD_PI3K))
-
+		a_STAT3_to_PI3K() = ((1.0 + STAT3_to_PI3K * (pSTAT3/K_STAT3_PI3K)) / (1.0 + pSTAT3/K_STAT3_PI3K))
 
 		# active proteins influencing mTOR
 		a_EGFR_to_mTOR() = ((1.0 + EGFR_to_mTOR * (pEGFR/K_EGFR_mTOR)) / (1.0 + pEGFR/K_EGFR_mTOR))
@@ -351,6 +382,7 @@ begin model
 		a_PKC_to_mTOR() = ((1.0 + PKC_to_mTOR * (pPKC/K_PKC_mTOR)) / (1.0 + pPKC/K_PKC_mTOR))
 		a_PI3K_to_mTOR() = ((1.0 + PI3K_to_mTOR * (pPI3K/K_PI3K_mTOR)) / (1.0 + pPI3K/K_PI3K_mTOR))
 		a_SMAD_to_mTOR() = ((1.0 + SMAD_to_mTOR * (pSMAD/K_SMAD_mTOR)) / (1.0 + pSMAD/K_SMAD_mTOR))
+		a_STAT3_to_mTOR() = ((1.0 + STAT3_to_mTOR * (pSTAT3/K_STAT3_mTOR)) / (1.0 + pSTAT3/K_STAT3_mTOR))
 
 
 		# active proteins influencing TGF beta/SMAD
@@ -359,6 +391,7 @@ begin model
 		a_PKC_to_SMAD() = ((1.0 + PKC_to_SMAD * (pPKC/K_PKC_SMAD)) / (1.0 + pPKC/K_PKC_SMAD))
 		a_PI3K_to_SMAD() = ((1.0 + PI3K_to_SMAD * (pPI3K/K_PI3K_SMAD)) / (1.0 + pPI3K/K_PI3K_SMAD))
 		a_mTOR_to_SMAD() = ((1.0 + mTOR_to_SMAD * (pmTOR/K_mTOR_SMAD)) / (1.0 + pmTOR/K_mTOR_SMAD))
+		a_STAT3_to_SMAD() = ((1.0 + STAT3_to_SMAD * (pSTAT3/K_STAT3_SMAD)) / (1.0 + pSTAT3/K_STAT3_SMAD))
 
 
 		# active proteins influencing STAT3
@@ -368,8 +401,8 @@ begin model
 		a_PI3K_to_STAT3() = ((1.0 + PI3K_to_STAT3 * (pPI3K/K_PI3K_STAT3)) / (1.0 + pPI3K/K_PI3K_STAT3))
 		a_mTOR_to_STAT3() = ((1.0 + mTOR_to_STAT3 * (pmTOR/K_mTOR_STAT3)) / (1.0 + pmTOR/K_mTOR_STAT3))
 		a_SMAD_to_STAT3() = ((1.0 + SMAD_to_STAT3 * (pSMAD/K_SMAD_STAT3)) / (1.0 + pSMAD/K_SMAD_STAT3))
-
-
+		
+	
 		# inhibitor factors
 		inh_EGFR() = (1.0 / (1.0 + i_EGFR))
 		inh_PI3K() = (1.0 / (1.0 + i_PI3K))
@@ -509,7 +542,7 @@ begin model
 		mTOR(active~0) -> mTOR(active~p) (a_EGFR_to_mTOR() * a_MEK_to_mTOR() * a_PKC_to_mTOR() * a_PI3K_to_mTOR() * a_SMAD_to_mTOR() * a_STAT3_to_mTOR() * inh_mTOR() * kr_pmTOR() )
 		mTOR(active~p) -> mTOR(active~0) ( kr_nmTOR() )
 		# inhibition
-		mTOR(inhibitor) + IMTOR(mTORRec) <-> mTOR(inhibitor!0).ImTOR(MTORRec!0) k_imtor_f, k_imtor_b
+		mTOR(inhibitor) + IMTOR(mTORRec) <-> mTOR(inhibitor!0).IMTOR(mTORRec!0) k_imtor_f, k_imtor_b
 
 		# STAT3
 		# phosphorylation
