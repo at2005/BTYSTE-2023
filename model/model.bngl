@@ -212,7 +212,7 @@ begin model
 
 
 		# initial concentrations 
-		EGF_conc = EGF_conc__FREE
+		EGF_conc = 1.667
 		# inhibitors
 		iEGFR_conc = 1.08e-6
 		iMEK_conc = 1.7e-6
@@ -571,23 +571,36 @@ begin model
 		setConcentration("IMEK(MEKRec)", 0);
 		setConcentration("IPI3K(PI3KRec)", 0);
 		setConcentration("IPKC(PKCRec)", 0);
-		setConcentration("S_DPD_LB()", "S_B");
-		setConcentration("S_DPD_NC()", "S_C");
-		simulate({suffix=>"BT549_DPD_eq", method=>"ode",t_end=>1000,n_steps=>1000, print_functions=>1});
+		simulate({suffix=>"equilibriate", method=>"ode",t_end=>1000,n_steps=>1000, print_functions=>1});
 		saveConcentrations()
 
 
 		# test PI3K inhibition -- cell line BT549
-		setConcentration("EGF(EGFRRec)", 0);
+		setConcentration("EGF(EGFRRec)", "EGF_conc");
 		setConcentration("IEGFR(EGFRRec)", 0);
 		setConcentration("IMEK(MEKRec)", 0);
-		setConcentration("IPI3K(PI3KRec)", 10);
+		setConcentration("IPI3K(PI3KRec)", "IPI3K_conc");
+		setConcentration("IPKC(PKCRec)", 0);
+		setConcentration("S_DPD_LB()", "S_B");
+		setConcentration("S_DPD_NC()", "S_C");
+		simulate({suffix=>"BT549_iPI3K", method=>"ode", t_end=>3600, n_steps=>3600, print_functions=>1});
+		saveConcentrations()
+
+
+		resetConcentrations()
+		setConcentration("EGF(EGFRRec)", "EGF_conc");
+		setConcentration("IEGFR(EGFRRec)", 0);
+		setConcentration("IMEK(MEKRec)", 0);
+		setConcentration("IPI3K(PI3KRec)", "IPI3K_conc");
 		setConcentration("IPKC(PKCRec)", 0);
 		setConcentration("S_DPD_LB()", "S_B");
 		setConcentration("S_DPD_NC()", "S_C");
 		simulate({suffix=>"DPD_trajectory_BT549_iPI3K", method=>"ode", t_end=>3600, n_steps=>3600, print_functions=>1});
 
+
+
 	end actions
 
 
 end model
+
