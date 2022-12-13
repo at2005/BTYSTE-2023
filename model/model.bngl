@@ -318,7 +318,6 @@ begin model
 		a_PKC_to_EGFR() = ((1.0 + PKC_to_EGFR * (pMEK/K_PKC_EGFR)) / (1.0 + pPKC/K_PKC_EGFR))
 		a_PI3K_to_EGFR() = ((1.0 + PI3K_to_EGFR * (pPI3K/K_PI3K_EGFR)) / (1.0 + pPI3K/K_PI3K_EGFR))
 		a_mTOR_to_EGFR() = ((1.0 + mTOR_to_EGFR * (pmTOR/K_mTOR_EGFR)) / (1.0 + pmTOR/K_mTOR_EGFR))
-		a_STAT3_to_EGFR() = ((1.0 + STAT3_to_EGFR * (pSTAT3/K_STAT3_EGFR)) / (1.0 + pSTAT3/K_STAT3_EGFR))
 		a_SMAD_to_EGFR() = ((1.0 + SMAD_to_EGFR * (pSMAD/K_SMAD_EGFR)) / (1.0 + pSMAD/K_SMAD_EGFR))
 
 
@@ -327,7 +326,6 @@ begin model
 		a_PKC_to_MEK() = ((1.0 + PKC_to_MEK * (pPKC/K_PKC_MEK)) / (1.0 + pPKC/K_PKC_MEK))  	
 		a_PI3K_to_MEK() = ((1.0 + PI3K_to_MEK * (pPI3K/K_PI3K_MEK)) / (1.0 + pPI3K/K_PI3K_MEK))  	
 		a_mTOR_to_MEK() = ((1.0 + mTOR_to_MEK * (pmTOR/K_mTOR_MEK)) / (1.0 + pmTOR/K_mTOR_MEK))
-		a_STAT3_to_MEK() = ((1.0 + STAT3_to_MEK * (pSTAT3/K_STAT3_MEK)) / (1.0 + pSTAT3/K_STAT3_MEK))
 		a_SMAD_to_MEK() = ((1.0 + SMAD_to_MEK * (pSMAD/K_SMAD_MEK)) / (1.0 + pSMAD/K_SMAD_MEK))
 
 
@@ -336,7 +334,6 @@ begin model
 		a_MEK_to_PKC() = ((1.0 + MEK_to_PKC * (pMEK/K_MEK_PKC)) / (1.0 + pMEK/K_MEK_PKC))
 		a_PI3K_to_PKC() = ((1.0 + PI3K_to_PKC * (pPI3K/K_PI3K_PKC)) / (1.0 + pPI3K/K_PI3K_PKC))
 		a_mTOR_to_PKC() = ((1.0 + mTOR_to_PKC * (pmTOR/K_mTOR_PKC)) / (1.0 + pmTOR/K_mTOR_PKC))
-		a_STAT3_to_PKC() = ((1.0 + STAT3_to_PKC * (pSTAT3/K_STAT3_PKC)) / (1.0 + pSTAT3/K_STAT3_PKC))
 		a_SMAD_to_PKC() = ((1.0 + SMAD_to_PKC * (pSMAD/K_SMAD_PKC)) / (1.0 + pSMAD/K_SMAD_PKC))
 
 
@@ -345,7 +342,6 @@ begin model
 		a_MEK_to_PI3K() = ((1.0 + MEK_to_PI3K * (pEGFR/K_MEK_PI3K)) / (1.0 + pMEK/K_MEK_PI3K)) 
 		a_PKC_to_PI3K() = ((1.0 + PKC_to_PI3K * (pEGFR/K_PKC_PI3K)) / (1.0 + pPKC/K_PKC_PI3K)) 
 		a_mTOR_to_PI3K() = ((1.0 + mTOR_to_PI3K * (pmTOR/K_mTOR_PI3K)) / (1.0 + pmTOR/K_mTOR_PI3K))
-		a_STAT3_to_PI3K() = ((1.0 + STAT3_to_PI3K * (pSTAT3/K_STAT3_PI3K)) / (1.0 + pSTAT3/K_STAT3_PI3K))
 		a_SMAD_to_PI3K() = ((1.0 + SMAD_to_PI3K * (pSMAD/K_SMAD_PI3K)) / (1.0 + pSMAD/K_SMAD_PI3K))
 
 
@@ -354,7 +350,6 @@ begin model
 		a_MEK_to_mTOR() = ((1.0 + MEK_to_mTOR * (pMEK/K_MEK_mTOR)) / (1.0 + pMEK/K_MEK_mTOR))
 		a_PKC_to_mTOR() = ((1.0 + PKC_to_mTOR * (pPKC/K_PKC_mTOR)) / (1.0 + pPKC/K_PKC_mTOR))
 		a_PI3K_to_mTOR() = ((1.0 + PI3K_to_mTOR * (pPI3K/K_PI3K_mTOR)) / (1.0 + pPI3K/K_PI3K_mTOR))
-		a_STAT3_to_mTOR() = ((1.0 + STAT3_to_mTOR * (pSTAT3/K_STAT3_mTOR)) / (1.0 + pSTAT3/K_STAT3_mTOR))
 		a_SMAD_to_mTOR() = ((1.0 + SMAD_to_mTOR * (pSMAD/K_SMAD_mTOR)) / (1.0 + pSMAD/K_SMAD_mTOR))
 
 
@@ -363,7 +358,6 @@ begin model
 		a_MEK_to_SMAD() = ((1.0 + MEK_to_SMAD * (pMEK/K_MEK_SMAD)) / (1.0 + pMEK/K_MEK_SMAD))
 		a_PKC_to_SMAD() = ((1.0 + PKC_to_SMAD * (pPKC/K_PKC_SMAD)) / (1.0 + pPKC/K_PKC_SMAD))
 		a_PI3K_to_SMAD() = ((1.0 + PI3K_to_SMAD * (pPI3K/K_PI3K_SMAD)) / (1.0 + pPI3K/K_PI3K_SMAD))
-		a_STAT3_to_SMAD() = ((1.0 + STAT3_to_SMAD * (pSTAT3/K_STAT3_SMAD)) / (1.0 + pSTAT3/K_STAT3_SMAD))
 		a_mTOR_to_SMAD() = ((1.0 + mTOR_to_SMAD * (pmTOR/K_mTOR_SMAD)) / (1.0 + pmTOR/K_mTOR_SMAD))
 
 
@@ -519,7 +513,15 @@ begin model
 
 		# STAT3
 		# phosphorylation
-		STAT3(active~0) -> STAT3(active~p) ((a_EGFR_to_STAT3() * a_MEK_to_STAT3() * a_PKC_to_STAT3() * kr_pSTAT3() ))
+		STAT3(active~0) -> STAT3(active~p) ((a_EGFR_to_STAT3() * kr_pSTAT3() ))
+		STAT3(active~p) -> STAT3(active~0) ( kr_nSTAT3() )
+
+		# SMAD
+		# phosphorylation
+		SMAD(active~0) -> SMAD(active~p) ((a_EGFR_to_SMAD() * a_MEK_to_SMAD() * a_PKC_to_SMAD() * a_PI3K_to_SMAD() * a_STAT3_to_SMAD() * a_mTOR_to_SMAD() * kr_pSMAD() ))
+		SMAD(active~p) -> SMAD(active~0) ( kr_nSMAD() )
+
+		
 
 		# DPD species accumulates at a rate specified by driving_force+restoring_force.
 		0 -> S_DPD_LB() (driving_force_lb()+restoring_force_lb()) 
