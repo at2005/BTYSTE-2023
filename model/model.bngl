@@ -1,152 +1,246 @@
 begin model
 
 	begin molecule types
+
+		# ligand -- epidermal growth factor
 		EGF(EGFRRec)
-		IEGFR(EGFRRec)
+		
+		# core modules with available inhibitors 
 		EGFR(egf,inhibitor,dimer,tyr~0~p)
-		IMEK(MEKRec)
 		MEK(inhibitor,st~0~p)
-		IPI3K(PI3KRec)
 		PI3K(inhibitor,active~0~p)
-		IPKC(PKCRec)
 		PKC(inhibitor,s~0~p)	
+		mTOR(inhibitor,active~0~p)
+
+		# modules with no inhibitor
+		STAT3(active~0~p)
+		SMAD(active~0~p)
+
+		# inhibitors
+		IEGFR(EGFRRec)
+		IMEK(MEKRec)
+		IPI3K(PI3KRec)
+		IPKC(PKCRec)
+		IMTOR(MTORRec)
+
+		# DPD values
 		S_DPD_LB()
 		S_DPD_NC()
+
 	end molecule types
-		
+	
 
 
 	begin parameters
-		k_egf_f k_egf_f__FREE
-		k_egf_b k_egf_b__FREE
-		k_egf2_f k_egf2_f__FREE
-		k_egf2_b k_egf2_b__FREE
+		k_egf_f = k_egf_f__FREE
+		k_egf_b = k_egf_b__FREE
+		k_egf2_f = k_egf2_f__FREE
+		k_egf2_b = k_egf2_b__FREE
 
 		#dimerization kinetc parameters
-		k_dim1_f k_dim1_f__FREE
-		k_dim1_b k_dim1_b__FREE
-		k_dim2_f k_dim2_f__FREE
-		k_dim2_b k_dim2_b__FREE
-		k_dim3_f k_dim3_f__FREE
-		k_dim3_b k_dim3_b__FREE
+		k_dim1_f = k_dim1_f__FREE
+		k_dim1_b = k_dim1_b__FREE
+		k_dim2_f = k_dim2_f__FREE
+		k_dim2_b = k_dim2_b__FREE
+		k_dim3_f = k_dim3_f__FREE
+		k_dim3_b = k_dim3_b__FREE
 
-		k_r_dim k_r_dim__FREE
+		k_r_dim  = k_r_dim__FREE
 		
-		k_iegfr_f k_iegfr_f__FREE 
-		k_iegfr_b k_iegfr_b__FREE
-		k_imek_f  k_imek_f__FREE
-		k_imek_b  k_imek_b__FREE
-		k_ipi3k_f k_ipi3k_f__FREE
-		k_ipi3k_b k_ipi3k_b__FREE
-		k_ipkc_f k_ipkc_f__FREE
-		k_ipkc_b k_ipkc_b__FREE
+		k_iegfr_f =  k_iegfr_f__FREE 
+		k_iegfr_b = k_iegfr_b__FREE
+		k_imek_f  = k_imek_f__FREE
+		k_imek_b  = k_imek_b__FREE
+		k_ipi3k_f = k_ipi3k_f__FREE
+		k_ipi3k_b = k_ipi3k_b__FREE
+		k_ipkc_f = k_ipkc_f__FREE
+		k_ipkc_b = k_ipkc_b__FREE
 
 		# phosphorylation/dephosphorylation Michaelis constants
-		KM_egfr_phos KM_egfr_phos__FREE
-		KM_egfr_dephos KM_egfr_dephos__FREE
+		KM_egfr_phos = KM_egfr_phos__FREE
+		KM_egfr_dephos = KM_egfr_dephos__FREE
 
-		KM_mek_phos KM_mek_phos__FREE
-		KM_mek_dephos KM_mek_dephos__FREE
+		KM_mek_phos = KM_mek_phos__FREE
+		KM_mek_dephos = KM_mek_dephos__FREE
 
-		KM_pkc_phos KM_pkc_phos__FREE 
-		KM_pkc_dephos KM_pkc_dephos__FREE
+		KM_pkc_phos = KM_pkc_phos__FREE 
+		KM_pkc_dephos = KM_pkc_dephos__FREE
 
-		KM_pi3k_phos KM_pi3k_phos__FREE  
-		KM_pi3k_dephos KM_pi3k_dephos__FREE  
+		KM_pi3k_phos = KM_pi3k_phos__FREE  
+		KM_pi3k_dephos = KM_pi3k_dephos__FREE  
 
-		vnEGFR vnEGFR__FREE  
-		vpEGFR vpEGFR__FREE 
+		KM_mtor_phos = KM_mtor_phos__FREE
+		KM_mtor_dephos = KM_mtor_dephos__FREE
 
-		vnMEK vnMEK__FREE  
-		vpMEK vpMEK__FREE 
+		KM_smad_phos = KM_smad_phos__FREE
+		KM_smad_dephos = KM_smad_dephos__FREE
 
-		vnPKC vnPKC__FREE 
-		vpPKC vpPKC__FREE 
+		KM_stat3_phos = KM_stat3_phos__FREE
+		KM_stat3_dephos = KM_stat3_dephos__FREE
+
+
+		vnEGFR = vnEGFR__FREE  
+		vpEGFR = vpEGFR__FREE 
+
+		vnMEK = vnMEK__FREE  
+		vpMEK = vpMEK__FREE 
+
+		vnPKC = vnPKC__FREE 
+		vpPKC = vpPKC__FREE 
 		
-		vnPI3K vnPI3K__FREE
-		vpPI3K vpPI3K__FREE
+		vnPI3K = vnPI3K__FREE
+		vpPI3K = vpPI3K__FREE
+
+		vnSMAD = vnSMAD__FREE
+		vpSMAD = vpSMAD__FREE
+
+		vnSTAT3 = vnSTAT3__FREE
+		vpSTAT3 = vpSTAT3__FREE
+
+		vpmTOR = vpmTOR__FREE
+		vnmTOR = vnmTOR__FREE
+
 
 		# connection coefficients
-		EGFR_to_MEK EGFR_to_MEK__FREE  
-		EGFR_to_PKC EGFR_to_PKC__FREE  
-		EGFR_to_PI3K EGFR_to_PI3K__FREE  
+		EGFR_to_MEK = EGFR_to_MEK__FREE  
+		EGFR_to_PKC = EGFR_to_PKC__FREE  
+		EGFR_to_PI3K = EGFR_to_PI3K__FREE  
+		EGFR_to_mTOR = EGFR_to_mTOR__FREE
+		EGFR_to_SMAD = EGFR_to_SMAD__FREE
+		EGFR_to_STAT3 = EGFR_to_STAT3__FREE
 	
-		MEK_to_EGFR MEK_to_EGFR__FREE 
-		MEK_to_PKC MEK_to_PKC__FREE 
-		MEK_to_PI3K MEK_to_PI3K__FREE  
+		MEK_to_EGFR = MEK_to_EGFR__FREE 
+		MEK_to_PKC = MEK_to_PKC__FREE 
+		MEK_to_PI3K = MEK_to_PI3K__FREE  
+		MEK_to_SMAD = MEK_to_SMAD__FREE
+		MEK_to_STAT3 = MEK_to_STAT3__FREE
 		
-		PKC_to_EGFR PKC_to_EGFR__FREE  
-		PKC_to_MEK PKC_to_MEK__FREE  
-		PKC_to_PI3K PKC_to_PI3K__FREE  
 
-		PI3K_to_EGFR PI3K_to_EGFR__FREE  
-		PI3K_to_MEK PI3K_to_MEK__FREE  
-		PI3K_to_PKC PI3K_to_PKC__FREE  
+		PKC_to_EGFR = PKC_to_EGFR__FREE  
+		PKC_to_MEK = PKC_to_MEK__FREE  
+		PKC_to_PI3K = PKC_to_PI3K__FREE  
+		PKC_to_SMAD = PKC_to_SMAD__FREE
+		PKC_to_STAT3 = PKC_to_STAT3__FREE
 
-		K_MEK_EGFR K_MEK_EGFR__FREE  
-		K_PKC_EGFR K_PKC_EGFR__FREE  
-		K_PI3K_EGFR K_PI3K_EGFR__FREE  
+		PI3K_to_EGFR =  PI3K_to_EGFR__FREE  
+		PI3K_to_MEK = PI3K_to_MEK__FREE  
+		PI3K_to_PKC = PI3K_to_PKC__FREE  
+		PI3K_to_SMAD = PI3K_to_SMAD__FREE
+		PI3K_to_STAT3 = PI3K_to_STAT3__FREE
 
-		K_EGFR_MEK K_EGFR_MEK__FREE  
-		K_PKC_MEK K_PKC_MEK__FREE  
-		K_PI3K_MEK K_PI3K_MEK__FREE  
 
-		K_MEK_PKC K_MEK_PKC__FREE  
-		K_EGFR_PKC K_EGFR_PKC__FREE  
-		K_PI3K_PKC K_PI3K_PKC__FREE  
+		K_MEK_EGFR =  K_MEK_EGFR__FREE  
+		K_PKC_EGFR = K_PKC_EGFR__FREE  
+		K_PI3K_EGFR = K_PI3K_EGFR__FREE  
+		K_mTOR_EGFR = K_mTOR_EGFR__FREE
+		K_SMAD_EGFR = K_SMAD_EGFR__FREE
+		K_STAT3_EGFR = K_STAT3_EGFR__FREE
 
-		K_EGFR_PI3K K_EGFR_PI3K__FREE  
-		K_MEK_PI3K K_MEK_PI3K__FREE 
-		K_PKC_PI3K K_PKC_PI3K__FREE  
+
+		K_EGFR_MEK = K_EGFR_MEK__FREE  
+		K_PKC_MEK  = K_PKC_MEK__FREE  
+		K_PI3K_MEK = K_PI3K_MEK__FREE  
+		K_mTOR_MEK = K_mTOR_MEK__FREE
+		K_SMAD_MEK = K_SMAD_MEK__FREE
+		K_STAT3_MEK = K_STAT3_MEK__FREE
+	
+
+		K_MEK_PKC =  K_MEK_PKC__FREE  
+		K_EGFR_PKC = K_EGFR_PKC__FREE  
+		K_PI3K_PKC = K_PI3K_PKC__FREE  
+		K_mTOR_PKC = K_mTOR_PKC__FREE
+		K_SMAD_PKC = K_SMAD_PKC__FREE
+		K_STAT3_PKC = K_STAT3_PKC__FREE
+		
+
+		K_EGFR_PI3K =  K_EGFR_PI3K__FREE  
+		K_MEK_PI3K = K_MEK_PI3K__FREE 
+		K_PKC_PI3K = K_PKC_PI3K__FREE 
+		K_mTOR_PI3K = K_mTOR_PI3K__FREE
+		K_SMAD_PI3K = K_SMAD_PI3K__FREE
+		K_STAT3_PI3K = K_STAT3_PI3K__FREE
+		
+		K_EGFR_mTOR  = K_EGFR_mTOR__FREE
+		K_MEK_mTOR = K_MEK_mTOR__FREE
+		K_PKC_mTOR = K_PKC_mTOR__FREE
+		K_PI3K_mTOR = K_PI3K_mTOR__FREE
+		K_SMAD_mTOR = K_SMAD_mTOR__FREE
+		K_STAT3_mTOR = K_STAT3_mTOR__FREE
+
+		K_EGFR_SMAD =  K_EGFR_SMAD__FREE
+		K_MEK_SMAD  = K_MEK_SMAD__FREE
+		K_PKC_SMAD = K_PKC_SMAD__FREE
+		K_PI3K_SMAD = K_PI3K_SMAD__FREE
+		K_mTOR_SMAD = K_mTOR_SMAD__FREE
+		K_STAT3_SMAD = K_STAT3_SMAD__FREE
+
+		K_EGFR_STAT3 =  K_EGFR_STAT3__FREE
+		K_MEK_STAT3  = K_MEK_STAT3__FREE
+		K_PKC_STAT3 = K_PKC_STAT3__FREE
+		K_PI3K_STAT3  = K_PI3K_STAT3__FREE
+		K_mTOR_STAT3 = K_mTOR_STAT3__FREE
+		K_SMAD_STAT3 = K_SMAD_STAT3__FREE
+
 
 		# initial concentrations 
-		EGF_conc EGF_conc__FREE
+		EGF_conc = EGF_conc__FREE
 		# inhibitors
-		iEGFR_conc 1.08e-6
-		iMEK_conc 1.7e-6
-		iPKC_conc 3.9e-6
-		iPI3K_conc 0.5e-6
-
+		iEGFR_conc = 1.08e-6
+		iMEK_conc = 1.7e-6
+		iPKC_conc = 3.9e-6
+		iPI3K_conc = 0.5e-6
+		imTOR_conc = 0.01e-6
+		
 
 		# core module concentrations
-		EGFR_conc EGFR_conc__FREE
-		MEK_conc MEK_conc__FREE
-		PKC_conc PKC_conc__FREE
-		PI3K_conc PI3K_conc__FREE
-
-
+		EGFR_conc = EGFR_conc__FREE
+		MEK_conc = MEK_conc__FREE
+		PKC_conc = PKC_conc__FREE
+		PI3K_conc = PI3K_conc__FREE
+		mTOR_conc = mTOR_conc__FREE
+		SMAD_conc = SMAD_conc__FREE
+		STAT3_conc = STAT3_conc__FREE
+		
 		# DPD trajectory variables
 		# gradients for restoring force => f(S)
-		m1_lb m1_lb__FREE
-		m2_lb m2_lb__FREE
-		m3_lb m3_lb__FREE
+		m1_lb = m1_lb__FREE
+		m2_lb = m2_lb__FREE
+		m3_lb = m3_lb__FREE
 
-		m1_nc m1_nc__FREE
-		m2_nc m2_nc__FREE
-		m3_nc m3_nc__FREE
+		m1_nc = m1_nc__FREE
+		m2_nc = m2_nc__FREE
+		m3_nc = m3_nc__FREE
 
 		# constants for f(S)
-		lb_const lb_const__FREE
-		nc_const nc_const__FREE
+		lb_const = lb_const__FREE
+		nc_const = nc_const__FREE
 
 		# coefficient * ratio, rij*(x/s), for driving force
-		b_lb_egfr b_lb_egfr__FREE
-		b_lb_mek b_lb_mek__FREE
-		b_lb_pkc b_lb_pkc__FREE
-		b_lb_pi3k b_lb_pi3k__FREE
+		b_lb_egfr = b_lb_egfr__FREE
+		b_lb_mek = b_lb_mek__FREE
+		b_lb_pkc = b_lb_pkc__FREE
+		b_lb_pi3k = b_lb_pi3k__FREE
+		b_lb_mtor = b_lb_mtor__FREE
+		b_lb_smad = b_lb_smad__FREE
+		b_lb_stat3 = b_lb_stat3__FREE
 
-		b_nc_egfr b_nc_egfr__FREE
-		b_nc_mek b_nc_mek__FREE
-		b_nc_pkc b_nc_pkc__FREE
-		b_nc_pi3k b_nc_pi3k__FREE
+
+		b_nc_egfr = b_nc_egfr__FREE
+		b_nc_mek = b_nc_mek__FREE
+		b_nc_pkc = b_nc_pkc__FREE
+		b_nc_pi3k = b_nc_pi3k__FREE
+		b_nc_mtor = b_nc_mtor__FREE
+		b_nc_smad = b_nc_smad__FREE
+		b_nc_stat3 = b_nc_stat3__FREE
+
 
 		# Stable steady states (luminal/basal)
-		S_L S_L__FREE
-		S_B S_B__FREE
+		S_L = S_L__FREE
+		S_B = S_B__FREE
 
-		# Normal/Cancerous
-		S_N S_N__FREE
-		S_C S_C__FREE
+		# Normal/Cancerous steady states
+		S_N = S_N__FREE
+		S_C = S_C__FREE
 	end parameters
 
 
@@ -160,6 +254,11 @@ begin model
 	  IPKC(PKCRec) iPKC_conc
 	  PI3K(inhibitor,active~0) PI3K_conc
 	  IPI3K(PI3KRec) iPI3K_conc
+	  mTOR(inhibitor,active~0) mTOR_conc
+	  IMTOR(mTORRec) imTOR_conc
+	  SMAD(inhibitor,active~0) SMAD_conc
+	  STAT3(inhibitor,active~0) STAT3_conc
+
 	  S_DPD_LB() 0
 	  S_DPD_NC() 0
 	  
@@ -177,26 +276,35 @@ begin model
 		# Molecules pEGFR_dimer EGFR(dimer!0, tyr~p).EGFR(dimer!0, tyr~p)
 		# Molecules inhEGFR EGFR(inhibitor!0).EGF(EGFRRec!0)
 
+		# active and inactive forms of core modules
 		Molecules nPKC PKC(s~0)
 		Molecules pPKC PKC(s~p)
 		Molecules nMEK MEK(st~0)
 		Molecules pMEK MEK(st~p)
 		Molecules nPI3K PI3K(active~0)
 		Molecules pPI3K PI3K(active~p)
-		
-		# inhibitor species
+		Molecules nMTOR mTOR(active~0)
+		Molecules pmTOR mTOR(active~p)
+		Molecules nSMAD SMAD(active~0)
+		Molecules pSMAD SMAD(active~p)
+		Molecules nSTAT3 STAT3(active~0)
+		Molecules pSTAT3 STAT3(active~p)
+
+		# inhibitor-bound species
 		Species EGF_lig EGF(EGFRRec!0).EGFR(egf!0)
 		Species i_EGFR IEGFR(EGFRRec!0).EGFR(inhibitor!0)
 		Species i_MEK IMEK(MEKRec!0).MEK(inhibitor!0)
-		Species  i_PI3K IPI3K(PI3KRec!0).PI3K(inhibitor!0)
-		Species  i_PKC IPKC(PKCRec!0).PKC(inhibitor!0)
-	
+		Species i_PI3K IPI3K(PI3KRec!0).PI3K(inhibitor!0)
+		Species i_PKC IPKC(PKCRec!0).PKC(inhibitor!0)
+		Species i_mTOR IMTOR(mTORRec!0).mTOR(inhibitor!0)
+
 
 		# DPD values
 		Species S_LB S_DPD_LB()
 		Species S_NC S_DPD_NC()
 
 	end observables
+
 
 
 	begin functions
@@ -209,21 +317,63 @@ begin model
 		a_MEK_to_EGFR() = ((1.0 + MEK_to_EGFR * (pMEK/K_MEK_EGFR)) / (1.0 + pMEK/K_MEK_EGFR))  
 		a_PKC_to_EGFR() = ((1.0 + PKC_to_EGFR * (pMEK/K_PKC_EGFR)) / (1.0 + pPKC/K_PKC_EGFR))
 		a_PI3K_to_EGFR() = ((1.0 + PI3K_to_EGFR * (pPI3K/K_PI3K_EGFR)) / (1.0 + pPI3K/K_PI3K_EGFR))
+		a_mTOR_to_EGFR() = ((1.0 + mTOR_to_EGFR * (pmTOR/K_mTOR_EGFR)) / (1.0 + pmTOR/K_mTOR_EGFR))
+		a_STAT3_to_EGFR() = ((1.0 + STAT3_to_EGFR * (pSTAT3/K_STAT3_EGFR)) / (1.0 + pSTAT3/K_STAT3_EGFR))
+		a_SMAD_to_EGFR() = ((1.0 + SMAD_to_EGFR * (pSMAD/K_SMAD_EGFR)) / (1.0 + pSMAD/K_SMAD_EGFR))
+
 
 		# active proteins influencing MEK
 		a_EGFR_to_MEK() = ((1.0 + EGFR_to_MEK * (pEGFR/K_EGFR_MEK)) / (1.0 + pEGFR/K_EGFR_MEK))  	
 		a_PKC_to_MEK() = ((1.0 + PKC_to_MEK * (pPKC/K_PKC_MEK)) / (1.0 + pPKC/K_PKC_MEK))  	
 		a_PI3K_to_MEK() = ((1.0 + PI3K_to_MEK * (pPI3K/K_PI3K_MEK)) / (1.0 + pPI3K/K_PI3K_MEK))  	
+		a_mTOR_to_MEK() = ((1.0 + mTOR_to_MEK * (pmTOR/K_mTOR_MEK)) / (1.0 + pmTOR/K_mTOR_MEK))
+		a_STAT3_to_MEK() = ((1.0 + STAT3_to_MEK * (pSTAT3/K_STAT3_MEK)) / (1.0 + pSTAT3/K_STAT3_MEK))
+		a_SMAD_to_MEK() = ((1.0 + SMAD_to_MEK * (pSMAD/K_SMAD_MEK)) / (1.0 + pSMAD/K_SMAD_MEK))
+
 
 		# active proteins influencing PKC
 		a_EGFR_to_PKC() = ((1.0 + EGFR_to_PKC * (pEGFR/K_EGFR_PKC)) / (1.0 + pEGFR/K_EGFR_PKC))
 		a_MEK_to_PKC() = ((1.0 + MEK_to_PKC * (pMEK/K_MEK_PKC)) / (1.0 + pMEK/K_MEK_PKC))
 		a_PI3K_to_PKC() = ((1.0 + PI3K_to_PKC * (pPI3K/K_PI3K_PKC)) / (1.0 + pPI3K/K_PI3K_PKC))
+		a_mTOR_to_PKC() = ((1.0 + mTOR_to_PKC * (pmTOR/K_mTOR_PKC)) / (1.0 + pmTOR/K_mTOR_PKC))
+		a_STAT3_to_PKC() = ((1.0 + STAT3_to_PKC * (pSTAT3/K_STAT3_PKC)) / (1.0 + pSTAT3/K_STAT3_PKC))
+		a_SMAD_to_PKC() = ((1.0 + SMAD_to_PKC * (pSMAD/K_SMAD_PKC)) / (1.0 + pSMAD/K_SMAD_PKC))
+
 
 		# active proteins influencing PI3K
 		a_EGFR_to_PI3K() = ((1.0 + EGFR_to_PI3K * (pEGFR/K_EGFR_PI3K)) / (1.0 + pEGFR/K_EGFR_PI3K)) 
 		a_MEK_to_PI3K() = ((1.0 + MEK_to_PI3K * (pEGFR/K_MEK_PI3K)) / (1.0 + pMEK/K_MEK_PI3K)) 
 		a_PKC_to_PI3K() = ((1.0 + PKC_to_PI3K * (pEGFR/K_PKC_PI3K)) / (1.0 + pPKC/K_PKC_PI3K)) 
+		a_mTOR_to_PI3K() = ((1.0 + mTOR_to_PI3K * (pmTOR/K_mTOR_PI3K)) / (1.0 + pmTOR/K_mTOR_PI3K))
+		a_STAT3_to_PI3K() = ((1.0 + STAT3_to_PI3K * (pSTAT3/K_STAT3_PI3K)) / (1.0 + pSTAT3/K_STAT3_PI3K))
+		a_SMAD_to_PI3K() = ((1.0 + SMAD_to_PI3K * (pSMAD/K_SMAD_PI3K)) / (1.0 + pSMAD/K_SMAD_PI3K))
+
+
+		# active proteins influencing mTOR
+		a_EGFR_to_mTOR() = ((1.0 + EGFR_to_mTOR * (pEGFR/K_EGFR_mTOR)) / (1.0 + pEGFR/K_EGFR_mTOR))
+		a_MEK_to_mTOR() = ((1.0 + MEK_to_mTOR * (pMEK/K_MEK_mTOR)) / (1.0 + pMEK/K_MEK_mTOR))
+		a_PKC_to_mTOR() = ((1.0 + PKC_to_mTOR * (pPKC/K_PKC_mTOR)) / (1.0 + pPKC/K_PKC_mTOR))
+		a_PI3K_to_mTOR() = ((1.0 + PI3K_to_mTOR * (pPI3K/K_PI3K_mTOR)) / (1.0 + pPI3K/K_PI3K_mTOR))
+		a_STAT3_to_mTOR() = ((1.0 + STAT3_to_mTOR * (pSTAT3/K_STAT3_mTOR)) / (1.0 + pSTAT3/K_STAT3_mTOR))
+		a_SMAD_to_mTOR() = ((1.0 + SMAD_to_mTOR * (pSMAD/K_SMAD_mTOR)) / (1.0 + pSMAD/K_SMAD_mTOR))
+
+
+		# active proteins influencing TGF beta/SMAD
+		a_EGFR_to_SMAD() = ((1.0 + EGFR_to_SMAD * (pEGFR/K_EGFR_SMAD)) / (1.0 + pEGFR/K_EGFR_SMAD))
+		a_MEK_to_SMAD() = ((1.0 + MEK_to_SMAD * (pMEK/K_MEK_SMAD)) / (1.0 + pMEK/K_MEK_SMAD))
+		a_PKC_to_SMAD() = ((1.0 + PKC_to_SMAD * (pPKC/K_PKC_SMAD)) / (1.0 + pPKC/K_PKC_SMAD))
+		a_PI3K_to_SMAD() = ((1.0 + PI3K_to_SMAD * (pPI3K/K_PI3K_SMAD)) / (1.0 + pPI3K/K_PI3K_SMAD))
+		a_STAT3_to_SMAD() = ((1.0 + STAT3_to_SMAD * (pSTAT3/K_STAT3_SMAD)) / (1.0 + pSTAT3/K_STAT3_SMAD))
+		a_mTOR_to_SMAD() = ((1.0 + mTOR_to_SMAD * (pmTOR/K_mTOR_SMAD)) / (1.0 + pmTOR/K_mTOR_SMAD))
+
+
+		# active proteins influencing STAT3
+		a_EGFR_to_STAT3() = ((1.0 + EGFR_to_STAT3 * (pEGFR/K_EGFR_STAT3)) / (1.0 + pEGFR/K_EGFR_STAT3))
+		a_MEK_to_STAT3() = ((1.0 + MEK_to_STAT3 * (pMEK/K_MEK_STAT3)) / (1.0 + pMEK/K_MEK_STAT3))
+		a_PKC_to_STAT3() = ((1.0 + PKC_to_STAT3 * (pPKC/K_PKC_STAT3)) / (1.0 + pPKC/K_PKC_STAT3))
+		a_PI3K_to_STAT3() = ((1.0 + PI3K_to_STAT3 * (pPI3K/K_PI3K_STAT3)) / (1.0 + pPI3K/K_PI3K_STAT3))
+		a_mTOR_to_STAT3() = ((1.0 + mTOR_to_STAT3 * (pmTOR/K_mTOR_STAT3)) / (1.0 + pmTOR/K_mTOR_STAT3))
+		a_SMAD_to_STAT3() = ((1.0 + SMAD_to_STAT3 * (pSMAD/K_SMAD_STAT3)) / (1.0 + pSMAD/K_SMAD_STAT3))
 
 
 		# inhibitor factors
@@ -231,6 +381,7 @@ begin model
 		inh_PI3K() = (1.0 / (1.0 + i_PI3K))
 		inh_MEK() = (1.0 / (1.0 + i_MEK))
 		inh_PKC() = (1.0 / (1.0 + i_PKC))
+		inh_mTOR() = (1.0 / (1.0 + i_mTOR))
 		
 
 		# inactive and active initial kinetic rates (prior to hyperbolic multipliers)
@@ -246,10 +397,19 @@ begin model
 		kr_nPI3K() = (vnPI3K / (pPI3K + KM_pi3k_dephos))
 		kr_pPI3K() = (vpPI3K / (nPI3K + KM_pi3k_phos))
 
+		kr_pmTOR() = (vpmTOR / (nmTOR + KM_mtor_phos))
+		kr_nmTOR() = (vnmTOR / (pmTOR + KM_mtor_dephos))
+
+		kr_pSTAT3() = (vpSTAT3 / (nSTAT3 + KM_stat3_phos))
+		kr_nSTAT3() = (vnSTAT3 / (pSTAT3 + KM_stat3_dephos))
 		
+		kr_pSMAD() = (vpSMAD / (nSMAD + KM_smad_phos))
+		kr_nSMAD() = (vnSMAD / (pSMAD + KM_smad_dephos))
+
+
 		# Driving force for LB DPD
-		driving_force_lb() = ((b_lb_egfr * pEGFR) + (b_lb_mek * pMEK) + (b_lb_pkc * pPKC) + (b_lb_pi3k * pPI3K))
-		driving_force_canc() = ((b_nc_egfr * pEGFR) + (b_nc_mek * pMEK) + (b_nc_pkc * pPKC) + (b_nc_pi3k * pPI3K))
+		driving_force_lb() = ((b_lb_egfr * pEGFR) + (b_lb_mek * pMEK) + (b_lb_pkc * pPKC) + (b_lb_pi3k * pPI3K + b_lb_mtor * pmTOR) + (b_lb_stat3 * pSTAT3) + (b_lb_smad * pSMAD))
+		driving_force_canc() = ((b_nc_egfr * pEGFR) + (b_nc_mek * pMEK) + (b_nc_pkc * pPKC) + (b_nc_pi3k * pPI3K) + (b_nc_mtor * pmTOR) + (b_nc_stat3 * pSTAT3) + (b_nc_smad * pSMAD))
 		# Restoring force -- modelled using linear approx. of derivative of quartic potential (two stable states). 
 		# I approx. by taking the distance between extrema and roots of cubic to be equal across the function. 
 		# Hence we end up with three slopes, which can then be plugged into line formula to give linear approximations for the force.
@@ -273,18 +433,33 @@ begin model
 		EGFR_MEK_fn() = (EGFR_to_MEK )
 		EGFR_PKC_fn() = (EGFR_to_PKC)
 		EGFR_PI3K_fn() = (EGFR_to_PI3K)
+		EGFR_mTOR_fn() = (EGFR_to_mTOR)
+		EGFR_SMAD_fn() = (EGFR_to_SMAD)
+		EGFR_STAT3_fn() = (EGFR_to_STAT3)
 	
 		MEK_EGFR_fn() = (MEK_to_EGFR) 
 		MEK_PKC_fn() = (MEK_to_PKC)
 		MEK_PI3K_fn() = (MEK_to_PI3K)
+		MEK_mTOR_fn() = (MEK_to_mTOR)
+		MEK_SMAD_fn() = (MEK_to_SMAD)
+		MEK_STAT3_fn() = (MEK_to_STAT3)
+
 
 		PKC_EGFR_fn() = (PKC_to_EGFR)
 		PKC_MEK_fn() = (PKC_to_MEK) 
 		PKC_PI3K_fn() = (PKC_to_PI3K)
+		PKC_mTOR_fn() = (PKC_to_mTOR)
+		PKC_SMAD_fn() = (PKC_to_SMAD)
+		PKC_STAT3_fn() = (PKC_to_STAT3)
+	
 
 		PI3K_EGFR_fn() = (PI3K_to_EGFR) 
 		PI3K_MEK_fn() = (PI3K_to_MEK)
 		PI3K_PKC_fn() = (PI3K_to_PKC) 
+		PI3K_mTOR_fn() = (PI3K_to_mTOR)
+		PI3K_SMAD_fn() = (PI3K_to_SMAD)
+		PI3K_STAT3_fn() = (PI3K_to_STAT3)
+
 
 	end functions
 
@@ -308,7 +483,7 @@ begin model
 
 
 		# activation through phosphorylation
-		EGFR(dimer!+,tyr~0) -> EGFR(dimer!+,tyr~p) (a_MEK_to_EGFR() * a_PKC_to_EGFR() * a_PI3K_to_EGFR() * inh_EGFR() * kr_pEGFR() )
+		EGFR(dimer!+,tyr~0) -> EGFR(dimer!+,tyr~p) (a_MEK_to_EGFR() * a_PKC_to_EGFR() * a_PI3K_to_EGFR() * a_mTOR_to_EGFR() * a_SMAD_to_EGFR() * a_STAT3_to_EGFR() * inh_EGFR() * kr_pEGFR() )
 		EGFR(dimer,tyr~p) -> EGFR(dimer,tyr~0) ( kr_nEGFR() )
 
 
@@ -316,23 +491,35 @@ begin model
 		EGFR(inhibitor) + IEGFR(EGFRRec) <-> EGFR(inhibitor!0).IEGFR(EGFRRec!0) k_iegfr_f, k_iegfr_b		
 
 		# MEK phos/dephos
-		MEK(st~0) -> MEK(st~p) (a_EGFR_to_MEK() * a_PI3K_to_MEK() * a_PKC_to_MEK() * inh_MEK() * kr_pMEK() )
+		MEK(st~0) -> MEK(st~p) (a_EGFR_to_MEK() * a_PI3K_to_MEK() * a_PKC_to_MEK() * a_mTOR_to_MEK() * a_SMAD_to_MEK() * a_STAT3_to_MEK() * inh_MEK() * kr_pMEK() )
 		MEK(st~p) -> MEK(st~0) ( kr_nMEK() )
 		# inhibition
 		MEK(inhibitor) + IMEK(MEKRec) <-> MEK(inhibitor!0).IMEK(MEKRec!0) k_imek_f, k_imek_b
 
 		# PKC phos/dephos
-		PKC(s~0) -> PKC(s~p)  (a_EGFR_to_PKC() * a_MEK_to_PKC() * a_PI3K_to_PKC() * inh_PKC() * kr_pPKC() )
+		PKC(s~0) -> PKC(s~p)  (a_EGFR_to_PKC() * a_MEK_to_PKC() * a_PI3K_to_PKC() * a_mTOR_to_PKC() * a_SMAD_to_PKC() * a_STAT3_to_PKC() * inh_PKC() * kr_pPKC() )
 		PKC(s~p) -> PKC(s~0)  ( kr_nPKC() )
 		# inhibition
 		PKC(inhibitor) + IPKC(PKCRec) <-> PKC(inhibitor!0).IPKC(PKCRec!0) k_ipkc_f, k_ipkc_b
 
+
 		# PI3K
 		# phosphorylation
-		PI3K(active~0) -> PI3K(active~p) ((a_EGFR_to_PI3K() * a_MEK_to_PI3K() * a_PKC_to_PI3K() * inh_PI3K()) * kr_pPI3K() )
+		PI3K(active~0) -> PI3K(active~p) (a_EGFR_to_PI3K() * a_MEK_to_PI3K() * a_PKC_to_PI3K() * a_mTOR_to_PI3K() * a_SMAD_to_PI3K() * a_STAT3_to_PI3K() * inh_PI3K() * kr_pPI3K() )
 		PI3K(active~p) -> PI3K(active~0) ( kr_nPI3K() )
 		# inhibition
 		PI3K(inhibitor) + IPI3K(PI3KRec) <-> PI3K(inhibitor!0).IPI3K(PI3KRec!0) k_ipi3k_f, k_ipi3k_b
+
+		# mTOR
+		# phosphorylation
+		mTOR(active~0) -> mTOR(active~p) (a_EGFR_to_mTOR() * a_MEK_to_mTOR() * a_PKC_to_mTOR() * a_PI3K_to_mTOR() * a_SMAD_to_mTOR() * a_STAT3_to_mTOR() * inh_mTOR() * kr_pmTOR() )
+		mTOR(active~p) -> mTOR(active~0) ( kr_nmTOR() )
+		# inhibition
+		mTOR(inhibitor) + IMTOR(mTORRec) <-> mTOR(inhibitor!0).ImTOR(MTORRec!0) k_imtor_f, k_imtor_b
+
+		# STAT3
+		# phosphorylation
+		STAT3(active~0) -> STAT3(active~p) ((a_EGFR_to_STAT3() * a_MEK_to_STAT3() * a_PKC_to_STAT3() * kr_pSTAT3() ))
 
 		# DPD species accumulates at a rate specified by driving_force+restoring_force.
 		0 -> S_DPD_LB() (driving_force_lb()+restoring_force_lb()) 
