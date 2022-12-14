@@ -667,6 +667,7 @@ begin model
 		setConcentration("S_DPD_NC()", "S_C");
 		simulate({suffix=>"DPD_trajectory_BT549_iMEK", method=>"ode", t_end=>3600, n_steps=>3600, print_functions=>1});
 
+
 		# PKC inhibition -- cell line BT549
 		resetConcentrations()
 		setConcentration("EGF(EGFRRec)", "EGF_conc");
@@ -690,7 +691,6 @@ begin model
 		setConcentration("S_DPD_LB()", "S_B");
 		setConcentration("S_DPD_NC()", "S_C");
 		simulate({suffix=>"DPD_trajectory_BT549_imTOR", method=>"ode", t_end=>3600, n_steps=>3600, print_functions=>1});
-
 
 
 	end actions
