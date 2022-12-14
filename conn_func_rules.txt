@@ -1,0 +1,7 @@
+a_PI3K_to_EGFR() * a_mTOR_to_EGFR() * a_MEK_to_EGFR() * a_PKC_to_EGFR() * a_SMAD_to_EGFR() * 
+a_EGFR_to_PI3K() * a_mTOR_to_PI3K() * a_MEK_to_PI3K() * a_SMAD_to_PI3K() * a_STAT3_to_PI3K() * 
+a_PI3K_to_mTOR() * a_PKC_to_mTOR() * 
+a_EGFR_to_MEK() * a_PI3K_to_MEK() * a_mTOR_to_MEK() * a_SMAD_to_MEK() * a_STAT3_to_MEK() * 
+a_EGFR_to_PKC() * 
+
+a_EGFR_to_STAT3() * 
