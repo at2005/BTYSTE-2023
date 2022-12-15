@@ -1,123 +1,123 @@
 # Created by BioNetGen 2.8.3
 begin parameters
-    1 EGFR_conc__FREE        10.0  # Constant
-    2 EGFR_to_MEK__FREE      6.0  # Constant
-    3 EGFR_to_PI3K__FREE     6.0  # Constant
-    4 EGFR_to_PKC__FREE      6.0  # Constant
-    5 EGFR_to_STAT3__FREE    6.0  # Constant
-    6 KM_egfr_dephos__FREE   10.0  # Constant
-    7 KM_egfr_phos__FREE     10.0  # Constant
-    8 KM_mek_dephos__FREE    10.0  # Constant
-    9 KM_mek_phos__FREE      10.0  # Constant
-   10 KM_mtor_dephos__FREE   10.0  # Constant
-   11 KM_mtor_phos__FREE     10.0  # Constant
-   12 KM_pi3k_dephos__FREE   10.0  # Constant
-   13 KM_pi3k_phos__FREE     10.0  # Constant
-   14 KM_pkc_dephos__FREE    10.0  # Constant
-   15 KM_pkc_phos__FREE      10.0  # Constant
-   16 KM_smad_dephos__FREE   10.0  # Constant
-   17 KM_smad_phos__FREE     10.0  # Constant
-   18 KM_stat3_dephos__FREE  10.0  # Constant
-   19 KM_stat3_phos__FREE    10.0  # Constant
-   20 K_EGFR_MEK__FREE       10.0  # Constant
-   21 K_EGFR_PI3K__FREE      10.0  # Constant
-   22 K_EGFR_PKC__FREE       10.0  # Constant
-   23 K_EGFR_STAT3__FREE     10.0  # Constant
-   24 K_MEK_EGFR__FREE       10.0  # Constant
-   25 K_MEK_PI3K__FREE       10.0  # Constant
-   26 K_PI3K_EGFR__FREE      10.0  # Constant
-   27 K_PI3K_MEK__FREE       10.0  # Constant
-   28 K_PI3K_mTOR__FREE      10.0  # Constant
-   29 K_PKC_EGFR__FREE       10.0  # Constant
-   30 K_PKC_mTOR__FREE       10.0  # Constant
-   31 K_SMAD_EGFR__FREE      10.0  # Constant
-   32 K_SMAD_MEK__FREE       10.0  # Constant
-   33 K_SMAD_PI3K__FREE      10.0  # Constant
-   34 K_STAT3_MEK__FREE      10.0  # Constant
-   35 K_STAT3_PI3K__FREE     10.0  # Constant
-   36 K_mTOR_EGFR__FREE      10.0  # Constant
-   37 K_mTOR_MEK__FREE       10.0  # Constant
-   38 K_mTOR_PI3K__FREE      10.0  # Constant
-   39 MEK_conc__FREE         10.0  # Constant
-   40 MEK_to_EGFR__FREE      6.0  # Constant
-   41 MEK_to_PI3K__FREE      6.0  # Constant
-   42 PI3K_conc__FREE        10.0  # Constant
-   43 PI3K_to_EGFR__FREE     6.0  # Constant
-   44 PI3K_to_MEK__FREE      6.0  # Constant
-   45 PI3K_to_mTOR__FREE     6.0  # Constant
-   46 PKC_conc__FREE         10.0  # Constant
-   47 PKC_to_EGFR__FREE      6.0  # Constant
-   48 PKC_to_mTOR__FREE      6.0  # Constant
-   49 SMAD_conc__FREE        10.0  # Constant
-   50 SMAD_to_EGFR__FREE     6.0  # Constant
-   51 SMAD_to_MEK__FREE      6.0  # Constant
-   52 SMAD_to_PI3K__FREE     6.0  # Constant
-   53 STAT3_conc__FREE       10.0  # Constant
-   54 STAT3_to_MEK__FREE     6.0  # Constant
-   55 STAT3_to_PI3K__FREE    6.0  # Constant
-   56 S_B__FREE              50.0  # Constant
-   57 S_C__FREE              50.0  # Constant
-   58 S_L__FREE              50.0  # Constant
-   59 S_N__FREE              50.0  # Constant
-   60 b_lb_mek__FREE         6.0  # Constant
-   61 b_lb_mtor__FREE        6.0  # Constant
-   62 b_lb_pi3k__FREE        6.0  # Constant
-   63 b_lb_pkc__FREE         6.0  # Constant
-   64 b_lb_stat3__FREE       6.0  # Constant
-   65 b_lb_tgfb_smad__FREE   6.0  # Constant
-   66 b_nc_mek__FREE         6.0  # Constant
-   67 b_nc_mtor__FREE        6.0  # Constant
-   68 b_nc_pi3k__FREE        6.0  # Constant
-   69 b_nc_pkc__FREE         6.0  # Constant
-   70 b_nc_stat3__FREE       6.0  # Constant
-   71 b_nc_tgfb_smad__FREE   6.0  # Constant
-   72 k_dim1_b__FREE         10.0  # Constant
-   73 k_dim1_f__FREE         10.0  # Constant
-   74 k_dim2_b__FREE         10.0  # Constant
-   75 k_dim2_f__FREE         10.0  # Constant
-   76 k_dim3_b__FREE         10.0  # Constant
-   77 k_dim3_f__FREE         10.0  # Constant
-   78 k_egf2_b__FREE         10.0  # Constant
-   79 k_egf2_f__FREE         10.0  # Constant
-   80 k_egf_b__FREE          10.0  # Constant
-   81 k_egf_f__FREE          10.0  # Constant
-   82 k_iegfr_b__FREE        10.0  # Constant
-   83 k_iegfr_f__FREE        10.0  # Constant
-   84 k_imek_b__FREE         10.0  # Constant
-   85 k_imek_f__FREE         10.0  # Constant
-   86 k_imtor_b__FREE        10.0  # Constant
-   87 k_imtor_f__FREE        10.0  # Constant
-   88 k_ipi3k_b__FREE        10.0  # Constant
-   89 k_ipi3k_f__FREE        10.0  # Constant
-   90 k_ipkc_b__FREE         10.0  # Constant
-   91 k_ipkc_f__FREE         10.0  # Constant
-   92 k_r_dim__FREE          10.0  # Constant
-   93 lb_const__FREE         100.0  # Constant
-   94 m1_lb__FREE            100.0  # Constant
-   95 m1_nc__FREE            100.0  # Constant
-   96 m2_lb__FREE            100.0  # Constant
-   97 m2_nc__FREE            100.0  # Constant
-   98 m3_lb__FREE            100.0  # Constant
-   99 m3_nc__FREE            100.0  # Constant
-  100 mTOR_conc__FREE        10.0  # Constant
-  101 mTOR_to_EGFR__FREE     6.0  # Constant
-  102 mTOR_to_MEK__FREE      6.0  # Constant
-  103 mTOR_to_PI3K__FREE     6.0  # Constant
-  104 nc_const__FREE         100.0  # Constant
-  105 vnEGFR__FREE           10.0  # Constant
-  106 vnMEK__FREE            10.0  # Constant
-  107 vnPI3K__FREE           10.0  # Constant
-  108 vnPKC__FREE            10.0  # Constant
-  109 vnSMAD__FREE           10.0  # Constant
-  110 vnSTAT3__FREE          10.0  # Constant
-  111 vnmTOR__FREE           10.0  # Constant
-  112 vpEGFR__FREE           10.0  # Constant
-  113 vpMEK__FREE            10.0  # Constant
-  114 vpPI3K__FREE           10.0  # Constant
-  115 vpPKC__FREE            10.0  # Constant
-  116 vpSMAD__FREE           10.0  # Constant
-  117 vpSTAT3__FREE          10.0  # Constant
-  118 vpmTOR__FREE           10.0  # Constant
+    1 EGFR_conc__FREE        125.90998485734539
+    2 EGFR_to_MEK__FREE      1.2825921486685488
+    3 EGFR_to_PI3K__FREE     -0.3052548863544562
+    4 EGFR_to_PKC__FREE      -2.6110583787438415
+    5 EGFR_to_STAT3__FREE    -0.02371635428226959
+    6 KM_egfr_dephos__FREE   5199.414373104273
+    7 KM_egfr_phos__FREE     29.703170143117607
+    8 KM_mek_dephos__FREE    5439.734122017617
+    9 KM_mek_phos__FREE      13.43849915816055
+   10 KM_mtor_dephos__FREE   1005.0687380881126
+   11 KM_mtor_phos__FREE     3892.2364411325307
+   12 KM_pi3k_dephos__FREE   1977.037206598796
+   13 KM_pi3k_phos__FREE     420.87472780826215
+   14 KM_pkc_dephos__FREE    114.69847131471606
+   15 KM_pkc_phos__FREE      19.91861260465808
+   16 KM_smad_dephos__FREE   766.5859693606864
+   17 KM_smad_phos__FREE     720.025566118361
+   18 KM_stat3_dephos__FREE  1311.8852163532533
+   19 KM_stat3_phos__FREE    586.9057665137321
+   20 K_EGFR_MEK__FREE       -8.88414825222859
+   21 K_EGFR_PI3K__FREE      6.458501371878086
+   22 K_EGFR_PKC__FREE       -8.308722763160562
+   23 K_EGFR_STAT3__FREE     9.12379488159878
+   24 K_MEK_EGFR__FREE       0.32159884713366615
+   25 K_MEK_PI3K__FREE       -1.9515799568082706
+   26 K_PI3K_EGFR__FREE      -4.558162527459816
+   27 K_PI3K_MEK__FREE       -9.957578751249011
+   28 K_PI3K_mTOR__FREE      -3.8668086910505615
+   29 K_PKC_EGFR__FREE       0.21902530157217548
+   30 K_PKC_mTOR__FREE       5.9091405152706535
+   31 K_SMAD_EGFR__FREE      8.507547938091928
+   32 K_SMAD_MEK__FREE       5.663929417047331
+   33 K_SMAD_PI3K__FREE      -0.6563858867003862
+   34 K_STAT3_MEK__FREE      0.2535734556630782
+   35 K_STAT3_PI3K__FREE     -2.577440563849499
+   36 K_mTOR_EGFR__FREE      3.1456655951197803
+   37 K_mTOR_MEK__FREE       9.646257148935536
+   38 K_mTOR_PI3K__FREE      7.759250201513272
+   39 MEK_conc__FREE         10.832860787829405
+   40 MEK_to_EGFR__FREE      4.6488610319293056
+   41 MEK_to_PI3K__FREE      -5.205620396499045
+   42 PI3K_conc__FREE        792.7671416956625
+   43 PI3K_to_EGFR__FREE     -2.1491781791693905
+   44 PI3K_to_MEK__FREE      4.226238475005834
+   45 PI3K_to_mTOR__FREE     1.9904873164397667
+   46 PKC_conc__FREE         1153.6830994363522
+   47 PKC_to_EGFR__FREE      4.05844856867855
+   48 PKC_to_mTOR__FREE      2.295687421840938
+   49 SMAD_conc__FREE        3052.8388664518725
+   50 SMAD_to_EGFR__FREE     5.913305180499899
+   51 SMAD_to_MEK__FREE      1.0888853560718008
+   52 SMAD_to_PI3K__FREE     -0.875582256820115
+   53 STAT3_conc__FREE       13.431906749728848
+   54 STAT3_to_MEK__FREE     -5.566282311959976
+   55 STAT3_to_PI3K__FREE    1.5095089181906243
+   56 S_B__FREE              48.650864837524466
+   57 S_C__FREE              -30.873888630775927
+   58 S_L__FREE              18.78924328500257
+   59 S_N__FREE              4.726925903528212
+   60 b_lb_mek__FREE         -3.7936854706584886
+   61 b_lb_mtor__FREE        -5.121514148761494
+   62 b_lb_pi3k__FREE        -3.7715683264873334
+   63 b_lb_pkc__FREE         -1.5361819086039024
+   64 b_lb_stat3__FREE       3.045102537363615
+   65 b_lb_tgfb_smad__FREE   -3.8132054279251504
+   66 b_nc_mek__FREE         -2.6304989871795375
+   67 b_nc_mtor__FREE        -4.145910981727136
+   68 b_nc_pi3k__FREE        1.4101999605710702
+   69 b_nc_pkc__FREE         -4.826984093592214
+   70 b_nc_stat3__FREE       -2.5273015722268575
+   71 b_nc_tgfb_smad__FREE   4.74091724377406
+   72 k_dim1_b__FREE         17.00360497464698
+   73 k_dim1_f__FREE         537.6253004131668
+   74 k_dim2_b__FREE         1533.3279293996777
+   75 k_dim2_f__FREE         113.39621823872513
+   76 k_dim3_b__FREE         49.48621729740175
+   77 k_dim3_f__FREE         14.146472730814747
+   78 k_egf2_b__FREE         577.1490831870404
+   79 k_egf2_f__FREE         59.68822754171804
+   80 k_egf_b__FREE          480.6842271940563
+   81 k_egf_f__FREE          716.2202237573267
+   82 k_iegfr_b__FREE        18.97767690481155
+   83 k_iegfr_f__FREE        7560.025712703403
+   84 k_imek_b__FREE         3509.5095756242285
+   85 k_imek_f__FREE         564.6543267735965
+   86 k_imtor_b__FREE        403.7593508445518
+   87 k_imtor_f__FREE        561.6952437090115
+   88 k_ipi3k_b__FREE        21.43989834451617
+   89 k_ipi3k_f__FREE        118.90021368523595
+   90 k_ipkc_b__FREE         581.9731157044332
+   91 k_ipkc_f__FREE         591.4479482663762
+   92 k_r_dim__FREE          9110.547253809058
+   93 lb_const__FREE         4.300959201642954
+   94 m1_lb__FREE            -99.55959338287221
+   95 m1_nc__FREE            10.169566283923047
+   96 m2_lb__FREE            -38.76561015538367
+   97 m2_nc__FREE            -74.52752746812698
+   98 m3_lb__FREE            86.48489442442127
+   99 m3_nc__FREE            93.7225304791545
+  100 mTOR_conc__FREE        4253.081056079232
+  101 mTOR_to_EGFR__FREE     -5.370303579340967
+  102 mTOR_to_MEK__FREE      -4.427652260614663
+  103 mTOR_to_PI3K__FREE     -4.400962967637536
+  104 nc_const__FREE         -28.625353303496354
+  105 vnEGFR__FREE           26.70776781705147
+  106 vnMEK__FREE            697.0955837771828
+  107 vnPI3K__FREE           92.78705563742923
+  108 vnPKC__FREE            229.11580633728417
+  109 vnSMAD__FREE           1179.4454168613388
+  110 vnSTAT3__FREE          1048.1752256422587
+  111 vnmTOR__FREE           5761.833977962098
+  112 vpEGFR__FREE           7314.807363041441
+  113 vpMEK__FREE            16.79748144279047
+  114 vpPI3K__FREE           1652.8815273194605
+  115 vpPKC__FREE            25.8785796410047
+  116 vpSMAD__FREE           10.096947506373194
+  117 vpSTAT3__FREE          123.31309027813465
+  118 vpmTOR__FREE           3245.5462943894872
   119 k_egf_f                k_egf_f__FREE  # ConstantExpression
   120 k_egf_b                k_egf_b__FREE  # ConstantExpression
   121 k_egf2_f               k_egf2_f__FREE  # ConstantExpression
