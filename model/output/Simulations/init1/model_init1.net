@@ -243,6 +243,7 @@ begin parameters
   241 S_N                    S_N__FREE  # ConstantExpression
   242 S_C                    S_C__FREE  # ConstantExpression
 end parameters
+
 begin functions
     1 a_PI3K_to_EGFR() (1.0+(PI3K_to_EGFR*(pPI3K/K_PI3K_EGFR)))/(1.0+(pPI3K/K_PI3K_EGFR))
     2 a_mTOR_to_EGFR() (1.0+(mTOR_to_EGFR*(pmTOR/K_mTOR_EGFR)))/(1.0+(pmTOR/K_mTOR_EGFR))
