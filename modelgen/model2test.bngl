@@ -1,0 +1,15 @@
+begin model
+begin molecule types
+EGFR(ligand,inhibitor,tyr~0~p)
+iEGFR(EGFRRec)
+PI3K(inhibitor,active~0~p)
+IPI3K(PI3KRec)
+PKC(inhibitor,s~0~p)
+iPKC(PKCRec)
+mTOR(inhibitor,st~0~p)
+imTOR(mTORRec)
+MEK(inhibitor,st~0~p)
+iMEK(MEKRec)
+SMAD(st~0~p)
+STAT3(styr~0~p)
+end molecule types

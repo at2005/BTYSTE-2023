@@ -1,0 +1,44 @@
+
+consensus =  "consensus_topology.csv");
+
+modules {
+	EGFR : iEGFR, EGF -> tyr;
+	PI3K : IPI3K -> active;
+	PKC : iPKC -> s;
+	mTOR : imTOR -> st;
+	MEK : iMEK -> st;
+	SMAD -> st;
+	STAT3 -> styr;
+}
+
+
+DPD {
+	LB : linear_approx;
+	NC : linear_approx;
+}
+
+
+
+additional_rules {
+	EGFR : {
+	    reversible egf_binding : EGFR(egf, dimer) + EGF(EGFRRec) -> EGFR(egf!0, dimer).EGF(EGFRRec!0);
+
+	    # for approximation sake assume that all dimers dissociate at same rate
+	    # dimerization case 1 -> ligand 1 binds and causes dimerization
+	    dim1: EGFR(egf!+,dimer) + EGFR(egf,dimer) -> EGFR(egf!+,dimer!0).EGFR(egf,dimer!0);
+	    
+	    # dimerization case 2 -> both ligands bind and cause dimerization
+	    dim2: EGFR(egf!+,dimer) + EGFR(egf!+,dimer) -> EGFR(egf!+,dimer!0).EGFR(egf!+,dimer!0);
+
+	    # dimerization case 3 -> receptors dimerize without ligand binding
+	    dim3: EGFR(egf,dimer) + EGFR(egf,dimer) -> EGFR(egf,dimer!0).EGFR(egf,dimer!0);
+
+
+	    # EGF can bind to EGFR in dimer 
+	    reversible egf_binding2 : EGFR(egf,dimer!+) + EGF(EGFRRec) <-> EGFR(egf!0,dimer!+).EGF(EGFRRec!0);
+
+	    # dimer dissociation
+	    r_dim : EGFR(dimer!0).EGFR(dimer!0) -> EGFR(dimer) + EGFR(dimer);
+	}
+}
+

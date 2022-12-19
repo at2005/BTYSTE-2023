@@ -31,18 +31,17 @@ begin model
 
 
 	begin parameters
+		KD_egf = 1.77e10-7
 		k_egf_f = k_egf_f__FREE
-		k_egf_b = k_egf_b__FREE
+		k_egf_b = k_egf_f/KD_egf
 		k_egf2_f = k_egf2_f__FREE
-		k_egf2_b = k_egf2_b__FREE
+		k_egf2_b = k_egf2_f/KD_egf
+
 
 		#dimerization kinetc parameters
-		k_dim1_f = k_dim1_f__FREE
-		k_dim1_b = k_dim1_b__FREE
-		k_dim2_f = k_dim2_f__FREE
-		k_dim2_b = k_dim2_b__FREE
-		k_dim3_f = k_dim3_f__FREE
-		k_dim3_b = k_dim3_b__FREE
+		k_dim1 = k_dim1__FREE
+		k_dim2 = k_dim2__FREE
+		k_dim3 = k_dim3__FREE
 
 		k_r_dim  = k_r_dim__FREE
 		
@@ -137,6 +136,8 @@ begin model
 		K_PI3K_mTOR = K_PI3K_mTOR__FREE
 		PKC_to_mTOR = PKC_to_mTOR__FREE
 		K_PKC_mTOR = K_PKC_mTOR__FREE
+		MEK_to_mTOR = MEK_to_mTOR__FREE
+		K_MEK_mTOR = K_MEK_mTOR__FREE
 
 
 		# influence of all proteins on MEK
@@ -155,6 +156,7 @@ begin model
 		# influence of all proteins on PK
 		EGFR_to_PKC = EGFR_to_PKC__FREE
 		K_EGFR_PKC = K_EGFR_PKC__FREE
+
 
 		# influence of all proteins on STAT3
 		EGFR_to_STAT3 = EGFR_to_STAT3__FREE
@@ -307,7 +309,7 @@ begin model
 
 		a_PI3K_to_mTOR() = ((1.0 + PI3K_to_mTOR * (pPI3K/K_PI3K_mTOR)) / (1.0 + pPI3K/K_PI3K_mTOR))
 		a_PKC_to_mTOR() = ((1.0 + PKC_to_mTOR * (pPKC/K_PKC_mTOR)) / (1.0 + pPKC/K_PKC_mTOR))
-
+		a_MEK_to_mTOR() = ((1.0 + MEK_to_mTOR * (pMEK/K_MEK_mTOR)) / (1.0 + pMEK/K_MEK_mTOR))
 
 		a_EGFR_to_MEK() = ((1.0 + EGFR_to_MEK * (pEGFR/K_EGFR_MEK)) / (1.0 + pEGFR/K_EGFR_MEK))
 		a_PI3K_to_MEK() = ((1.0 + PI3K_to_MEK * (pPI3K/K_PI3K_MEK)) / (1.0 + pPI3K/K_PI3K_MEK))
@@ -382,18 +384,23 @@ begin model
 		MEK_EGFR_fn() = (MEK_to_EGFR)
 		PKC_EGFR_fn() = (PKC_to_EGFR)
 		SMAD_EGFR_fn() = (SMAD_to_EGFR)
+
 		EGFR_PI3K_fn() = (EGFR_to_PI3K)
 		mTOR_PI3K_fn() = (mTOR_to_PI3K)
 		MEK_PI3K_fn() = (MEK_to_PI3K)
 		SMAD_PI3K_fn() = (SMAD_to_PI3K)
 		STAT3_PI3K_fn() = (STAT3_to_PI3K)
+
 		PI3K_mTOR_fn() = (PI3K_to_mTOR)
 		PKC_mTOR_fn() = (PKC_to_mTOR)
+		MEK_mTOR_fn() = (MEK_to_mTOR)
+
 		EGFR_MEK_fn() = (EGFR_to_MEK)
 		PI3K_MEK_fn() = (PI3K_to_MEK)
 		mTOR_MEK_fn() = (mTOR_to_MEK)
 		SMAD_MEK_fn() = (SMAD_to_MEK)
 		STAT3_MEK_fn() = (STAT3_to_MEK)
+
 		EGFR_PKC_fn() = (EGFR_to_PKC)
 		EGFR_STAT3_fn() = (EGFR_to_STAT3)
 
@@ -417,16 +424,18 @@ begin model
 	begin reaction rules
 		# EGFR modelling
 		# EGFR binds to inhibitor
+		# assume dissociation rate is constant regardless of ligand binding
 		# coarse-grained EGFR model --> ligand binding initiates dimerization
 		EGFR(egf) + EGF(EGFRRec) <-> EGFR(egf!0).EGF(EGFRRec!0) k_egf_f, k_egf_b
-		# dimerization case 1 -> ligand 1 binds and causes dimerization
-		EGFR(egf!+,dimer) + EGFR(egf,dimer) <-> EGFR(egf!+,dimer!0).EGFR(egf,dimer!0) k_dim1_f, k_dim1_b
-		# dimerization case 2 -> both ligands bind and cause dimerization
-		EGFR(egf!+,dimer) + EGFR(egf!+,dimer) <-> EGFR(egf!+,dimer!0).EGFR(egf!+,dimer!0) k_dim2_f, k_dim2_b
-		# dimerization case 3 -> receptors dimerize without ligand binding
-		EGFR(egf,dimer) + EGFR(egf,dimer) <-> EGFR(egf,dimer!0).EGFR(egf,dimer!0) k_dim3_f, k_dim3_b
 		# EGF can bind to EGFR in dimer 
 		EGFR(egf,dimer!+) + EGF(EGFRRec) <-> EGFR(egf!0,dimer!+).EGF(EGFRRec!0) k_egf2_f, k_egf2_b
+
+		# dimerization case 1 -> ligand 1 binds and causes dimerization
+		EGFR(egf!+,dimer) + EGFR(egf,dimer) -> EGFR(egf!+,dimer!0).EGFR(egf,dimer!0) k_dim1
+		# dimerization case 2 -> both ligands bind and cause dimerization
+		EGFR(egf!+,dimer) + EGFR(egf!+,dimer) -> EGFR(egf!+,dimer!0).EGFR(egf!+,dimer!0) k_dim2
+		# dimerization case 3 -> receptors dimerize without ligand binding
+		EGFR(egf,dimer) + EGFR(egf,dimer) -> EGFR(egf,dimer!0).EGFR(egf,dimer!0) k_dim3
 		# dimer dissociation
 		EGFR(dimer!0).EGFR(dimer!0) -> EGFR(dimer) + EGFR(dimer) k_r_dim
 
@@ -435,9 +444,10 @@ begin model
 		EGFR(dimer!+,tyr~0) -> EGFR(dimer!+,tyr~p) (a_PI3K_to_EGFR() * a_mTOR_to_EGFR() * a_MEK_to_EGFR() * a_PKC_to_EGFR() * a_SMAD_to_EGFR() * inh_EGFR() * kr_pEGFR() )
 		EGFR(dimer,tyr~p) -> EGFR(dimer,tyr~0) ( kr_nEGFR() )
 
-
 		#inhibition
 		EGFR(inhibitor) + IEGFR(EGFRRec) <-> EGFR(inhibitor!0).IEGFR(EGFRRec!0) k_iegfr_f, k_iegfr_b		
+
+
 		# MEK phos/dephos
 		MEK(st~0) -> MEK(st~p) (a_EGFR_to_MEK() * a_PI3K_to_MEK() * a_mTOR_to_MEK() * a_SMAD_to_MEK() * a_STAT3_to_MEK() * inh_MEK() * kr_pMEK() )
 		MEK(st~p) -> MEK(st~0) ( kr_nMEK() )
@@ -461,7 +471,7 @@ begin model
 
 		# mTOR
 		# phosphorylation
-		mTOR(active~0) -> mTOR(active~p) (a_PI3K_to_mTOR() * a_PKC_to_mTOR() * inh_mTOR() * kr_pmTOR() )
+		mTOR(active~0) -> mTOR(active~p) (a_PI3K_to_mTOR() * a_PKC_to_mTOR() * a_MEK_to_mTOR() * inh_mTOR() * kr_pmTOR() )
 		mTOR(active~p) -> mTOR(active~0) ( kr_nmTOR() )
 
 		# inhibition
@@ -477,7 +487,6 @@ begin model
 		SMAD(active~0) -> SMAD(active~p) (kr_pSMAD() )
 		SMAD(active~p) -> SMAD(active~0) ( kr_nSMAD() )
 
-		
 
 		# DPD species accumulates at a rate specified by driving_force+restoring_force.
 		0 -> S_DPD_LB() (driving_force_lb()+restoring_force_lb()) 
