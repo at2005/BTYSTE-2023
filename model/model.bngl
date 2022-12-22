@@ -512,7 +512,7 @@ begin model
 		setConcentration("EGF(EGFRRec)", "EGF_conc");
 		setConcentration("IEGFR(EGFRRec)", 0);
 		setConcentration("IMEK(MEKRec)", 0);
-		setConcentration("IPI3K(PI3KRec)", "IPI3K_conc");
+		setConcentration("IPI3K(PI3KRec)", "iPI3K_conc");
 		setConcentration("IPKC(PKCRec)", 0);
 		setConcentration("IMTOR(mTORRec)", 0);
 		setConcentration("S_DPD_LB()", "S_B");
@@ -523,7 +523,7 @@ begin model
 		# EGFR inhibition -- cell line MCF10A
 		resetConcentrations()
 		setConcentration("EGF(EGFRRec)", "EGF_conc");
-		setConcentration("IEGFR(EGFRRec)", "IEGFR_conc");
+		setConcentration("IEGFR(EGFRRec)", "iEGFR_conc");
 		setConcentration("IMEK(MEKRec)", 0);
 		setConcentration("IPI3K(PI3KRec)", 0);
 		setConcentration("IPKC(PKCRec)", 0);
@@ -536,7 +536,7 @@ begin model
 		resetConcentrations()
 		setConcentration("EGF(EGFRRec)", "EGF_conc");
 		setConcentration("IEGFR(EGFRRec)", 0);
-		setConcentration("IMEK(MEKRec)", "IMEK_conc");
+		setConcentration("IMEK(MEKRec)", "iMEK_conc");
 		setConcentration("IPI3K(PI3KRec)", 0);
 		setConcentration("IPKC(PKCRec)", 0);
 		setConcentration("IMTOR(mTORRec)", 0);
@@ -550,7 +550,7 @@ begin model
 		setConcentration("IEGFR(EGFRRec)", 0);
 		setConcentration("IMEK(MEKRec)", 0);
 		setConcentration("IPI3K(PI3KRec)", 0);
-		setConcentration("IPKC(PKCRec)", "IPKC_conc");
+		setConcentration("IPKC(PKCRec)", "iPKC_conc");
 		setConcentration("IMTOR(mTORRec)", 0);
 		setConcentration("S_DPD_LB()", "S_B");
 		setConcentration("S_DPD_NC()", "S_C");
@@ -564,7 +564,7 @@ begin model
 		setConcentration("IMEK(MEKRec)", 0);
 		setConcentration("IPI3K(PI3KRec)", 0);
 		setConcentration("IPKC(PKCRec)", 0);
-		setConcentration("IMTOR(mTORRec)", "IMTOR_conc");
+		setConcentration("IMTOR(mTORRec)", "imTOR_conc");
 		setConcentration("S_DPD_LB()", "S_B");
 		setConcentration("S_DPD_NC()", "S_C");
 		simulate({suffix=>"MCF10A_imTOR", method=>"ode", t_end=>3600, n_steps=>360, print_functions=>1});
@@ -578,7 +578,7 @@ begin model
 		setConcentration("EGF(EGFRRec)", "EGF_conc");
 		setConcentration("IEGFR(EGFRRec)", 0);
 		setConcentration("IMEK(MEKRec)", 0);
-		setConcentration("IPI3K(PI3KRec)", "IPI3K_conc");
+		setConcentration("IPI3K(PI3KRec)", "iPI3K_conc");
 		setConcentration("IPKC(PKCRec)", 0);
 		setConcentration("IMTOR(mTORRec)", 0);
 		setConcentration("S_DPD_LB()", "S_B");
@@ -589,7 +589,7 @@ begin model
 		# EGFR inhibition -- cell line MCF10A
 		resetConcentrations()
 		setConcentration("EGF(EGFRRec)", "EGF_conc");
-		setConcentration("IEGFR(EGFRRec)", "IEGFR_conc");
+		setConcentration("IEGFR(EGFRRec)", "iEGFR_conc");
 		setConcentration("IMEK(MEKRec)", 0);
 		setConcentration("IPI3K(PI3KRec)", 0);
 		setConcentration("IPKC(PKCRec)", 0);
@@ -602,7 +602,7 @@ begin model
 		resetConcentrations()
 		setConcentration("EGF(EGFRRec)", "EGF_conc");
 		setConcentration("IEGFR(EGFRRec)", 0);
-		setConcentration("IMEK(MEKRec)", "IMEK_conc");
+		setConcentration("IMEK(MEKRec)", "iMEK_conc");
 		setConcentration("IPI3K(PI3KRec)", 0);
 		setConcentration("IPKC(PKCRec)", 0);
 		setConcentration("IMTOR(mTORRec)", 0);
@@ -617,7 +617,7 @@ begin model
 		setConcentration("IEGFR(EGFRRec)", 0);
 		setConcentration("IMEK(MEKRec)", 0);
 		setConcentration("IPI3K(PI3KRec)", 0);
-		setConcentration("IPKC(PKCRec)", "IPKC_conc");
+		setConcentration("IPKC(PKCRec)", "iPKC_conc");
 		setConcentration("IMTOR(mTORRec)", 0);
 		setConcentration("S_DPD_LB()", "S_B");
 		setConcentration("S_DPD_NC()", "S_C");
@@ -630,7 +630,7 @@ begin model
 		setConcentration("IMEK(MEKRec)", 0);
 		setConcentration("IPI3K(PI3KRec)", 0);
 		setConcentration("IPKC(PKCRec)", 0);
-		setConcentration("IMTOR(mTORRec)", "IMTOR_conc");
+		setConcentration("IMTOR(mTORRec)", "imTOR_conc");
 		setConcentration("S_DPD_LB()", "S_B");
 		setConcentration("S_DPD_NC()", "S_C");
 		simulate({suffix=>"DPD_trajectory_MCF10A_imTOR", method=>"ode", t_end=>3600, n_steps=>360, print_functions=>1});

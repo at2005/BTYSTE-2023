@@ -1,120 +1,120 @@
 # Created by BioNetGen 2.8.3
 begin parameters
-    1 EGFR_conc__FREE        94.22778946905854  # Constant
-    2 EGFR_to_MEK__FREE      15.96090695777413  # Constant
-    3 EGFR_to_PI3K__FREE     19.83831117857543  # Constant
-    4 EGFR_to_PKC__FREE      71.82536932693665  # Constant
-    5 EGFR_to_STAT3__FREE    24.6612558857964  # Constant
-    6 KM_egfr_dephos__FREE   57.578330071566114  # Constant
-    7 KM_egfr_phos__FREE     670.8063720621685  # Constant
-    8 KM_mek_dephos__FREE    1120.5300750367749  # Constant
-    9 KM_mek_phos__FREE      3680.2927133196004  # Constant
-   10 KM_mtor_dephos__FREE   239.35319485838792  # Constant
-   11 KM_mtor_phos__FREE     641.952685448236  # Constant
-   12 KM_pi3k_dephos__FREE   1153.4894681752512  # Constant
-   13 KM_pi3k_phos__FREE     208.1676043853443  # Constant
-   14 KM_pkc_dephos__FREE    19.4475162611757  # Constant
-   15 KM_pkc_phos__FREE      11.416078002677787  # Constant
-   16 KM_smad_dephos__FREE   209.12119325446878  # Constant
-   17 KM_smad_phos__FREE     3243.070914505389  # Constant
-   18 KM_stat3_dephos__FREE  802.4583526206893  # Constant
-   19 KM_stat3_phos__FREE    1111.7545245672047  # Constant
-   20 K_EGFR_MEK__FREE       20.14004755648422  # Constant
-   21 K_EGFR_PI3K__FREE      154.9625872017785  # Constant
-   22 K_EGFR_PKC__FREE       0.0065229787130915715  # Constant
-   23 K_EGFR_STAT3__FREE     0.9744073025842571  # Constant
-   24 K_MEK_EGFR__FREE       364.1418047175654  # Constant
-   25 K_MEK_PI3K__FREE       843.3947360907305  # Constant
-   26 K_MEK_mTOR__FREE       110.76478250802393  # Constant
-   27 K_PI3K_EGFR__FREE      139.76929986660176  # Constant
-   28 K_PI3K_MEK__FREE       1.8562814008045039  # Constant
-   29 K_PI3K_mTOR__FREE      7316.361800853148  # Constant
-   30 K_PKC_EGFR__FREE       0.19108354441819692  # Constant
-   31 K_PKC_mTOR__FREE       9.744255515430853  # Constant
-   32 K_SMAD_EGFR__FREE      0.01884813370129146  # Constant
-   33 K_SMAD_MEK__FREE       114.99101468476454  # Constant
-   34 K_SMAD_PI3K__FREE      0.009156113364246795  # Constant
-   35 K_STAT3_MEK__FREE      0.0014881895603071694  # Constant
-   36 K_STAT3_PI3K__FREE     0.2253187897931263  # Constant
-   37 K_mTOR_EGFR__FREE      0.021210983744829718  # Constant
-   38 K_mTOR_MEK__FREE       34.30865322035094  # Constant
-   39 K_mTOR_PI3K__FREE      3032.9666190923513  # Constant
-   40 MEK_conc__FREE         0.0018463402792655893  # Constant
-   41 MEK_to_EGFR__FREE      68.47680272635463  # Constant
-   42 MEK_to_PI3K__FREE      44.33878351350485  # Constant
-   43 MEK_to_mTOR__FREE      11.394062166187592  # Constant
-   44 PI3K_conc__FREE        4.721827405718411  # Constant
-   45 PI3K_to_EGFR__FREE     1.5736907607366692  # Constant
-   46 PI3K_to_MEK__FREE      12.944050887394788  # Constant
-   47 PI3K_to_mTOR__FREE     84.70144028947902  # Constant
-   48 PKC_conc__FREE         7.505495421180612  # Constant
-   49 PKC_to_EGFR__FREE      6.36181365414534  # Constant
-   50 PKC_to_mTOR__FREE      49.63503310559823  # Constant
-   51 SMAD_conc__FREE        9.207523089267088  # Constant
-   52 SMAD_to_EGFR__FREE     29.18756130408171  # Constant
-   53 SMAD_to_MEK__FREE      93.55244214653  # Constant
-   54 SMAD_to_PI3K__FREE     76.52377450288037  # Constant
-   55 STAT3_conc__FREE       0.005597539988936765  # Constant
-   56 STAT3_to_MEK__FREE     67.97926534849252  # Constant
-   57 STAT3_to_PI3K__FREE    90.18092533656363  # Constant
-   58 S_B__FREE              28.379720666132997  # Constant
-   59 S_C__FREE              24.01733304095457  # Constant
-   60 S_L__FREE              32.900636480974896  # Constant
-   61 S_N__FREE              2.48419257142384  # Constant
-   62 b_lb_mek__FREE         72.75021234365991  # Constant
-   63 b_lb_mtor__FREE        74.03748923750584  # Constant
-   64 b_lb_pi3k__FREE        93.72887829782094  # Constant
-   65 b_lb_pkc__FREE         53.05339723828427  # Constant
-   66 b_lb_stat3__FREE       28.454868087051324  # Constant
-   67 b_lb_tgfb_smad__FREE   15.265776308403332  # Constant
-   68 b_nc_mek__FREE         55.11135966271229  # Constant
-   69 b_nc_mtor__FREE        66.3390086247588  # Constant
-   70 b_nc_pi3k__FREE        38.67145869069112  # Constant
-   71 b_nc_pkc__FREE         16.560510276192446  # Constant
-   72 b_nc_stat3__FREE       80.31977419681454  # Constant
-   73 b_nc_tgfb_smad__FREE   32.0293723177783  # Constant
-   74 k_dim1__FREE           2166.0000514219146  # Constant
-   75 k_dim2__FREE           71.01440665950038  # Constant
-   76 k_dim3__FREE           9928.3144474803  # Constant
-   77 k_egf2_f__FREE         166.62016453493197  # Constant
-   78 k_egf_f__FREE          865.2137615155144  # Constant
-   79 k_iegfr_b__FREE        476.7213320351934  # Constant
-   80 k_iegfr_f__FREE        255.19454682734462  # Constant
-   81 k_imek_b__FREE         4724.761329781737  # Constant
-   82 k_imek_f__FREE         131.43948657297605  # Constant
-   83 k_imtor_b__FREE        488.54429283077184  # Constant
-   84 k_imtor_f__FREE        96.68238483632298  # Constant
-   85 k_ipi3k_b__FREE        253.94690800389785  # Constant
-   86 k_ipi3k_f__FREE        157.91481224704015  # Constant
-   87 k_ipkc_b__FREE         13.788790583339354  # Constant
-   88 k_ipkc_f__FREE         409.26016624679494  # Constant
-   89 k_r_dim__FREE          204.22156629971886  # Constant
-   90 lb_const__FREE         35.38323422603051  # Constant
-   91 m1_lb__FREE            21.61334070611909  # Constant
-   92 m1_nc__FREE            11.291157981990139  # Constant
-   93 m2_lb__FREE            81.49940082589859  # Constant
-   94 m2_nc__FREE            74.18614715736774  # Constant
-   95 m3_lb__FREE            54.59889571453726  # Constant
-   96 m3_nc__FREE            25.41645344351879  # Constant
-   97 mTOR_conc__FREE        5830.678426743098  # Constant
-   98 mTOR_to_EGFR__FREE     33.693733061204455  # Constant
-   99 mTOR_to_MEK__FREE      83.28833451219019  # Constant
-  100 mTOR_to_PI3K__FREE     40.33427165178118  # Constant
-  101 nc_const__FREE         71.79562797972281  # Constant
-  102 vnEGFR__FREE           186.7914675439668  # Constant
-  103 vnMEK__FREE            150.73784548648825  # Constant
-  104 vnPI3K__FREE           49.401842438554176  # Constant
-  105 vnPKC__FREE            2213.9069717111247  # Constant
-  106 vnSMAD__FREE           400.0040484630002  # Constant
-  107 vnSTAT3__FREE          12.074414496318738  # Constant
-  108 vnmTOR__FREE           88.69492308950342  # Constant
-  109 vpEGFR__FREE           27.610473778519996  # Constant
-  110 vpMEK__FREE            305.2964085571819  # Constant
-  111 vpPI3K__FREE           2495.7919764456333  # Constant
-  112 vpPKC__FREE            1108.670525149151  # Constant
-  113 vpSMAD__FREE           9547.95816631909  # Constant
-  114 vpSTAT3__FREE          1158.712973796739  # Constant
-  115 vpmTOR__FREE           57.766107344608436  # Constant
+    1 EGFR_conc__FREE        1.1335559726471685
+    2 EGFR_to_MEK__FREE      16.01162008309231
+    3 EGFR_to_PI3K__FREE     57.83744875242491
+    4 EGFR_to_PKC__FREE      74.63827556611645
+    5 EGFR_to_STAT3__FREE    39.68613027795493
+    6 KM_egfr_dephos__FREE   690.4712881616937
+    7 KM_egfr_phos__FREE     1624.0643749694987
+    8 KM_mek_dephos__FREE    106.86635386708943
+    9 KM_mek_phos__FREE      8009.681811816079
+   10 KM_mtor_dephos__FREE   1772.8350139657305
+   11 KM_mtor_phos__FREE     60.95870994234451
+   12 KM_pi3k_dephos__FREE   16.763781329535718
+   13 KM_pi3k_phos__FREE     201.94440051541966
+   14 KM_pkc_dephos__FREE    40.653452099126355
+   15 KM_pkc_phos__FREE      1916.2325934734693
+   16 KM_smad_dephos__FREE   163.8392609860693
+   17 KM_smad_phos__FREE     12.327683071850156
+   18 KM_stat3_dephos__FREE  665.0148966698434
+   19 KM_stat3_phos__FREE    20.139557468109228
+   20 K_EGFR_MEK__FREE       409.75483707180786
+   21 K_EGFR_PI3K__FREE      0.5626506535215876
+   22 K_EGFR_PKC__FREE       1626.407231148881
+   23 K_EGFR_STAT3__FREE     1.291737453721556
+   24 K_MEK_EGFR__FREE       2071.7456291235753
+   25 K_MEK_PI3K__FREE       0.005669475670470227
+   26 K_MEK_mTOR__FREE       9412.02584277824
+   27 K_PI3K_EGFR__FREE      0.0014971909994394472
+   28 K_PI3K_MEK__FREE       4359.3786884288465
+   29 K_PI3K_mTOR__FREE      1588.5620621510266
+   30 K_PKC_EGFR__FREE       3.5349658625544422
+   31 K_PKC_mTOR__FREE       41.44321905412557
+   32 K_SMAD_EGFR__FREE      2.086146581532896
+   33 K_SMAD_MEK__FREE       118.40532156454952
+   34 K_SMAD_PI3K__FREE      0.11498965403516327
+   35 K_STAT3_MEK__FREE      114.25278274940388
+   36 K_STAT3_PI3K__FREE     1502.2676198057643
+   37 K_mTOR_EGFR__FREE      3159.5987386488446
+   38 K_mTOR_MEK__FREE       6895.697990660799
+   39 K_mTOR_PI3K__FREE      152.1801855887839
+   40 MEK_conc__FREE         11.065701981583043
+   41 MEK_to_EGFR__FREE      79.03657059870645
+   42 MEK_to_PI3K__FREE      12.927084828956362
+   43 MEK_to_mTOR__FREE      12.374909449649401
+   44 PI3K_conc__FREE        1384.535456285292
+   45 PI3K_to_EGFR__FREE     69.60243728880342
+   46 PI3K_to_MEK__FREE      45.16227856031218
+   47 PI3K_to_mTOR__FREE     83.13228325477492
+   48 PKC_conc__FREE         0.0819534813792539
+   49 PKC_to_EGFR__FREE      87.90351315560847
+   50 PKC_to_mTOR__FREE      8.142025577341998
+   51 SMAD_conc__FREE        67.9602723031292
+   52 SMAD_to_EGFR__FREE     8.12326556579209
+   53 SMAD_to_MEK__FREE      59.58137713098669
+   54 SMAD_to_PI3K__FREE     15.483355955613973
+   55 STAT3_conc__FREE       10.554136266980944
+   56 STAT3_to_MEK__FREE     63.302522765925026
+   57 STAT3_to_PI3K__FREE    45.68159280238725
+   58 S_B__FREE              25.803920949110292
+   59 S_C__FREE              12.512387684956906
+   60 S_L__FREE              4.637840401000915
+   61 S_N__FREE              8.675368595033163
+   62 b_lb_mek__FREE         33.12138154382629
+   63 b_lb_mtor__FREE        40.9530654930394
+   64 b_lb_pi3k__FREE        51.0349956512344
+   65 b_lb_pkc__FREE         1.3677244914178601
+   66 b_lb_stat3__FREE       73.4960968012605
+   67 b_lb_tgfb_smad__FREE   99.38151343137613
+   68 b_nc_mek__FREE         77.03343232262402
+   69 b_nc_mtor__FREE        71.40741449386297
+   70 b_nc_pi3k__FREE        69.26358342479503
+   71 b_nc_pkc__FREE         2.867033943459859
+   72 b_nc_stat3__FREE       88.81041322165204
+   73 b_nc_tgfb_smad__FREE   44.03937563038887
+   74 k_dim1__FREE           27.311737848161176
+   75 k_dim2__FREE           13.794836163131217
+   76 k_dim3__FREE           3230.047651718837
+   77 k_egf2_f__FREE         493.632721309419
+   78 k_egf_f__FREE          938.4450813297822
+   79 k_iegfr_b__FREE        24.883777848727124
+   80 k_iegfr_f__FREE        16.999430440694116
+   81 k_imek_b__FREE         11.412119042240196
+   82 k_imek_f__FREE         1091.550926231211
+   83 k_imtor_b__FREE        727.1655678236283
+   84 k_imtor_f__FREE        117.97823127858601
+   85 k_ipi3k_b__FREE        868.504587738039
+   86 k_ipi3k_f__FREE        109.79976694786194
+   87 k_ipkc_b__FREE         649.047147410472
+   88 k_ipkc_f__FREE         177.1600231809676
+   89 k_r_dim__FREE          242.04963933092148
+   90 lb_const__FREE         80.92562938682855
+   91 m1_lb__FREE            75.3971189381991
+   92 m1_nc__FREE            76.383101140929
+   93 m2_lb__FREE            74.56607036789586
+   94 m2_nc__FREE            24.307062649026108
+   95 m3_lb__FREE            88.56412687407536
+   96 m3_nc__FREE            91.21090045626741
+   97 mTOR_conc__FREE        208.58154052061508
+   98 mTOR_to_EGFR__FREE     91.460656024212
+   99 mTOR_to_MEK__FREE      20.871495187467325
+  100 mTOR_to_PI3K__FREE     56.998236418385076
+  101 nc_const__FREE         73.208016527844
+  102 vnEGFR__FREE           56.47822117794235
+  103 vnMEK__FREE            48.91244541696813
+  104 vnPI3K__FREE           218.02934401066213
+  105 vnPKC__FREE            974.9601280425783
+  106 vnSMAD__FREE           83.11019353063416
+  107 vnSTAT3__FREE          2800.480403566103
+  108 vnmTOR__FREE           45.527074256097414
+  109 vpEGFR__FREE           9719.920657886247
+  110 vpMEK__FREE            60.866807747259486
+  111 vpPI3K__FREE           3133.8710548434965
+  112 vpPKC__FREE            2175.501720692578
+  113 vpSMAD__FREE           6418.316467268999
+  114 vpSTAT3__FREE          338.9408469232917
+  115 vpmTOR__FREE           30.117888692134816
   116 KD_egf                 1.77e10-7  # Constant
   117 k_egf_f                k_egf_f__FREE  # ConstantExpression
   118 k_egf_b                k_egf_f/KD_egf  # ConstantExpression
@@ -326,17 +326,17 @@ begin functions
    83 _rateLaw8() driving_force_canc()+restoring_force_canc()
 end functions
 begin species
-    1 EGF(EGFRRec) 0
+    1 EGF(EGFRRec) EGF_conc
     2 EGFR(dimer,egf,inhibitor,tyr~0) EGFR_conc
-    3 IEGFR(EGFRRec) 0
+    3 IEGFR(EGFRRec) iEGFR_conc
     4 MEK(inhibitor,st~0) MEK_conc
-    5 IMEK(MEKRec) 0
+    5 IMEK(MEKRec) iMEK_conc
     6 PKC(inhibitor,s~0) PKC_conc
-    7 IPKC(PKCRec) 0
+    7 IPKC(PKCRec) iPKC_conc
     8 PI3K(active~0,inhibitor) PI3K_conc
-    9 IPI3K(PI3KRec) 0
+    9 IPI3K(PI3KRec) iPI3K_conc
    10 mTOR(active~0,inhibitor) mTOR_conc
-   11 IMTOR(mTORRec) 0
+   11 IMTOR(mTORRec) imTOR_conc
    12 SMAD(active~0) SMAD_conc
    13 STAT3(active~0) STAT3_conc
    14 S_DPD_LB() 0
@@ -400,360 +400,360 @@ begin species
    72 EGF(EGFRRec!1).EGF(EGFRRec!2).EGFR(dimer!3,egf!2,inhibitor!4,tyr~p).EGFR(dimer!3,egf!1,inhibitor!5,tyr~p).IEGFR(EGFRRec!5).IEGFR(EGFRRec!4) 0
 end species
 begin reactions
-    1 1,2 16 k_egf_f #
-    2 2,2 17 0.5*k_dim3 #
-    3 2,3 18 k_iegfr_f #
-    4 4 19 _rateLaw2 #
-    5 4,5 20 k_imek_f #
-    6 6 21 _rateLaw3 #
-    7 6,7 22 k_ipkc_f #
-    8 8 23 _rateLaw4 #
-    9 8,9 24 k_ipi3k_f #
-   10 10 25 _rateLaw5 #
-   11 10,11 26 k_imtor_f #
-   12 13 27 _rateLaw6 #
-   13 12 28 kr_pSMAD #
-   14 0 14 _rateLaw7 #
-   15 0 15 _rateLaw8 #
-   16 1,17 29 2*k_egf_f #
-   17 1,18 30 k_egf_f #
-   18 16 1,2 k_egf_b #
-   19 1,17 29 2*k_egf2_f #
-   20 2,16 29 k_dim1 #
-   21 16,18 31 k_dim1 #
-   22 16,16 32 0.5*k_dim2 #
-   23 2,18 33 k_dim3 #
-   24 18,18 34 0.5*k_dim3 #
-   25 17 2,2 k_r_dim #
-   26 17 35 2*_rateLaw1 #
-   27 3,16 30 k_iegfr_f #
-   28 3,17 33 2*k_iegfr_f #
-   29 18 2,3 k_iegfr_b #
-   30 20 36 _rateLaw2 #
-   31 19 4 kr_nMEK #
-   32 5,19 36 k_imek_f #
-   33 20 4,5 k_imek_b #
-   34 22 37 _rateLaw3 #
-   35 21 6 kr_nPKC #
-   36 7,21 37 k_ipkc_f #
-   37 22 6,7 k_ipkc_b #
-   38 24 38 _rateLaw4 #
-   39 23 8 kr_nPI3K #
-   40 9,23 38 k_ipi3k_f #
-   41 24 8,9 k_ipi3k_b #
-   42 26 39 _rateLaw5 #
-   43 25 10 kr_nmTOR #
-   44 11,25 39 k_imtor_f #
-   45 26 10,11 k_imtor_b #
-   46 27 13 kr_nSTAT3 #
-   47 28 12 kr_nSMAD #
-   48 1,29 32 k_egf_f #
-   49 1,31 40 k_egf_f #
-   50 1,33 41 k_egf_f #
-   51 1,33 31 k_egf_f #
-   52 1,34 42 2*k_egf_f #
-   53 1,35 43 k_egf_f #
-   54 1,35 44 k_egf_f #
-   55 29 1,17 k_egf_b #
-   56 30 1,18 k_egf_b #
-   57 31 1,33 k_egf_b #
-   58 32 1,29 2*k_egf_b #
-   59 1,29 32 k_egf2_f #
-   60 1,31 40 k_egf2_f #
-   61 1,33 41 k_egf2_f #
-   62 1,33 31 k_egf2_f #
-   63 1,34 42 2*k_egf2_f #
-   64 1,35 43 k_egf2_f #
-   65 1,35 44 k_egf2_f #
-   66 29 1,17 k_egf2_b #
-   67 31 1,33 k_egf2_b #
-   68 32 1,29 2*k_egf2_b #
-   69 2,30 41 k_dim1 #
-   70 18,30 42 k_dim1 #
-   71 16,30 40 k_dim2 #
-   72 30,30 45 0.5*k_dim2 #
-   73 29 2,16 k_r_dim #
-   74 31 16,18 k_r_dim #
-   75 32 16,16 k_r_dim #
-   76 33 2,18 k_r_dim #
-   77 34 18,18 k_r_dim #
-   78 35 2,46 k_r_dim #
-   79 29 44 _rateLaw1 #
-   80 29 43 _rateLaw1 #
-   81 31 47 _rateLaw1 #
-   82 31 48 _rateLaw1 #
-   83 32 49 2*_rateLaw1 #
-   84 33 50 _rateLaw1 #
-   85 33 51 _rateLaw1 #
-   86 34 52 2*_rateLaw1 #
-   87 35 53 _rateLaw1 #
-   88 3,29 41 k_iegfr_f #
-   89 3,29 31 k_iegfr_f #
-   90 3,31 42 k_iegfr_f #
-   91 3,32 40 2*k_iegfr_f #
-   92 3,33 34 k_iegfr_f #
-   93 3,35 51 k_iegfr_f #
-   94 3,35 50 k_iegfr_f #
-   95 30 3,16 k_iegfr_b #
-   96 31 3,29 k_iegfr_b #
-   97 33 3,17 k_iegfr_b #
-   98 34 3,33 2*k_iegfr_b #
-   99 36 20 kr_nMEK #
-  100 36 5,19 k_imek_b #
-  101 37 22 kr_nPKC #
-  102 37 7,21 k_ipkc_b #
-  103 38 24 kr_nPI3K #
-  104 38 9,23 k_ipi3k_b #
-  105 39 26 kr_nmTOR #
-  106 39 11,25 k_imtor_b #
-  107 1,41 40 k_egf_f #
-  108 1,42 45 k_egf_f #
-  109 1,43 49 k_egf_f #
-  110 1,44 49 k_egf_f #
-  111 1,46 54 k_egf_f #
-  112 1,47 55 k_egf_f #
-  113 1,48 56 k_egf_f #
-  114 1,50 57 k_egf_f #
-  115 1,50 48 k_egf_f #
-  116 1,51 58 k_egf_f #
-  117 1,51 47 k_egf_f #
-  118 1,52 59 k_egf_f #
-  119 1,52 60 k_egf_f #
-  120 1,53 61 2*k_egf_f #
-  121 40 1,31 k_egf_b #
-  122 40 1,41 k_egf_b #
-  123 41 1,33 k_egf_b #
-  124 42 1,34 k_egf_b #
-  125 43 1,35 k_egf_b #
-  126 44 1,35 k_egf_b #
-  127 45 1,42 2*k_egf_b #
-  128 47 1,51 k_egf_b #
-  129 48 1,50 k_egf_b #
-  130 49 1,44 k_egf_b #
-  131 49 1,43 k_egf_b #
-  132 1,41 40 k_egf2_f #
-  133 1,42 45 k_egf2_f #
-  134 1,43 49 k_egf2_f #
-  135 1,44 49 k_egf2_f #
-  136 1,47 55 k_egf2_f #
-  137 1,48 56 k_egf2_f #
-  138 1,50 57 k_egf2_f #
-  139 1,50 48 k_egf2_f #
-  140 1,51 58 k_egf2_f #
-  141 1,51 47 k_egf2_f #
-  142 1,52 59 k_egf2_f #
-  143 1,52 60 k_egf2_f #
-  144 1,53 61 2*k_egf2_f #
-  145 40 1,31 k_egf2_b #
-  146 40 1,41 k_egf2_b #
-  147 41 1,33 k_egf2_b #
-  148 42 1,34 k_egf2_b #
-  149 43 1,35 k_egf2_b #
-  150 44 1,35 k_egf2_b #
-  151 45 1,42 2*k_egf2_b #
-  152 47 1,51 k_egf2_b #
-  153 48 1,50 k_egf2_b #
-  154 49 1,44 k_egf2_b #
-  155 49 1,43 k_egf2_b #
-  156 16,46 43 k_dim1 #
-  157 30,46 58 k_dim1 #
-  158 2,46 35 k_dim3 #
-  159 18,46 51 k_dim3 #
-  160 46,46 53 0.5*k_dim3 #
-  161 40 16,30 k_r_dim #
-  162 41 2,30 k_r_dim #
-  163 42 18,30 k_r_dim #
-  164 43 16,46 k_r_dim #
-  165 44 2,54 k_r_dim #
-  166 45 30,30 k_r_dim #
-  167 47 18,54 k_r_dim #
-  168 48 16,62 k_r_dim #
-  169 49 16,54 k_r_dim #
-  170 50 2,62 k_r_dim #
-  171 51 18,46 k_r_dim #
-  172 52 18,62 k_r_dim #
-  173 53 46,46 k_r_dim #
-  174 40 56 _rateLaw1 #
-  175 40 55 _rateLaw1 #
-  176 41 57 _rateLaw1 #
-  177 41 58 _rateLaw1 #
-  178 42 60 _rateLaw1 #
-  179 42 59 _rateLaw1 #
-  180 43 61 _rateLaw1 #
-  181 44 61 _rateLaw1 #
-  182 45 63 2*_rateLaw1 #
-  183 47 64 _rateLaw1 #
-  184 48 64 _rateLaw1 #
-  185 49 65 _rateLaw1 #
-  186 50 66 _rateLaw1 #
-  187 51 66 _rateLaw1 #
-  188 52 67 _rateLaw1 #
-  189 46 2 kr_nEGFR #
-  190 3,40 45 k_iegfr_f #
-  191 3,41 42 k_iegfr_f #
-  192 3,43 58 k_iegfr_f #
-  193 3,43 48 k_iegfr_f #
-  194 3,44 57 k_iegfr_f #
-  195 3,44 47 k_iegfr_f #
-  196 3,46 62 k_iegfr_f #
-  197 3,47 60 k_iegfr_f #
-  198 3,48 59 k_iegfr_f #
-  199 3,49 55 k_iegfr_f #
-  200 3,49 56 k_iegfr_f #
-  201 3,50 52 k_iegfr_f #
-  202 3,51 52 k_iegfr_f #
-  203 3,53 66 2*k_iegfr_f #
-  204 40 3,32 k_iegfr_b #
-  205 41 3,29 k_iegfr_b #
-  206 42 3,31 k_iegfr_b #
-  207 42 3,41 k_iegfr_b #
-  208 45 3,40 2*k_iegfr_b #
-  209 47 3,44 k_iegfr_b #
-  210 48 3,43 k_iegfr_b #
-  211 50 3,35 k_iegfr_b #
-  212 51 3,35 k_iegfr_b #
-  213 52 3,50 k_iegfr_b #
-  214 52 3,51 k_iegfr_b #
-  215 1,57 56 k_egf_f #
-  216 1,58 55 k_egf_f #
-  217 1,59 63 k_egf_f #
-  218 1,60 63 k_egf_f #
-  219 1,61 65 k_egf_f #
-  220 1,62 68 k_egf_f #
-  221 1,64 69 k_egf_f #
-  222 1,66 70 k_egf_f #
-  223 1,66 64 k_egf_f #
-  224 1,67 71 2*k_egf_f #
-  225 54 1,46 k_egf_b #
-  226 55 1,47 k_egf_b #
-  227 55 1,58 k_egf_b #
-  228 56 1,48 k_egf_b #
-  229 56 1,57 k_egf_b #
-  230 57 1,50 k_egf_b #
-  231 58 1,51 k_egf_b #
-  232 59 1,52 k_egf_b #
-  233 60 1,52 k_egf_b #
-  234 61 1,53 k_egf_b #
-  235 63 1,60 k_egf_b #
-  236 63 1,59 k_egf_b #
-  237 64 1,66 k_egf_b #
-  238 65 1,61 2*k_egf_b #
-  239 1,57 56 k_egf2_f #
-  240 1,58 55 k_egf2_f #
-  241 1,59 63 k_egf2_f #
-  242 1,60 63 k_egf2_f #
-  243 1,61 65 k_egf2_f #
-  244 1,64 69 k_egf2_f #
-  245 1,66 70 k_egf2_f #
-  246 1,66 64 k_egf2_f #
-  247 1,67 71 2*k_egf2_f #
-  248 55 1,47 k_egf2_b #
-  249 55 1,58 k_egf2_b #
-  250 56 1,48 k_egf2_b #
-  251 56 1,57 k_egf2_b #
-  252 57 1,50 k_egf2_b #
-  253 58 1,51 k_egf2_b #
-  254 59 1,52 k_egf2_b #
-  255 60 1,52 k_egf2_b #
-  256 61 1,53 k_egf2_b #
-  257 63 1,60 k_egf2_b #
-  258 63 1,59 k_egf2_b #
-  259 64 1,66 k_egf2_b #
-  260 65 1,61 2*k_egf2_b #
-  261 16,62 48 k_dim1 #
-  262 30,62 59 k_dim1 #
-  263 2,54 44 k_dim1 #
-  264 18,54 47 k_dim1 #
-  265 46,54 61 k_dim1 #
-  266 54,62 64 k_dim1 #
-  267 16,54 49 k_dim2 #
-  268 30,54 55 k_dim2 #
-  269 54,54 65 0.5*k_dim2 #
-  270 2,62 50 k_dim3 #
-  271 18,62 52 k_dim3 #
-  272 46,62 66 k_dim3 #
-  273 62,62 67 0.5*k_dim3 #
-  274 55 30,54 k_r_dim #
-  275 56 16,68 k_r_dim #
-  276 57 2,68 k_r_dim #
-  277 58 30,46 k_r_dim #
-  278 59 30,62 k_r_dim #
-  279 60 18,68 k_r_dim #
-  280 61 46,54 k_r_dim #
-  281 63 30,68 k_r_dim #
-  282 64 54,62 k_r_dim #
-  283 65 54,54 k_r_dim #
-  284 66 46,62 k_r_dim #
-  285 67 62,62 k_r_dim #
-  286 55 69 _rateLaw1 #
-  287 56 69 _rateLaw1 #
-  288 57 70 _rateLaw1 #
-  289 58 70 _rateLaw1 #
-  290 59 71 _rateLaw1 #
-  291 60 71 _rateLaw1 #
-  292 63 72 _rateLaw1 #
-  293 54 16 kr_nEGFR #
-  294 62 18 kr_nEGFR #
-  295 3,54 68 k_iegfr_f #
-  296 3,55 63 k_iegfr_f #
-  297 3,56 63 k_iegfr_f #
-  298 3,57 60 k_iegfr_f #
-  299 3,58 59 k_iegfr_f #
-  300 3,61 70 k_iegfr_f #
-  301 3,61 64 k_iegfr_f #
-  302 3,64 71 k_iegfr_f #
-  303 3,65 69 2*k_iegfr_f #
-  304 3,66 67 k_iegfr_f #
-  305 55 3,49 k_iegfr_b #
-  306 56 3,49 k_iegfr_b #
-  307 57 3,44 k_iegfr_b #
-  308 58 3,43 k_iegfr_b #
-  309 59 3,48 k_iegfr_b #
-  310 59 3,58 k_iegfr_b #
-  311 60 3,47 k_iegfr_b #
-  312 60 3,57 k_iegfr_b #
-  313 62 3,46 k_iegfr_b #
-  314 63 3,56 k_iegfr_b #
-  315 63 3,55 k_iegfr_b #
-  316 64 3,61 k_iegfr_b #
-  317 66 3,53 k_iegfr_b #
-  318 67 3,66 2*k_iegfr_b #
-  319 1,70 69 k_egf_f #
-  320 1,71 72 k_egf_f #
-  321 68 1,62 k_egf_b #
-  322 69 1,64 k_egf_b #
-  323 69 1,70 k_egf_b #
-  324 70 1,66 k_egf_b #
-  325 71 1,67 k_egf_b #
-  326 72 1,71 2*k_egf_b #
-  327 1,70 69 k_egf2_f #
-  328 1,71 72 k_egf2_f #
-  329 69 1,64 k_egf2_b #
-  330 69 1,70 k_egf2_b #
-  331 70 1,66 k_egf2_b #
-  332 71 1,67 k_egf2_b #
-  333 72 1,71 2*k_egf2_b #
-  334 2,68 57 k_dim1 #
-  335 18,68 60 k_dim1 #
-  336 46,68 70 k_dim1 #
-  337 62,68 71 k_dim1 #
-  338 16,68 56 k_dim2 #
-  339 30,68 63 k_dim2 #
-  340 54,68 69 k_dim2 #
-  341 68,68 72 0.5*k_dim2 #
-  342 69 54,68 k_r_dim #
-  343 70 46,68 k_r_dim #
-  344 71 62,68 k_r_dim #
-  345 72 68,68 k_r_dim #
-  346 68 30 kr_nEGFR #
-  347 3,69 72 k_iegfr_f #
-  348 3,70 71 k_iegfr_f #
-  349 68 3,54 k_iegfr_b #
-  350 69 3,65 k_iegfr_b #
-  351 70 3,61 k_iegfr_b #
-  352 71 3,64 k_iegfr_b #
-  353 71 3,70 k_iegfr_b #
-  354 72 3,69 2*k_iegfr_b #
+    1 1,2 16 k_egf_f #_R1
+    2 2,2 17 0.5*k_dim3 #_R5
+    3 2,3 18 k_iegfr_f #_R9
+    4 4 19 _rateLaw2 #_R10
+    5 4,5 20 k_imek_f #_R12
+    6 6 21 _rateLaw3 #_R13
+    7 6,7 22 k_ipkc_f #_R15
+    8 8 23 _rateLaw4 #_R16
+    9 8,9 24 k_ipi3k_f #_R18
+   10 10 25 _rateLaw5 #_R19
+   11 10,11 26 k_imtor_f #_R21
+   12 13 27 _rateLaw6 #_R22
+   13 12 28 kr_pSMAD #_R24
+   14 0 14 _rateLaw7 #_R26
+   15 0 15 _rateLaw8 #_R27
+   16 1,17 29 2*k_egf_f #_R1
+   17 1,18 30 k_egf_f #_R1
+   18 16 1,2 k_egf_b #_reverse__R1
+   19 1,17 29 2*k_egf2_f #_R2
+   20 2,16 29 k_dim1 #_R3
+   21 16,18 31 k_dim1 #_R3
+   22 16,16 32 0.5*k_dim2 #_R4
+   23 2,18 33 k_dim3 #_R5
+   24 18,18 34 0.5*k_dim3 #_R5
+   25 17 2,2 k_r_dim #_R6
+   26 17 35 2*_rateLaw1 #_R7
+   27 3,16 30 k_iegfr_f #_R9
+   28 3,17 33 2*k_iegfr_f #_R9
+   29 18 2,3 k_iegfr_b #_reverse__R9
+   30 20 36 _rateLaw2 #_R10
+   31 19 4 kr_nMEK #_R11
+   32 5,19 36 k_imek_f #_R12
+   33 20 4,5 k_imek_b #_reverse__R12
+   34 22 37 _rateLaw3 #_R13
+   35 21 6 kr_nPKC #_R14
+   36 7,21 37 k_ipkc_f #_R15
+   37 22 6,7 k_ipkc_b #_reverse__R15
+   38 24 38 _rateLaw4 #_R16
+   39 23 8 kr_nPI3K #_R17
+   40 9,23 38 k_ipi3k_f #_R18
+   41 24 8,9 k_ipi3k_b #_reverse__R18
+   42 26 39 _rateLaw5 #_R19
+   43 25 10 kr_nmTOR #_R20
+   44 11,25 39 k_imtor_f #_R21
+   45 26 10,11 k_imtor_b #_reverse__R21
+   46 27 13 kr_nSTAT3 #_R23
+   47 28 12 kr_nSMAD #_R25
+   48 1,29 32 k_egf_f #_R1
+   49 1,31 40 k_egf_f #_R1
+   50 1,33 41 k_egf_f #_R1
+   51 1,33 31 k_egf_f #_R1
+   52 1,34 42 2*k_egf_f #_R1
+   53 1,35 43 k_egf_f #_R1
+   54 1,35 44 k_egf_f #_R1
+   55 29 1,17 k_egf_b #_reverse__R1
+   56 30 1,18 k_egf_b #_reverse__R1
+   57 31 1,33 k_egf_b #_reverse__R1
+   58 32 1,29 2*k_egf_b #_reverse__R1
+   59 1,29 32 k_egf2_f #_R2
+   60 1,31 40 k_egf2_f #_R2
+   61 1,33 41 k_egf2_f #_R2
+   62 1,33 31 k_egf2_f #_R2
+   63 1,34 42 2*k_egf2_f #_R2
+   64 1,35 43 k_egf2_f #_R2
+   65 1,35 44 k_egf2_f #_R2
+   66 29 1,17 k_egf2_b #_reverse__R2
+   67 31 1,33 k_egf2_b #_reverse__R2
+   68 32 1,29 2*k_egf2_b #_reverse__R2
+   69 2,30 41 k_dim1 #_R3
+   70 18,30 42 k_dim1 #_R3
+   71 16,30 40 k_dim2 #_R4
+   72 30,30 45 0.5*k_dim2 #_R4
+   73 29 2,16 k_r_dim #_R6
+   74 31 16,18 k_r_dim #_R6
+   75 32 16,16 k_r_dim #_R6
+   76 33 2,18 k_r_dim #_R6
+   77 34 18,18 k_r_dim #_R6
+   78 35 2,46 k_r_dim #_R6
+   79 29 44 _rateLaw1 #_R7
+   80 29 43 _rateLaw1 #_R7
+   81 31 47 _rateLaw1 #_R7
+   82 31 48 _rateLaw1 #_R7
+   83 32 49 2*_rateLaw1 #_R7
+   84 33 50 _rateLaw1 #_R7
+   85 33 51 _rateLaw1 #_R7
+   86 34 52 2*_rateLaw1 #_R7
+   87 35 53 _rateLaw1 #_R7
+   88 3,29 41 k_iegfr_f #_R9
+   89 3,29 31 k_iegfr_f #_R9
+   90 3,31 42 k_iegfr_f #_R9
+   91 3,32 40 2*k_iegfr_f #_R9
+   92 3,33 34 k_iegfr_f #_R9
+   93 3,35 51 k_iegfr_f #_R9
+   94 3,35 50 k_iegfr_f #_R9
+   95 30 3,16 k_iegfr_b #_reverse__R9
+   96 31 3,29 k_iegfr_b #_reverse__R9
+   97 33 3,17 k_iegfr_b #_reverse__R9
+   98 34 3,33 2*k_iegfr_b #_reverse__R9
+   99 36 20 kr_nMEK #_R11
+  100 36 5,19 k_imek_b #_reverse__R12
+  101 37 22 kr_nPKC #_R14
+  102 37 7,21 k_ipkc_b #_reverse__R15
+  103 38 24 kr_nPI3K #_R17
+  104 38 9,23 k_ipi3k_b #_reverse__R18
+  105 39 26 kr_nmTOR #_R20
+  106 39 11,25 k_imtor_b #_reverse__R21
+  107 1,41 40 k_egf_f #_R1
+  108 1,42 45 k_egf_f #_R1
+  109 1,43 49 k_egf_f #_R1
+  110 1,44 49 k_egf_f #_R1
+  111 1,46 54 k_egf_f #_R1
+  112 1,47 55 k_egf_f #_R1
+  113 1,48 56 k_egf_f #_R1
+  114 1,50 57 k_egf_f #_R1
+  115 1,50 48 k_egf_f #_R1
+  116 1,51 58 k_egf_f #_R1
+  117 1,51 47 k_egf_f #_R1
+  118 1,52 59 k_egf_f #_R1
+  119 1,52 60 k_egf_f #_R1
+  120 1,53 61 2*k_egf_f #_R1
+  121 40 1,31 k_egf_b #_reverse__R1
+  122 40 1,41 k_egf_b #_reverse__R1
+  123 41 1,33 k_egf_b #_reverse__R1
+  124 42 1,34 k_egf_b #_reverse__R1
+  125 43 1,35 k_egf_b #_reverse__R1
+  126 44 1,35 k_egf_b #_reverse__R1
+  127 45 1,42 2*k_egf_b #_reverse__R1
+  128 47 1,51 k_egf_b #_reverse__R1
+  129 48 1,50 k_egf_b #_reverse__R1
+  130 49 1,44 k_egf_b #_reverse__R1
+  131 49 1,43 k_egf_b #_reverse__R1
+  132 1,41 40 k_egf2_f #_R2
+  133 1,42 45 k_egf2_f #_R2
+  134 1,43 49 k_egf2_f #_R2
+  135 1,44 49 k_egf2_f #_R2
+  136 1,47 55 k_egf2_f #_R2
+  137 1,48 56 k_egf2_f #_R2
+  138 1,50 57 k_egf2_f #_R2
+  139 1,50 48 k_egf2_f #_R2
+  140 1,51 58 k_egf2_f #_R2
+  141 1,51 47 k_egf2_f #_R2
+  142 1,52 59 k_egf2_f #_R2
+  143 1,52 60 k_egf2_f #_R2
+  144 1,53 61 2*k_egf2_f #_R2
+  145 40 1,31 k_egf2_b #_reverse__R2
+  146 40 1,41 k_egf2_b #_reverse__R2
+  147 41 1,33 k_egf2_b #_reverse__R2
+  148 42 1,34 k_egf2_b #_reverse__R2
+  149 43 1,35 k_egf2_b #_reverse__R2
+  150 44 1,35 k_egf2_b #_reverse__R2
+  151 45 1,42 2*k_egf2_b #_reverse__R2
+  152 47 1,51 k_egf2_b #_reverse__R2
+  153 48 1,50 k_egf2_b #_reverse__R2
+  154 49 1,44 k_egf2_b #_reverse__R2
+  155 49 1,43 k_egf2_b #_reverse__R2
+  156 16,46 43 k_dim1 #_R3
+  157 30,46 58 k_dim1 #_R3
+  158 2,46 35 k_dim3 #_R5
+  159 18,46 51 k_dim3 #_R5
+  160 46,46 53 0.5*k_dim3 #_R5
+  161 40 16,30 k_r_dim #_R6
+  162 41 2,30 k_r_dim #_R6
+  163 42 18,30 k_r_dim #_R6
+  164 43 16,46 k_r_dim #_R6
+  165 44 2,54 k_r_dim #_R6
+  166 45 30,30 k_r_dim #_R6
+  167 47 18,54 k_r_dim #_R6
+  168 48 16,62 k_r_dim #_R6
+  169 49 16,54 k_r_dim #_R6
+  170 50 2,62 k_r_dim #_R6
+  171 51 18,46 k_r_dim #_R6
+  172 52 18,62 k_r_dim #_R6
+  173 53 46,46 k_r_dim #_R6
+  174 40 56 _rateLaw1 #_R7
+  175 40 55 _rateLaw1 #_R7
+  176 41 57 _rateLaw1 #_R7
+  177 41 58 _rateLaw1 #_R7
+  178 42 60 _rateLaw1 #_R7
+  179 42 59 _rateLaw1 #_R7
+  180 43 61 _rateLaw1 #_R7
+  181 44 61 _rateLaw1 #_R7
+  182 45 63 2*_rateLaw1 #_R7
+  183 47 64 _rateLaw1 #_R7
+  184 48 64 _rateLaw1 #_R7
+  185 49 65 _rateLaw1 #_R7
+  186 50 66 _rateLaw1 #_R7
+  187 51 66 _rateLaw1 #_R7
+  188 52 67 _rateLaw1 #_R7
+  189 46 2 kr_nEGFR #_R8
+  190 3,40 45 k_iegfr_f #_R9
+  191 3,41 42 k_iegfr_f #_R9
+  192 3,43 58 k_iegfr_f #_R9
+  193 3,43 48 k_iegfr_f #_R9
+  194 3,44 57 k_iegfr_f #_R9
+  195 3,44 47 k_iegfr_f #_R9
+  196 3,46 62 k_iegfr_f #_R9
+  197 3,47 60 k_iegfr_f #_R9
+  198 3,48 59 k_iegfr_f #_R9
+  199 3,49 55 k_iegfr_f #_R9
+  200 3,49 56 k_iegfr_f #_R9
+  201 3,50 52 k_iegfr_f #_R9
+  202 3,51 52 k_iegfr_f #_R9
+  203 3,53 66 2*k_iegfr_f #_R9
+  204 40 3,32 k_iegfr_b #_reverse__R9
+  205 41 3,29 k_iegfr_b #_reverse__R9
+  206 42 3,31 k_iegfr_b #_reverse__R9
+  207 42 3,41 k_iegfr_b #_reverse__R9
+  208 45 3,40 2*k_iegfr_b #_reverse__R9
+  209 47 3,44 k_iegfr_b #_reverse__R9
+  210 48 3,43 k_iegfr_b #_reverse__R9
+  211 50 3,35 k_iegfr_b #_reverse__R9
+  212 51 3,35 k_iegfr_b #_reverse__R9
+  213 52 3,50 k_iegfr_b #_reverse__R9
+  214 52 3,51 k_iegfr_b #_reverse__R9
+  215 1,57 56 k_egf_f #_R1
+  216 1,58 55 k_egf_f #_R1
+  217 1,59 63 k_egf_f #_R1
+  218 1,60 63 k_egf_f #_R1
+  219 1,61 65 k_egf_f #_R1
+  220 1,62 68 k_egf_f #_R1
+  221 1,64 69 k_egf_f #_R1
+  222 1,66 70 k_egf_f #_R1
+  223 1,66 64 k_egf_f #_R1
+  224 1,67 71 2*k_egf_f #_R1
+  225 54 1,46 k_egf_b #_reverse__R1
+  226 55 1,47 k_egf_b #_reverse__R1
+  227 55 1,58 k_egf_b #_reverse__R1
+  228 56 1,48 k_egf_b #_reverse__R1
+  229 56 1,57 k_egf_b #_reverse__R1
+  230 57 1,50 k_egf_b #_reverse__R1
+  231 58 1,51 k_egf_b #_reverse__R1
+  232 59 1,52 k_egf_b #_reverse__R1
+  233 60 1,52 k_egf_b #_reverse__R1
+  234 61 1,53 k_egf_b #_reverse__R1
+  235 63 1,60 k_egf_b #_reverse__R1
+  236 63 1,59 k_egf_b #_reverse__R1
+  237 64 1,66 k_egf_b #_reverse__R1
+  238 65 1,61 2*k_egf_b #_reverse__R1
+  239 1,57 56 k_egf2_f #_R2
+  240 1,58 55 k_egf2_f #_R2
+  241 1,59 63 k_egf2_f #_R2
+  242 1,60 63 k_egf2_f #_R2
+  243 1,61 65 k_egf2_f #_R2
+  244 1,64 69 k_egf2_f #_R2
+  245 1,66 70 k_egf2_f #_R2
+  246 1,66 64 k_egf2_f #_R2
+  247 1,67 71 2*k_egf2_f #_R2
+  248 55 1,47 k_egf2_b #_reverse__R2
+  249 55 1,58 k_egf2_b #_reverse__R2
+  250 56 1,48 k_egf2_b #_reverse__R2
+  251 56 1,57 k_egf2_b #_reverse__R2
+  252 57 1,50 k_egf2_b #_reverse__R2
+  253 58 1,51 k_egf2_b #_reverse__R2
+  254 59 1,52 k_egf2_b #_reverse__R2
+  255 60 1,52 k_egf2_b #_reverse__R2
+  256 61 1,53 k_egf2_b #_reverse__R2
+  257 63 1,60 k_egf2_b #_reverse__R2
+  258 63 1,59 k_egf2_b #_reverse__R2
+  259 64 1,66 k_egf2_b #_reverse__R2
+  260 65 1,61 2*k_egf2_b #_reverse__R2
+  261 16,62 48 k_dim1 #_R3
+  262 30,62 59 k_dim1 #_R3
+  263 2,54 44 k_dim1 #_R3
+  264 18,54 47 k_dim1 #_R3
+  265 46,54 61 k_dim1 #_R3
+  266 54,62 64 k_dim1 #_R3
+  267 16,54 49 k_dim2 #_R4
+  268 30,54 55 k_dim2 #_R4
+  269 54,54 65 0.5*k_dim2 #_R4
+  270 2,62 50 k_dim3 #_R5
+  271 18,62 52 k_dim3 #_R5
+  272 46,62 66 k_dim3 #_R5
+  273 62,62 67 0.5*k_dim3 #_R5
+  274 55 30,54 k_r_dim #_R6
+  275 56 16,68 k_r_dim #_R6
+  276 57 2,68 k_r_dim #_R6
+  277 58 30,46 k_r_dim #_R6
+  278 59 30,62 k_r_dim #_R6
+  279 60 18,68 k_r_dim #_R6
+  280 61 46,54 k_r_dim #_R6
+  281 63 30,68 k_r_dim #_R6
+  282 64 54,62 k_r_dim #_R6
+  283 65 54,54 k_r_dim #_R6
+  284 66 46,62 k_r_dim #_R6
+  285 67 62,62 k_r_dim #_R6
+  286 55 69 _rateLaw1 #_R7
+  287 56 69 _rateLaw1 #_R7
+  288 57 70 _rateLaw1 #_R7
+  289 58 70 _rateLaw1 #_R7
+  290 59 71 _rateLaw1 #_R7
+  291 60 71 _rateLaw1 #_R7
+  292 63 72 _rateLaw1 #_R7
+  293 54 16 kr_nEGFR #_R8
+  294 62 18 kr_nEGFR #_R8
+  295 3,54 68 k_iegfr_f #_R9
+  296 3,55 63 k_iegfr_f #_R9
+  297 3,56 63 k_iegfr_f #_R9
+  298 3,57 60 k_iegfr_f #_R9
+  299 3,58 59 k_iegfr_f #_R9
+  300 3,61 70 k_iegfr_f #_R9
+  301 3,61 64 k_iegfr_f #_R9
+  302 3,64 71 k_iegfr_f #_R9
+  303 3,65 69 2*k_iegfr_f #_R9
+  304 3,66 67 k_iegfr_f #_R9
+  305 55 3,49 k_iegfr_b #_reverse__R9
+  306 56 3,49 k_iegfr_b #_reverse__R9
+  307 57 3,44 k_iegfr_b #_reverse__R9
+  308 58 3,43 k_iegfr_b #_reverse__R9
+  309 59 3,48 k_iegfr_b #_reverse__R9
+  310 59 3,58 k_iegfr_b #_reverse__R9
+  311 60 3,47 k_iegfr_b #_reverse__R9
+  312 60 3,57 k_iegfr_b #_reverse__R9
+  313 62 3,46 k_iegfr_b #_reverse__R9
+  314 63 3,56 k_iegfr_b #_reverse__R9
+  315 63 3,55 k_iegfr_b #_reverse__R9
+  316 64 3,61 k_iegfr_b #_reverse__R9
+  317 66 3,53 k_iegfr_b #_reverse__R9
+  318 67 3,66 2*k_iegfr_b #_reverse__R9
+  319 1,70 69 k_egf_f #_R1
+  320 1,71 72 k_egf_f #_R1
+  321 68 1,62 k_egf_b #_reverse__R1
+  322 69 1,64 k_egf_b #_reverse__R1
+  323 69 1,70 k_egf_b #_reverse__R1
+  324 70 1,66 k_egf_b #_reverse__R1
+  325 71 1,67 k_egf_b #_reverse__R1
+  326 72 1,71 2*k_egf_b #_reverse__R1
+  327 1,70 69 k_egf2_f #_R2
+  328 1,71 72 k_egf2_f #_R2
+  329 69 1,64 k_egf2_b #_reverse__R2
+  330 69 1,70 k_egf2_b #_reverse__R2
+  331 70 1,66 k_egf2_b #_reverse__R2
+  332 71 1,67 k_egf2_b #_reverse__R2
+  333 72 1,71 2*k_egf2_b #_reverse__R2
+  334 2,68 57 k_dim1 #_R3
+  335 18,68 60 k_dim1 #_R3
+  336 46,68 70 k_dim1 #_R3
+  337 62,68 71 k_dim1 #_R3
+  338 16,68 56 k_dim2 #_R4
+  339 30,68 63 k_dim2 #_R4
+  340 54,68 69 k_dim2 #_R4
+  341 68,68 72 0.5*k_dim2 #_R4
+  342 69 54,68 k_r_dim #_R6
+  343 70 46,68 k_r_dim #_R6
+  344 71 62,68 k_r_dim #_R6
+  345 72 68,68 k_r_dim #_R6
+  346 68 30 kr_nEGFR #_R8
+  347 3,69 72 k_iegfr_f #_R9
+  348 3,70 71 k_iegfr_f #_R9
+  349 68 3,54 k_iegfr_b #_reverse__R9
+  350 69 3,65 k_iegfr_b #_reverse__R9
+  351 70 3,61 k_iegfr_b #_reverse__R9
+  352 71 3,64 k_iegfr_b #_reverse__R9
+  353 71 3,70 k_iegfr_b #_reverse__R9
+  354 72 3,69 2*k_iegfr_b #_reverse__R9
 end reactions
 begin groups
     1 nEGFR                2,16,2*17,18,2*29,30,2*31,2*32,2*33,2*34,35,2*40,2*41,2*42,43,44,2*45,47,48,49,50,51,52,55,56,57,58,59,60,63
