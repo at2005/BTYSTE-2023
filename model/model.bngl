@@ -32,30 +32,39 @@ begin model
 
 	begin parameters
 		KD_egf = 1.77e10-7
+
+		alpha_egf = alpha_egf__FREE
+		beta_egf = beta_egf__FREE
+
 		k_egf_f = k_egf_f__FREE
-		k_egf_b = k_egf_f/KD_egf
-		k_egf2_f = k_egf2_f__FREE
-		k_egf2_b = k_egf2_f/KD_egf
+		k_egf_b = k_egf_f*KD_egf
+		k_egf2_f = k_egf_f * alpha_egf
+		k_egf2_b = k_egf2_f*KD_egf
+		k_egf3_f = k_egf_f * beta_egf
+		k_egf3_b = k_egf3_f*KD_egf
 
 
 		#dimerization kinetc parameters
 		k_dim1 = k_dim1__FREE
-		k_dim2 = k_dim2__FREE
-		k_dim3 = k_dim3__FREE
+		k_dim2 = k_dim1*alpha_egf
+		k_dim3 = k_dim1*alpha_egf*beta_egf
+
 
 		k_r_dim  = k_r_dim__FREE
 		
-		k_iegfr_f =  k_iegfr_f__FREE 
-		k_iegfr_b = k_iegfr_b__FREE
-		k_imek_f  = k_imek_f__FREE
-		k_imek_b  = k_imek_b__FREE
-		k_ipi3k_f = k_ipi3k_f__FREE
-		k_ipi3k_b = k_ipi3k_b__FREE
-		k_ipkc_f = k_ipkc_f__FREE
-		k_ipkc_b = k_ipkc_b__FREE
-		k_imtor_f = k_imtor_f__FREE
-		k_imtor_b = k_imtor_b__FREE
+		# assume association/dissociation ratio is same
+		KD_all_inh = KD_all_inh__FREE
 
+		k_iegfr_f =  k_iegfr_f__FREE
+		k_iegfr_b = k_iegfr_f*KD_all_inh
+		k_imek_f  = k_imek_f__FREE
+		k_imek_b  = k_imek_f*KD_all_inh
+		k_ipi3k_f = k_ipi3k_f__FREE
+		k_ipi3k_b = k_ipi3k_f*KD_all_inh
+		k_ipkc_f = k_ipkc_f__FREE
+		k_ipkc_b = k_ipkc_f*KD_all_inh
+		k_imtor_f = k_imtor_f__FREE
+		k_imtor_b = k_imtor_f*KD_all_inh
 
 
 		# phosphorylation/dephosphorylation Michaelis constants
@@ -165,7 +174,7 @@ begin model
 
 
 		# initial concentrations 
-		EGF_conc = 1.667
+		EGF_conc = 1.56e-9
 		# inhibitors
 		iEGFR_conc = 1.08e-6
 		iMEK_conc = 1.7e-6
@@ -185,41 +194,59 @@ begin model
 		
 		# DPD trajectory variables
 		# gradients for restoring force => f(S)
-		m1_lb = m1_lb__FREE
-		m2_lb = m2_lb__FREE
-		m3_lb = m3_lb__FREE
+		# m1_lb = m1_lb__FREE
+		#m2_lb = m2_lb__FREE
+		#m3_lb = m3_lb__FREE
 
-		m1_nc = m1_nc__FREE
-		m2_nc = m2_nc__FREE
-		m3_nc = m3_nc__FREE
+		# m1_nc = m1_nc__FREE
+		#m2_nc = m2_nc__FREE
+		#m3_nc = m3_nc__FREE
 
 		# constants for f(S)
-		lb_const = lb_const__FREE
-		nc_const = nc_const__FREE
+		# lb_const = lb_const__FREE
+		# # nc_const = nc_const__FREE
 
-		# coefficient * ratio, rij*(x/s), for driving force
-		b_lb_mek = b_lb_mek__FREE
-		b_lb_pkc = b_lb_pkc__FREE
-		b_lb_pi3k = b_lb_pi3k__FREE
-		b_lb_mtor = b_lb_mtor__FREE
-		b_lb_tgfb_smad = b_lb_tgfb_smad__FREE
-		b_lb_stat3 = b_lb_stat3__FREE
+		# # coefficient * ratio, rij*(x/s), for driving force
+		# b_lb_mek = b_lb_mek__FREE
+		# b_lb_pkc = b_lb_pkc__FREE
+		# b_lb_pi3k = b_lb_pi3k__FREE
+		# b_lb_mtor = b_lb_mtor__FREE
+		# b_lb_tgfb_smad = b_lb_tgfb_smad__FREE
+		# b_lb_stat3 = b_lb_stat3__FREE
 
-		b_nc_mek = b_nc_mek__FREE
-		b_nc_pkc = b_nc_pkc__FREE
-		b_nc_pi3k = b_nc_pi3k__FREE
-		b_nc_mtor = b_nc_mtor__FREE
-		b_nc_tgfb_smad = b_nc_tgfb_smad__FREE
-		b_nc_stat3 = b_nc_stat3__FREE
+		# b_nc_mek = b_nc_mek__FREE
+		# b_nc_pkc = b_nc_pkc__FREE
+		# b_nc_pi3k = b_nc_pi3k__FREE
+		# b_nc_mtor = b_nc_mtor__FREE
+		# b_nc_tgfb_smad = b_nc_tgfb_smad__FREE
+		# b_nc_stat3 = b_nc_stat3__FREE
 
 
-		# Stable steady states (luminal/basal)
-		S_L = S_L__FREE
-		S_B = S_B__FREE
+		## Stable steady states (luminal/basal)
+		# S_L = S_L__FREE
+		# S_B = S_B__FREE
 
-		# Normal/Cancerous steady states
-		S_N = S_N__FREE
-		S_C = S_C__FREE
+		## Normal/Cancerous steady states
+		# S_N = S_N__FREE
+		# S_C = S_C__FREE
+
+		
+		# a_pEGFR a_pEGFR__FREE
+		# a_pPKC a_pPKC__FREE
+		# a_pPI3K a_pPI3K__FREE
+		# a_pmTOR a_pmTOR__FREE
+		# a_pMEK a_pMEK__FREE
+		# a_pSTAT3 a_pSTAT3__FREE
+		# # a_pSMAD a_pSMAD__FREE
+		a_pEGFR 1
+		a_pPKC 1
+		a_pPI3K 1
+		a_pmTOR 1
+		a_pMEK 1
+		a_pSTAT3 1
+		a_pSMAD 1
+
+
 	end parameters
 
 
@@ -270,7 +297,6 @@ begin model
 		Molecules pSTAT3 STAT3(active~p)
 
 		# inhibitor-bound species
-		Species EGF_lig EGF(EGFRRec!0).EGFR(egf!0)
 		Species i_EGFR IEGFR(EGFRRec!0).EGFR(inhibitor!0)
 		Species i_MEK IMEK(MEKRec!0).MEK(inhibitor!0)
 		Species i_PI3K IPI3K(PI3KRec!0).PI3K(inhibitor!0)
@@ -356,67 +382,54 @@ begin model
 		kr_nSMAD() = (vnSMAD / (pSMAD + KM_smad_dephos))
 
 
-		# Driving force for LB DPD
-		driving_force_lb() =  ((b_lb_mek * pMEK) + (b_lb_pkc * pPKC) + (b_lb_pi3k * pPI3K + b_lb_mtor * pmTOR) + (b_lb_stat3 * pSTAT3) + (b_lb_tgfb_smad * pSMAD))
-		driving_force_canc() =  ((b_nc_mek * pMEK) + (b_nc_pkc * pPKC) + (b_nc_pi3k * pPI3K) + (b_nc_mtor * pmTOR) + (b_nc_stat3 * pSTAT3) + (b_nc_tgfb_smad * pSMAD))
-		# Restoring force -- modelled using linear approx. of derivative of quartic potential (two stable states). 
-		# I approx. by taking the distance between extrema and roots of cubic to be equal across the function. 
-		# Hence we end up with three slopes, which can then be plugged into line formula to give linear approximations for the force.
-		# The constant value I have added for mathematical formalism. We may not even need it for the approximation to work.
-		# However, I am reluctant to remove it until I have finished the optimization.
-		restoring_force_lb() = (\
-		if(S_LB < ((3*S_L+S_B)/4.0),m1_lb * (S_LB-S_L), \
-		if(S_LB > ((3*S_B+S_L)/4.0),m3_lb * (S_LB-S_B), \
-		(m2_lb * S_LB))) \
-		+lb_const)
+		## Driving force for LB DPD
+		# driving_force_lb() =  ((b_lb_mek * pMEK) + (b_lb_pkc * pPKC) + (b_lb_pi3k * pPI3K + b_lb_mtor * pmTOR) + (b_lb_stat3 * pSTAT3) + (b_lb_tgfb_smad * pSMAD))
+		# # driving_force_canc() =  ((b_nc_mek * pMEK) + (b_nc_pkc * pPKC) + (b_nc_pi3k * pPI3K) + (b_nc_mtor * pmTOR) + (b_nc_stat3 * pSTAT3) + (b_nc_tgfb_smad * pSMAD))
+		# ## Restoring force -- modelled using linear approx. of derivative of quartic potential (two stable states). 
+		# ## I approx. by taking the distance between extrema and roots of cubic to be equal across the function. 
+		# ## Hence we end up with three slopes, which can then be plugged into line formula to give linear approximations for the force.
+		# ## The constant value I have added for mathematical formalism. We may not even need it for the approximation to work.
+		# ## However, I am reluctant to remove it until I have finished the optimization.
+		# restoring_force_lb() = (\
+		# if(S_LB < ((3*S_L+S_B)/4.0),-m1_lb * (S_LB-S_L), \
+		# if(S_LB > ((3*S_B+S_L)/4.0),-m1_lb * (S_LB-S_B), \
+		# (m1_lb * S_LB))) \
+		# +lb_const)
 
 
-		restoring_force_canc() = (\
-		if(S_NC < ((3*S_N + S_C)/4.0), m1_nc*(S_NC - S_N), \
-		if(S_NC > ((3*S_C + S_N)/4.0), m3_nc*(S_NC - S_C), \
-		(m2_nc * S_NC))) \
-		+ nc_const)		
+		# restoring_force_canc() = (\
+		# if(S_NC < ((3*S_N + S_C)/4.0), -m1_nc*(S_NC - S_N), \
+		# if(S_NC > ((3*S_C + S_N)/4.0), m1_nc*(S_NC - S_C), \
+		# (m1_nc * S_NC))) \
+		# + nc_const)		
 	
 	
 		# BMRA connection strengths for prop file
-		# PI3K_EGFR_fn() = (PI3K_to_EGFR)
-		# mTOR_EGFR_fn() = (mTOR_to_EGFR)
-		# MEK_EGFR_fn() = (MEK_to_EGFR)
-		# PKC_EGFR_fn() = (PKC_to_EGFR)
-		# SMAD_EGFR_fn() = (SMAD_to_EGFR)
-
-		# EGFR_PI3K_fn() = (EGFR_to_PI3K)
-		# mTOR_PI3K_fn() = (mTOR_to_PI3K)
-		# MEK_PI3K_fn() = (MEK_to_PI3K)
-		# SMAD_PI3K_fn() = (SMAD_to_PI3K)
-		# STAT3_PI3K_fn() = (STAT3_to_PI3K)
-
-		# PI3K_mTOR_fn() = (PI3K_to_mTOR)
-		# PKC_mTOR_fn() = (PKC_to_mTOR)
-		# MEK_mTOR_fn() = (MEK_to_mTOR)
-
-		# EGFR_MEK_fn() = (EGFR_to_MEK)
-		# PI3K_MEK_fn() = (PI3K_to_MEK)
-		# mTOR_MEK_fn() = (mTOR_to_MEK)
-		# SMAD_MEK_fn() = (SMAD_to_MEK)
-		# STAT3_MEK_fn() = (STAT3_to_MEK)
-
-		# EGFR_PKC_fn() = (EGFR_to_PKC)
-		# EGFR_STAT3_fn() = (EGFR_to_STAT3)
 
 
-		PI3K_DPD_NC() = (b_nc_pi3k)
-		mTOR_DPD_NC() = (b_nc_mtor)
-		MEK_DPD_NC() = (b_nc_mek)
-		PKC_DPD_NC() = (b_nc_pkc)
-		TGFb_SMAD_DPD_NC() = (b_nc_tgfb_smad)
-		STAT3_DPD_NC() = (b_nc_stat3)
-		PI3K_DPD_LB() = (b_lb_pi3k)
-		mTOR_DPD_LB() = (b_lb_mtor)
-		MEK_DPD_LB() = (b_lb_mek)
-		PKC_DPD_LB() = (b_lb_pkc)
-		TGFb_SMAD_DPD_LB() = (b_lb_tgfb_smad)
-		STAT3_DPD_LB() = (b_lb_stat3)
+		#PI3K_DPD_NC() = (b_nc_pi3k)
+		#mTOR_DPD_NC() = (b_nc_mtor)
+		#MEK_DPD_NC() = (b_nc_mek)
+		#PKC_DPD_NC() = (b_nc_pkc)
+		#TGFb_SMAD_DPD_NC() = (b_nc_tgfb_smad)
+		#STAT3_DPD_NC() = (b_nc_stat3)
+		#PI3K_DPD_LB() = (b_lb_pi3k)
+		#mTOR_DPD_LB() = (b_lb_mtor)
+		#MEK_DPD_LB() = (b_lb_mek)
+		#PKC_DPD_LB() = (b_lb_pkc)
+		#TGFb_SMAD_DPD_LB() = (b_lb_tgfb_smad)
+		#STAT3_DPD_LB() = (b_lb_stat3)
+
+		
+		exp_pEGFR() = (a_pEGFR * pEGFR)
+		exp_pPI3K() = (a_pPI3K * pPI3K)
+		exp_pMEK() = (a_pMEK * pMEK)
+		exp_pSMAD() = (a_pSMAD * pSMAD)
+		exp_pSTAT3() = (a_pSTAT3 * pSTAT3)
+		exp_pPKC() = (a_pPKC * pPKC)
+		exp_pmTOR() = (a_pmTOR * pmTOR)
+		
+		
 
 	end functions
 
@@ -425,17 +438,29 @@ begin model
 		# EGFR modelling
 		# EGFR binds to inhibitor
 		# assume dissociation rate is constant regardless of ligand binding
-		# coarse-grained EGFR model --> ligand binding initiates dimerization
-		EGFR(egf) + EGF(EGFRRec) <-> EGFR(egf!0).EGF(EGFRRec!0) k_egf_f, k_egf_b
-		# EGF can bind to EGFR in dimer 
-		EGFR(egf,dimer!+) + EGF(EGFRRec) <-> EGFR(egf!0,dimer!+).EGF(EGFRRec!0) k_egf2_f, k_egf2_b
 
-		# dimerization case 1 -> ligand 1 binds and causes dimerization
-		EGFR(egf!+,dimer) + EGFR(egf,dimer) -> EGFR(egf!+,dimer!0).EGFR(egf,dimer!0) k_dim1
+		# binding of EGF to EGFR
+		# EGF binding to EGFR monomer
+		EGFR(egf,dimer) + EGF(EGFRRec) <-> EGFR(egf!0,dimer).EGF(EGFRRec!0) k_egf_f, k_egf_b
+
+		# EGF can bind to unligated dimer
+		EGFR(egf,dimer!0).EGFR(egf,dimer!0) + EGF(EGFRRec) <-> EGF(EGFRRec!1).EGFR(egf!1,dimer!0).EGFR(egf,dimer!0) k_egf2_f, k_egf2_b
+
+		# EGF can bind to singly-ligated dimer
+		EGFR(egf,dimer!0).EGFR(egf!1,dimer!0).EGF(EGFRRec!1) + EGF(EGFRRec) <-> EGF(EGFRRec!2).EGFR(egf!2,dimer!0).EGFR(egf!1,dimer!0).EGF(EGFRRec!1) k_egf3_f, k_egf3_b
+
+
+
+		# dimerization case 1 -> receptors dimerize without ligand binding
+		EGFR(egf,dimer) + EGFR(egf,dimer) -> EGFR(egf,dimer!0).EGFR(egf,dimer!0) k_dim1
+
+		# dimerization case 2 -> ligand 1 binds and causes dimerization
+		EGFR(egf!+,dimer) + EGFR(egf,dimer) -> EGFR(egf!+,dimer!0).EGFR(egf,dimer!0) k_dim2
+
 		# dimerization case 2 -> both ligands bind and cause dimerization
-		EGFR(egf!+,dimer) + EGFR(egf!+,dimer) -> EGFR(egf!+,dimer!0).EGFR(egf!+,dimer!0) k_dim2
-		# dimerization case 3 -> receptors dimerize without ligand binding
-		EGFR(egf,dimer) + EGFR(egf,dimer) -> EGFR(egf,dimer!0).EGFR(egf,dimer!0) k_dim3
+		EGFR(egf!+,dimer) + EGFR(egf!+,dimer) -> EGFR(egf!+,dimer!0).EGFR(egf!+,dimer!0) k_dim3
+		
+
 		# dimer dissociation
 		EGFR(dimer!0).EGFR(dimer!0) -> EGFR(dimer) + EGFR(dimer) k_r_dim
 
@@ -488,15 +513,15 @@ begin model
 		SMAD(active~p) -> SMAD(active~0) ( kr_nSMAD() )
 
 
-		# DPD species accumulates at a rate specified by driving_force+restoring_force.
-		0 -> S_DPD_LB() (driving_force_lb()+restoring_force_lb()) 
-		0 -> S_DPD_NC() (driving_force_canc()+restoring_force_canc())
+		## DPD species accumulates at a rate specified by driving_force+restoring_force.
+		# 0 -> S_DPD_LB() (driving_force_lb()+restoring_force_lb()) 
+		# 0 -> S_DPD_NC() (driving_force_canc()+restoring_force_canc())
 
 	end reaction rules
 
 
 	begin actions 
-		# equilibrate model first according to Sekar et al -- time course data
+		
 		generate_network({overwrite=>1});
 		setConcentration("EGF(EGFRRec)", 0);
 		setConcentration("IEGFR(EGFRRec)", 0);
@@ -520,7 +545,7 @@ begin model
 		setConcentration("IMTOR(mTORRec)", 0);
 		simulate({suffix=>"initstim15_ipi3k", method=>"ode", t_start=>0, t_end=>900, n_steps=>90, print_functions=>1});
 		setConcentration("EGF(EGFRRec)", "EGF_conc");
-		simulate({suffix=>"MCF10A_iPI3K", method=>"ode", t_start=>900, t_end=>4500, n_steps=360, print_functions=>1});
+		simulate({suffix=>"MCF10A_iPI3K", method=>"ode", t_start=>900, t_end=>4500, n_steps=>360, print_functions=>1});
 
 
 		# EGFR inhibition -- cell line MCF10A
@@ -533,19 +558,19 @@ begin model
 		setConcentration("IMTOR(mTORRec)", 0);	
 		simulate({suffix=>"initstim15_iegfr", method=>"ode", t_end=>900, n_steps=>90, print_functions=>1});
 		setConcentration("EGF(EGFRRec)", "EGF_conc");
-		simulate({suffix=>"MCF10A_iEGFR", method=>"ode", t_start=>900, t_end=>4500, n_steps=360, print_functions=>1});
+		simulate({suffix=>"MCF10A_iEGFR", method=>"ode", t_start=>900, t_end=>4500, n_steps=>360, print_functions=>1});
 
 		# MEK inhibition -- cell line MCF10A
 		resetConcentrations()
-		setConcentration("EGF(EGFRRec)", 0);
+		setConcentration("EGF(EGFRRec)", "EGF_conc");
 		setConcentration("IEGFR(EGFRRec)", 0);
-		setConcentration("IMEK(MEKRec)", "iMEK_conc");
+		setConcentration("IMEK(MEKRec)", 0);
 		setConcentration("IPI3K(PI3KRec)", 0);
 		setConcentration("IPKC(PKCRec)", 0);
 		setConcentration("IMTOR(mTORRec)", 0);		
 		simulate({suffix=>"initstim15_imek", method=>"ode", t_end=>900, n_steps=>90, print_functions=>1});
 		setConcentration("EGF(EGFRRec)", "EGF_conc");
-		simulate({suffix=>"MCF10A_iMEK", method=>"ode", t_start=>900, t_end=>4500, n_steps=360, print_functions=>1});
+		simulate({suffix=>"MCF10A_iMEK", method=>"ode", t_start=>900, t_end=>4500, n_steps=>360, print_functions=>1});
 
 
 		# PKC inhibition -- cell line MCF10A
@@ -558,7 +583,7 @@ begin model
 		setConcentration("IMTOR(mTORRec)", 0);
 		simulate({suffix=>"initstim15_ipkc", method=>"ode", t_end=>900, n_steps=>90, print_functions=>1});
 		setConcentration("EGF(EGFRRec)", "EGF_conc");
-		simulate({suffix=>"MCF10A_iPKC", method=>"ode", t_start=>900, t_end=>4500, n_steps=360, print_functions=>1});
+		simulate({suffix=>"MCF10A_iPKC", method=>"ode", t_start=>900, t_end=>4500, n_steps=>360, print_functions=>1});
 
 
 		# mTOR inhibtion -- cell line MCF10A
@@ -571,76 +596,83 @@ begin model
 		setConcentration("IMTOR(mTORRec)", "imTOR_conc");
 		simulate({suffix=>"initstim15_imtor", method=>"ode", t_end=>900, n_steps=>90, print_functions=>1});
 		setConcentration("EGF(EGFRRec)", "EGF_conc");
-		simulate({suffix=>"MCF10A_imTOR", method=>"ode", t_start=>900, t_end=>4500, n_steps=360, print_functions=>1});
+		simulate({suffix=>"MCF10A_imTOR", method=>"ode", t_start=>900, t_end=>4500, n_steps=>360, print_functions=>1});
 		
 
-		# # fit to DPD time trajectory
-		
-		resetConcentrations()
-		setConcentration("EGF(EGFRRec)", 0);
-		setConcentration("IEGFR(EGFRRec)", 0);
-		setConcentration("IMEK(MEKRec)", 0);
-		setConcentration("IPI3K(PI3KRec)", "iPI3K_conc");
-		setConcentration("IPKC(PKCRec)", 0);
-		setConcentration("IMTOR(mTORRec)", 0);
-		simulate({suffix=>"initstim15_ipi3k_dpd", method=>"ode", t_start=>0, t_end=>900, n_steps=>90, print_functions=>1});
-		setConcentration("EGF(EGFRRec)", "EGF_conc");
-		simulate({suffix=>"DPD_trajectory_MCF10A_iPI3K", method=>"ode", t_start=>900, t_end=>4500, n_steps=360, print_functions=>1});
-
-
-		# EGFR inhibition -- cell line MCF10A
-		resetConcentrations()
-		setConcentration("EGF(EGFRRec)", 0);
-		setConcentration("IEGFR(EGFRRec)", "iEGFR_conc");
-		setConcentration("IMEK(MEKRec)", 0);
-		setConcentration("IPI3K(PI3KRec)", 0);
-		setConcentration("IPKC(PKCRec)", 0);
-		setConcentration("IMTOR(mTORRec)", 0);	
-		simulate({suffix=>"initstim15_iegfr_dpd", method=>"ode", t_end=>900, n_steps=>90, print_functions=>1});
-		setConcentration("EGF(EGFRRec)", "EGF_conc");
-		simulate({suffix=>"DPD_trajectory_MCF10A_iEGFR", method=>"ode", t_start=>900, t_end=>4500, n_steps=360, print_functions=>1});
-
-		# MEK inhibition -- cell line MCF10A
-		resetConcentrations()
-		setConcentration("EGF(EGFRRec)", 0);
-		setConcentration("IEGFR(EGFRRec)", 0);
-		setConcentration("IMEK(MEKRec)", "iMEK_conc");
-		setConcentration("IPI3K(PI3KRec)", 0);
-		setConcentration("IPKC(PKCRec)", 0);
-		setConcentration("IMTOR(mTORRec)", 0);		
-		simulate({suffix=>"initstim15_imek_dpd", method=>"ode", t_end=>900, n_steps=>90, print_functions=>1});
-		setConcentration("EGF(EGFRRec)", "EGF_conc");
-		simulate({suffix=>"DPD_trajectory_MCF10A_iMEK", method=>"ode", t_start=>900, t_end=>4500, n_steps=360, print_functions=>1});
-
-
-		# PKC inhibition -- cell line MCF10A
-		resetConcentrations()
-		setConcentration("EGF(EGFRRec)", 0);
-		setConcentration("IEGFR(EGFRRec)", 0);
-		setConcentration("IMEK(MEKRec)", 0);
-		setConcentration("IPI3K(PI3KRec)", 0);
-		setConcentration("IPKC(PKCRec)", "iPKC_conc");
-		setConcentration("IMTOR(mTORRec)", 0);
-		simulate({suffix=>"initstim15_ipkc_dpd", method=>"ode", t_end=>900, n_steps=>90, print_functions=>1});
-		setConcentration("EGF(EGFRRec)", "EGF_conc");
-		simulate({suffix=>"DPD_trajectory_MCF10A_iPKC", method=>"ode", t_start=>900, t_end=>4500, n_steps=360, print_functions=>1});
-
-
-		# mTOR inhibtion -- cell line MCF10A
-		resetConcentrations()
-		setConcentration("EGF(EGFRRec)", 0);
-		setConcentration("IEGFR(EGFRRec)", 0);
-		setConcentration("IMEK(MEKRec)", 0);
-		setConcentration("IPI3K(PI3KRec)", 0);
-		setConcentration("IPKC(PKCRec)", 0);
-		setConcentration("IMTOR(mTORRec)", "imTOR_conc");
-		simulate({suffix=>"initstim15_imtor_dpd", method=>"ode", t_end=>900, n_steps=>90, print_functions=>1});
-		setConcentration("EGF(EGFRRec)", "EGF_conc");
-		simulate({suffix=>"DPD_trajectory_MCF10A_imTOR", method=>"ode", t_start=>900, t_end=>4500, n_steps=360, print_functions=>1});
-		
+		# # # fit to DPD time trajectory
+		# resetConcentrations()
+		# setConcentration("EGF(EGFRRec)", 0);
+		# setConcentration("IEGFR(EGFRRec)", 0);
+		# setConcentration("IMEK(MEKRec)", 0);
+		# setConcentration("IPI3K(PI3KRec)", 0);
+		# setConcentration("IPKC(PKCRec)", 0);
+		# setConcentration("IMTOR(mTORRec)", 0);
+		# simulate({suffix=>"equilibriate_dpd", method=>"ode",t_end=>10000,n_steps=>10000, print_functions=>1});
+		# saveConcentrations()
 	
+	
+		# resetConcentrations()
+		# setConcentration("EGF(EGFRRec)", 0);
+		# setConcentration("IEGFR(EGFRRec)", 0);
+		# setConcentration("IMEK(MEKRec)", 0);
+		# setConcentration("IPI3K(PI3KRec)", "iPI3K_conc");
+		# setConcentration("IPKC(PKCRec)", 0);
+		# setConcentration("IMTOR(mTORRec)", 0);
+		# simulate({suffix=>"initstim15_ipi3k_dpd", method=>"ode", t_start=>0, t_end=>900, n_steps=>90, print_functions=>1});
+		# setConcentration("EGF(EGFRRec)", "EGF_conc");
+		# simulate({suffix=>"DPD_trajectory_MCF10A_iPI3K", method=>"ode", t_start=>900, t_end=>4500, n_steps=>360, print_functions=>1});
 
 
+		# # EGFR inhibition -- cell line MCF10A
+		# resetConcentrations()
+		# setConcentration("EGF(EGFRRec)", 0);
+		# setConcentration("IEGFR(EGFRRec)", "iEGFR_conc");
+		# setConcentration("IMEK(MEKRec)", 0);
+		# setConcentration("IPI3K(PI3KRec)", 0);
+		# setConcentration("IPKC(PKCRec)", 0);
+		# setConcentration("IMTOR(mTORRec)", 0);	
+		# simulate({suffix=>"initstim15_iegfr_dpd", method=>"ode", t_end=>900, n_steps=>90, print_functions=>1});
+		# setConcentration("EGF(EGFRRec)", "EGF_conc");
+		# simulate({suffix=>"DPD_trajectory_MCF10A_iEGFR", method=>"ode", t_start=>900, t_end=>4500, n_steps=>360, print_functions=>1});
+
+		# # MEK inhibition -- cell line MCF10A
+		# resetConcentrations()
+		# setConcentration("EGF(EGFRRec)", 0);
+		# setConcentration("IEGFR(EGFRRec)", 0);
+		# setConcentration("IMEK(MEKRec)", "iMEK_conc");
+		# setConcentration("IPI3K(PI3KRec)", 0);
+		# setConcentration("IPKC(PKCRec)", 0);
+		# setConcentration("IMTOR(mTORRec)", 0);		
+		# simulate({suffix=>"initstim15_imek_dpd", method=>"ode", t_end=>900, n_steps=>90, print_functions=>1});
+		# setConcentration("EGF(EGFRRec)", "EGF_conc");
+		# simulate({suffix=>"DPD_trajectory_MCF10A_iMEK", method=>"ode", t_start=>900, t_end=>4500, n_steps=>360, print_functions=>1});
+
+
+		# # PKC inhibition -- cell line MCF10A
+		# resetConcentrations()
+		# setConcentration("EGF(EGFRRec)", 0);
+		# setConcentration("IEGFR(EGFRRec)", 0);
+		# setConcentration("IMEK(MEKRec)", 0);
+		# setConcentration("IPI3K(PI3KRec)", 0);
+		# setConcentration("IPKC(PKCRec)", "iPKC_conc");
+		# setConcentration("IMTOR(mTORRec)", 0);
+		# simulate({suffix=>"initstim15_ipkc_dpd", method=>"ode", t_end=>900, n_steps=>90, print_functions=>1});
+		# setConcentration("EGF(EGFRRec)", "EGF_conc");
+		# simulate({suffix=>"DPD_trajectory_MCF10A_iPKC", method=>"ode", t_start=>900, t_end=>4500, n_steps=>360, print_functions=>1});
+
+
+		# # mTOR inhibtion -- cell line MCF10A
+		# resetConcentrations()
+		# setConcentration("EGF(EGFRRec)", 0);
+		# setConcentration("IEGFR(EGFRRec)", 0);
+		# setConcentration("IMEK(MEKRec)", 0);
+		# setConcentration("IPI3K(PI3KRec)", 0);
+		# setConcentration("IPKC(PKCRec)", 0);
+		# setConcentration("IMTOR(mTORRec)", "imTOR_conc");
+		# simulate({suffix=>"initstim15_imtor_dpd", method=>"ode", t_end=>900, n_steps=>90, print_functions=>1});
+		# setConcentration("EGF(EGFRRec)", "EGF_conc");
+		# simulate({suffix=>"DPD_trajectory_MCF10A_imTOR", method=>"ode", t_start=>900, t_end=>4500, n_steps=>360, print_functions=>1});
+		
 	end actions
 
 end model
