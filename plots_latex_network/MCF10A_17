@@ -1,0 +1,30 @@
+\begin{table}[h]
+\caption{\textbf{Local Response Matrix for MCF10A at 17 Minutes }}
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\toprule
+\textbf{Modules} & EGFR & PI3K\_AKT & mTOR & MEK\_ERK & PKC & TGFb-SMAD & STAT3 \\ 
+\hline
+\midrule
+EGFR & -1 & -0.005 & -0.023 & 0.219 & 0.315 & 0.021 & 0.0\\
+\hline
+PI3K\_AKT & 0.0 & -1 & 0.0 & 0.0 & 0.0 & 0.0 & 0.527\\
+\hline
+mTOR & 0.0 & 0.743 & -1 & -0.273 & -1.081 & 0.0 & 0.0\\
+\hline
+MEK\_ERK & 0.069 & 0.67 & 0.008 & -1 & 0.0 & -0.44 & 0.0\\
+\hline
+PKC & 0.0 & 0.567 & 0.0 & 0.0 & -1 & 0.0 & 0.0\\
+\hline
+TGFb-SMAD & 1.371 & 0.0 & 0.0 & 0.0 & 0.0 & -1 & 0.0\\
+\hline
+STAT3 & -6.163 & 0.0 & 0.0 & 1.261 & 2.593 & 0.0 & -1\\
+\hline
+DPD\_NC & 0.0 & -0.573 & -0.49 & 0.381 & 0.472 & -0.361 & 0.0\\
+\hline
+DPD\_LB & 0.0 & 0.31 & 0.052 & 0.383 & -0.144 & -0.16 & 0.016\\
+\hline
+\bottomrule
+\end{tabular}
+\end{table}

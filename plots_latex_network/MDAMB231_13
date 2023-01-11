@@ -1,0 +1,30 @@
+\begin{table}[h]
+\caption{\textbf{Local Response Matrix for MDAMB231 at 13 Minutes }}
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\toprule
+\textbf{Modules} & EGFR & PI3K\_AKT & mTOR & MEK\_ERK & PKC & TGFb-SMAD & STAT3 \\ 
+\hline
+\midrule
+EGFR & -1 & 0.0 & -0.01 & 0.165 & 0.0 & 0.015 & 0.0\\
+\hline
+PI3K\_AKT & 1.496 & -1 & 0.429 & -0.143 & 0.0 & -0.432 & 1.581\\
+\hline
+mTOR & 0.0 & 0.0 & -1 & 0.0 & 0.0 & 0.0 & -1.804\\
+\hline
+MEK\_ERK & 2.175 & 0.431 & 0.212 & -1 & 0.0 & -0.35 & 0.59\\
+\hline
+PKC & 1.308 & 0.0 & 0.0 & 0.0 & -1 & 0.0 & 0.0\\
+\hline
+TGFb-SMAD & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & -1 & 0.0\\
+\hline
+STAT3 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 1.643 & -1\\
+\hline
+DPD\_NC & 0.0 & 0.0 & 0.372 & 0.194 & 0.0 & 0.478 & 1.229\\
+\hline
+DPD\_LB & 0.0 & 0.45 & 0.434 & 0.538 & -0.263 & 0.945 & 0.583\\
+\hline
+\bottomrule
+\end{tabular}
+\end{table}
